@@ -1,3 +1,4 @@
+import 'package:causw_graduate/AppColor.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:http/http.dart' as http;
@@ -88,193 +89,71 @@ class _CalendarState extends State<Calendar>
             currentFocus.unfocus();
           }
         },
-        child: DefaultTabController(
-          length: 3,
-          child: Scaffold(
-            body: TabBarView(
-              children: [
-                Column(
-                  children: [
-                    const SizedBox(
-                      height: 10,
+        child: Scaffold(
+          body: Column(
+            children: [
+              const SizedBox(
+                height: 10,
+              ),
+              Stack(
+                children: [
+                  TableCalendar(
+                    firstDay: DateTime.utc(2020, 3, 6),
+                    lastDay: DateTime.utc(2030, 3, 6),
+                    focusedDay: focusedDay,
+                    selectedDayPredicate: (day) {
+                      return isSameDay(selectedDay, day);
+                    },
+                    onFormatChanged: (format) {
+                      if (selectedDay != null) {
+                        setState(() {});
+                      }
+                    },
+                    availableCalendarFormats: const {
+                      CalendarFormat.month: 'Today',
+                      CalendarFormat.twoWeeks: 'Today',
+                      CalendarFormat.week: 'Today',
+                    },
+                    headerStyle: const HeaderStyle(
+                      formatButtonVisible: true,
                     ),
-                    Stack(
-                      children: [
-                        TableCalendar(
-                          firstDay: DateTime.utc(2020, 3, 6),
-                          lastDay: DateTime.utc(2030, 3, 6),
-                          focusedDay: focusedDay,
-                          selectedDayPredicate: (day) {
-                            return isSameDay(selectedDay, day);
-                          },
-                          onFormatChanged: (format) {
-                            if (selectedDay != null) {
-                              setState(() {});
-                            }
-                          },
-                          availableCalendarFormats: const {
-                            CalendarFormat.month: 'Today',
-                            CalendarFormat.twoWeeks: 'Today',
-                            CalendarFormat.week: 'Today',
-                          },
-                          headerStyle: const HeaderStyle(
-                            formatButtonVisible: true,
-                          ),
-                          onPageChanged: (pageDate) {
-                            setState(() {
-                              focusedDay = pageDate;
-                            });
-                          },
-                          onDaySelected: (selectedDays, _) {
-                            setState(() {
-                              selectedDay = selectedDays;
-                              focusedDay = selectedDays;
-                            });
-                            sendDate(selectedDays);
-                            print('User selected day $selectedDays');
-                          },
-                        ),
-                        Positioned(
-                            top: 9,
-                            right: 62,
-                            child: TextButton(
-                              onPressed: () {
-                                setState(() {
-                                  focusedDay = DateTime.now();
-                                  selectedDay = DateTime.now();
-                                });
-                              },
-                              child: const Text('  '),
-                            ))
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    const Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                          '\t\t🗓️\t\tOctober 20\n\n\t\t19:00 Mid-term Exam'),
-                    )
-                  ],
-                ),
-                Column(children: [
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: messages.length,
-                      itemBuilder: (context, index) =>
-                          MessageBubble(message: messages[index]),
-                    ),
+                    onPageChanged: (pageDate) {
+                      setState(() {
+                        focusedDay = pageDate;
+                      });
+                    },
+                    onDaySelected: (selectedDays, _) {
+                      setState(() {
+                        selectedDay = selectedDays;
+                        focusedDay = selectedDays;
+                      });
+                      sendDate(selectedDays);
+                      print('User selected day $selectedDays');
+                    },
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(children: <Widget>[
-                      Expanded(
-                          child: SizedBox(
-                        width: 300.0,
-                        height: 45.0,
-                        child: TextField(
-                          controller: messageController,
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Enter your Schedule',
-                          ),
-                        ),
-                      )),
-                      IconButton(
-                        onPressed: sendMessage,
-                        icon: const Icon(Icons.schedule_send),
-                      )
-                    ]),
-                  )
-                ]),
-                Column(
-                  children: [
-                    CheckboxListTile(
-                      title: const Text('Subject 1'),
-                      value: checked2,
-                      onChanged: (value) {
-                        setState(() {
-                          checked2 = value!;
-                        });
-                      },
-                    ),
-                    CheckboxListTile(
-                      title: const Text('Subject 2'),
-                      value: checked1,
-                      onChanged: (value) {
-                        setState(() {
-                          checked1 = value!;
-                        });
-                      },
-                    ),
-                    CheckboxListTile(
-                      title: const Text('Subject 3'),
-                      value: checked2,
-                      onChanged: (value) {
-                        setState(() {
-                          checked2 = value!;
-                        });
-                      },
-                    ),
-                    CheckboxListTile(
-                      title: const Text('Subject 4'),
-                      value: checked1,
-                      onChanged: (value) {
-                        setState(() {
-                          checked1 = value!;
-                        });
-                      },
-                    ),
-                    CheckboxListTile(
-                      title: const Text('Subject 5'),
-                      value: checked1,
-                      onChanged: (value) {
-                        setState(() {
-                          checked1 = value!;
-                        });
-                      },
-                    ),
-                    CheckboxListTile(
-                      title: const Text('Subject 6'),
-                      value: checked2,
-                      onChanged: (value) {
-                        setState(() {
-                          checked2 = value!;
-                        });
-                      },
-                    ),
-                    CheckboxListTile(
-                      title: const Text('Subject 7'),
-                      value: checked1,
-                      onChanged: (value) {
-                        setState(() {
-                          checked1 = value!;
-                        });
-                      },
-                    ),
-                    CheckboxListTile(
-                      title: const Text('Subject 8'),
-                      value: checked2,
-                      onChanged: (value) {
-                        setState(() {
-                          checked2 = value!;
-                        });
-                      },
-                    ),
-                    CheckboxListTile(
-                      title: const Text('Subject 9'),
-                      value: checked2,
-                      onChanged: (value) {
-                        setState(() {
-                          checked2 = value!;
-                        });
-                      },
-                    ),
-                  ],
-                )
-              ],
-            ),
-            drawer: const Drawer(),
+                  Positioned(
+                      top: 9,
+                      right: 62,
+                      child: TextButton(
+                        onPressed: () {
+                          setState(() {
+                            focusedDay = DateTime.now();
+                            selectedDay = DateTime.now();
+                          });
+                        },
+                        child: const Text('  '),
+                      ))
+                ],
+              ),
+              const SizedBox(height: 20),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    '\t\t🗓️\t\tOctober 20\n\n\t\t19:00 Mid-term Exam'),
+              )
+            ],
           ),
+          drawer: const Drawer(),
         ));
   }
 }
@@ -291,7 +170,7 @@ class MessageBubble extends StatelessWidget {
       children: <Widget>[
         Container(
           decoration: BoxDecoration(
-            color: Colors.blue[100],
+            color: AppColor.main,
             borderRadius: BorderRadius.circular(15.0),
           ),
           padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
