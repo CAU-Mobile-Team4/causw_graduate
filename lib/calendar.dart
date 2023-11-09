@@ -97,7 +97,7 @@ class _CalendarState extends State<Calendar>
             child: Column(
               children: [
                 const SizedBox(
-                  height: 10,
+                  height: 40,
                 ),
                 Stack(
                   children: [
@@ -120,6 +120,10 @@ class _CalendarState extends State<Calendar>
                       },
                       headerStyle: const HeaderStyle(
                         formatButtonVisible: true,
+                        titleTextStyle: TextStyle(
+                            fontSize: 23,
+                            fontWeight: FontWeight.bold,
+                            color: AppColor.main),
                       ),
                       onPageChanged: (pageDate) {
                         setState(() {
