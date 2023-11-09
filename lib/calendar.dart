@@ -125,6 +125,26 @@ class _CalendarState extends State<Calendar>
                             fontWeight: FontWeight.bold,
                             color: AppColor.main),
                       ),
+                      calendarStyle: const CalendarStyle(
+                          //marker 관련
+                          canMarkersOverflow: false,
+                          markersAutoAligned: true,
+                          markerSize: 10,
+                          markerDecoration: BoxDecoration(
+                            color: AppColor.purple,
+                            shape: BoxShape.circle,
+                          ),
+                          //today 관련
+                          isTodayHighlighted: true,
+                          todayDecoration: BoxDecoration(
+                            color: AppColor.main,
+                            shape: BoxShape.circle,
+                          ),
+                          //selectedDay 관련
+                          selectedDecoration: BoxDecoration(
+                              color: AppColor.purple, shape: BoxShape.circle),
+                          //주말 관련
+                          weekendTextStyle: TextStyle(color: Colors.red)),
                       onPageChanged: (pageDate) {
                         setState(() {
                           focusedDay = pageDate;
