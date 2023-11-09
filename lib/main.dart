@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.blue,
         primarySwatch: Colors.indigo,
-        fontFamily: 'Pretendard',
+        fontFamily: 'Nunito',
       ),
       home: const Calendar(),
     );

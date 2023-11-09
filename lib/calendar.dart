@@ -1,4 +1,4 @@
-import 'package:causw_graduate/AppColor.dart';
+import 'package:causw_graduate/appColor.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:http/http.dart' as http;
@@ -42,7 +42,7 @@ class _CalendarState extends State<Calendar>
 
   TextEditingController messageController = TextEditingController();
 
-  void sendDate(DateTime date) async {
+  /*void sendDate(DateTime date) async {
     var response = await http.post(
       Uri.parse('url/dates'),
       headers: <String, String>{
@@ -58,7 +58,7 @@ class _CalendarState extends State<Calendar>
     } else {
       print('Failed to send date');
     }
-  }
+  }*/
 
   void sendMessage() async {
     if (messageController.text.isNotEmpty) {
@@ -90,68 +90,73 @@ class _CalendarState extends State<Calendar>
           }
         },
         child: Scaffold(
-          body: Column(
-            children: [
-              const SizedBox(
-                height: 10,
-              ),
-              Stack(
-                children: [
-                  TableCalendar(
-                    firstDay: DateTime.utc(2020, 3, 6),
-                    lastDay: DateTime.utc(2030, 3, 6),
-                    focusedDay: focusedDay,
-                    selectedDayPredicate: (day) {
-                      return isSameDay(selectedDay, day);
-                    },
-                    onFormatChanged: (format) {
-                      if (selectedDay != null) {
-                        setState(() {});
-                      }
-                    },
-                    availableCalendarFormats: const {
-                      CalendarFormat.month: 'Today',
-                      CalendarFormat.twoWeeks: 'Today',
-                      CalendarFormat.week: 'Today',
-                    },
-                    headerStyle: const HeaderStyle(
-                      formatButtonVisible: true,
+          body: Container(
+            decoration: const BoxDecoration(
+              color: AppColor.background,
+            ),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 10,
+                ),
+                Stack(
+                  children: [
+                    TableCalendar(
+                      firstDay: DateTime.utc(2020, 3, 6),
+                      lastDay: DateTime.utc(2030, 3, 6),
+                      focusedDay: focusedDay,
+                      selectedDayPredicate: (day) {
+                        return isSameDay(selectedDay, day);
+                      },
+                      onFormatChanged: (format) {
+                        if (selectedDay != null) {
+                          setState(() {});
+                        }
+                      },
+                      availableCalendarFormats: const {
+                        CalendarFormat.month: 'Today',
+                        CalendarFormat.twoWeeks: 'Today',
+                        CalendarFormat.week: 'Today',
+                      },
+                      headerStyle: const HeaderStyle(
+                        formatButtonVisible: true,
+                      ),
+                      onPageChanged: (pageDate) {
+                        setState(() {
+                          focusedDay = pageDate;
+                        });
+                      },
+                      onDaySelected: (selectedDays, _) {
+                        setState(() {
+                          selectedDay = selectedDays;
+                          focusedDay = selectedDays;
+                        });
+                        //sendDate(selectedDays);
+                        print('User selected day $selectedDays');
+                      },
                     ),
-                    onPageChanged: (pageDate) {
-                      setState(() {
-                        focusedDay = pageDate;
-                      });
-                    },
-                    onDaySelected: (selectedDays, _) {
-                      setState(() {
-                        selectedDay = selectedDays;
-                        focusedDay = selectedDays;
-                      });
-                      sendDate(selectedDays);
-                      print('User selected day $selectedDays');
-                    },
-                  ),
-                  Positioned(
-                      top: 9,
-                      right: 62,
-                      child: TextButton(
-                        onPressed: () {
-                          setState(() {
-                            focusedDay = DateTime.now();
-                            selectedDay = DateTime.now();
-                          });
-                        },
-                        child: const Text('  '),
-                      ))
-                ],
-              ),
-              const SizedBox(height: 20),
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                    '\t\t🗓️\t\tOctober 20\n\n\t\t19:00 Mid-term Exam'),
-              )
-            ],
+                    Positioned(
+                        top: 9,
+                        right: 62,
+                        child: TextButton(
+                          onPressed: () {
+                            setState(() {
+                              focusedDay = DateTime.now();
+                              selectedDay = DateTime.now();
+                            });
+                          },
+                          child: const Text('  '),
+                        ))
+                  ],
+                ),
+                const SizedBox(height: 20),
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child:
+                      Text('\t\t🗓️\t\tOctober 20\n\n\t\t19:00 Mid-term Exam'),
+                )
+              ],
+            ),
           ),
           drawer: const Drawer(),
         ));
