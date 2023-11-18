@@ -1,3 +1,4 @@
+import 'package:causw_graduate/AppColor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -45,8 +46,8 @@ class _CalendarState extends State<Calendar>
     }
   }
 
-  TextEditingController _dateController = TextEditingController();
-  TextEditingController _eventController = TextEditingController();
+  final TextEditingController _dateController = TextEditingController();
+  final TextEditingController _eventController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +90,31 @@ class _CalendarState extends State<Calendar>
                     },
                     headerStyle: const HeaderStyle(
                       formatButtonVisible: true,
+                      titleTextStyle: TextStyle(
+                          fontSize: 23,
+                          fontWeight: FontWeight.bold,
+                          color: AppColor.main),
                     ),
+                    calendarStyle: const CalendarStyle(
+                        //marker 관련
+                        canMarkersOverflow: false,
+                        markersAutoAligned: true,
+                        markerSize: 10,
+                        markerDecoration: BoxDecoration(
+                          color: AppColor.purple,
+                          shape: BoxShape.circle,
+                        ),
+                        //today 관련
+                        isTodayHighlighted: true,
+                        todayDecoration: BoxDecoration(
+                          color: AppColor.main,
+                          shape: BoxShape.circle,
+                        ),
+                        //selectedDay 관련
+                        selectedDecoration: BoxDecoration(
+                            color: AppColor.purple, shape: BoxShape.circle),
+                        //주말 관련
+                        weekendTextStyle: TextStyle(color: Colors.red)),
                     onPageChanged: (pageDate) {
                       setState(() {
                         focusedDay = pageDate;
@@ -124,104 +149,122 @@ class _CalendarState extends State<Calendar>
                   child: SingleChildScrollView(
                     child: Column(
                       children: events[selectedDayWithoutTime]?.map((event) {
-                        return ListTile(
-                          title: Text(event),
-                          onTap: () {
-                            TextEditingController eventController = TextEditingController(text: event);
-                            DateTime selectedDate = DateTime.parse(selectedDayWithoutTime.toString());
-                            TextEditingController dateController = TextEditingController(text: selectedDate.toIso8601String().substring(0,10));
-                            TextEditingController locationController = TextEditingController();
-                            TextEditingController detailController = TextEditingController();
+                            return ListTile(
+                              title: Text(event),
+                              onTap: () {
+                                TextEditingController eventController =
+                                    TextEditingController(text: event);
+                                DateTime selectedDate = DateTime.parse(
+                                    selectedDayWithoutTime.toString());
+                                TextEditingController dateController =
+                                    TextEditingController(
+                                        text: selectedDate
+                                            .toIso8601String()
+                                            .substring(0, 10));
+                                TextEditingController locationController =
+                                    TextEditingController();
+                                TextEditingController detailController =
+                                    TextEditingController();
 
-                            showDialog(
-                              context: context,
-                              builder: (context) => AlertDialog(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                ),
-                                title: Text('Selected Event'),
-                                content: Container(
-                                  width: MediaQuery.of(context).size.width * 0.9, // width를 조절
-                                  child: SingleChildScrollView(
-                                    child: Column(
-                                      children: [
-                                        ListTile(
-                                          title: Text('Event Name: ', style: TextStyle(fontSize: 16)),
-                                          subtitle: CupertinoTextField(
-                                            controller: eventController,
-                                            decoration: BoxDecoration(
-                                              border: Border(
-                                                bottom: BorderSide(
-                                                  color: Colors.grey,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        ListTile(
-                                          title: Text('Date: ', style: TextStyle(fontSize: 16)),
-                                          subtitle: CupertinoTextField(
-                                            controller: dateController,
-                                            decoration: BoxDecoration(
-                                              border: Border(
-                                                bottom: BorderSide(
-                                                  color: Colors.grey,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        ListTile(
-                                          title: Text('Location: ', style: TextStyle(fontSize: 16)),
-                                          subtitle: CupertinoTextField(
-                                            controller: locationController,
-                                            decoration: BoxDecoration(
-                                              border: Border(
-                                                bottom: BorderSide(
-                                                  color: Colors.grey,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        ListTile(
-                                          title: Text('Detail: ', style: TextStyle(fontSize: 16)),
-                                          subtitle: CupertinoTextField(
-                                            controller: detailController,
-                                            decoration: BoxDecoration(
-                                              border: Border(
-                                                bottom: BorderSide(
-                                                  color: Colors.grey,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => AlertDialog(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20.0),
                                     ),
+                                    title: const Text('Selected Event'),
+                                    content: SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.9, // width를 조절
+                                      child: SingleChildScrollView(
+                                        child: Column(
+                                          children: [
+                                            ListTile(
+                                              title: const Text('Event Name: ',
+                                                  style:
+                                                      TextStyle(fontSize: 16)),
+                                              subtitle: CupertinoTextField(
+                                                controller: eventController,
+                                                decoration: const BoxDecoration(
+                                                  border: Border(
+                                                    bottom: BorderSide(
+                                                      color: Colors.grey,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            ListTile(
+                                              title: const Text('Date: ',
+                                                  style:
+                                                      TextStyle(fontSize: 16)),
+                                              subtitle: CupertinoTextField(
+                                                controller: dateController,
+                                                decoration: const BoxDecoration(
+                                                  border: Border(
+                                                    bottom: BorderSide(
+                                                      color: Colors.grey,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            ListTile(
+                                              title: const Text('Location: ',
+                                                  style:
+                                                      TextStyle(fontSize: 16)),
+                                              subtitle: CupertinoTextField(
+                                                controller: locationController,
+                                                decoration: const BoxDecoration(
+                                                  border: Border(
+                                                    bottom: BorderSide(
+                                                      color: Colors.grey,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            ListTile(
+                                              title: const Text('Detail: ',
+                                                  style:
+                                                      TextStyle(fontSize: 16)),
+                                              subtitle: CupertinoTextField(
+                                                controller: detailController,
+                                                decoration: const BoxDecoration(
+                                                  border: Border(
+                                                    bottom: BorderSide(
+                                                      color: Colors.grey,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    actions: <Widget>[
+                                      CupertinoDialogAction(
+                                        child: const Text('Close'),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                      CupertinoDialogAction(
+                                        child: const Text('Apply'),
+                                        onPressed: () {
+                                          // 'Apply' 버튼을 눌렀을 때의 동작을 여기에 작성
+                                          // 예를 들어, eventController.text, dateController.text, locationController.text, detailController.text 값을 사용하여 변경사항을 적용
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                    ],
                                   ),
-                                ),
-                                actions: <Widget>[
-                                  CupertinoDialogAction(
-                                    child: Text('Close'),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                  CupertinoDialogAction(
-                                    child: Text('Apply'),
-                                    onPressed: () {
-                                      // 'Apply' 버튼을 눌렀을 때의 동작을 여기에 작성
-                                      // 예를 들어, eventController.text, dateController.text, locationController.text, detailController.text 값을 사용하여 변경사항을 적용
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                ],
-                              ),
+                                );
+                              },
                             );
-                          },
-                        );
-                      }).toList() ?? [],
+                          }).toList() ??
+                          [],
                     ),
                   ),
                 ),
@@ -233,7 +276,7 @@ class _CalendarState extends State<Calendar>
           animatedIcon: AnimatedIcons.menu_close,
           children: [
             SpeedDialChild(
-              child: Icon(Icons.add),
+              child: const Icon(Icons.add),
               label: 'Add Event',
               onTap: () {
                 showModalBottomSheet(
@@ -245,7 +288,7 @@ class _CalendarState extends State<Calendar>
                         bottom: MediaQuery.of(context).viewInsets.bottom,
                       ),
                       child: CupertinoActionSheet(
-                        title: Text('Add Event'),
+                        title: const Text('Add Event'),
                         message: Column(
                           children: [
                             GestureDetector(
@@ -265,7 +308,7 @@ class _CalendarState extends State<Calendar>
                                 child: CupertinoTextField(
                                   controller: _dateController,
                                   placeholder: 'Tap to choose date',
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     border: Border(
                                       bottom: BorderSide(
                                         color: Colors.grey,
@@ -278,7 +321,7 @@ class _CalendarState extends State<Calendar>
                             CupertinoTextField(
                               controller: _eventController,
                               placeholder: 'Enter event',
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 border: Border(
                                   bottom: BorderSide(
                                     color: Colors.grey,
@@ -289,7 +332,7 @@ class _CalendarState extends State<Calendar>
                           ],
                         ),
                         cancelButton: CupertinoActionSheetAction(
-                          child: Text('Add'),
+                          child: const Text('Add'),
                           onPressed: () {
                             String event = _eventController.text;
                             addEvent(
@@ -308,7 +351,7 @@ class _CalendarState extends State<Calendar>
               },
             ),
             SpeedDialChild(
-              child: Icon(Icons.chat_bubble_outline),
+              child: const Icon(Icons.chat_bubble_outline),
               label: 'NLP add',
               onTap: () {
                 showModalBottomSheet(
@@ -320,7 +363,7 @@ class _CalendarState extends State<Calendar>
                         bottom: MediaQuery.of(context).viewInsets.bottom,
                       ),
                       child: CupertinoActionSheet(
-                        title: Row(
+                        title: const Row(
                           children: <Widget>[
                             Icon(Icons.chat_bubble_outline),
                             SizedBox(width: 10), // 아이콘과 텍스트 입력 필드 사이의 간격
@@ -332,7 +375,7 @@ class _CalendarState extends State<Calendar>
                           ],
                         ),
                         cancelButton: CupertinoActionSheetAction(
-                          child: Text('Add'),
+                          child: const Text('Add'),
                           onPressed: () {
                             // 아무런 동작을 수행하지 않습니다.
                             Navigator.of(context).pop();
@@ -345,7 +388,7 @@ class _CalendarState extends State<Calendar>
               },
             ),
             SpeedDialChild(
-              child: Icon(Icons.search),
+              child: const Icon(Icons.search),
               label: 'Search',
               onTap: () {
                 showModalBottomSheet(
@@ -353,34 +396,34 @@ class _CalendarState extends State<Calendar>
                   isScrollControlled: true,
                   builder: (BuildContext context) {
                     return CupertinoPageScaffold(
-                      navigationBar: CupertinoNavigationBar(
+                      navigationBar: const CupertinoNavigationBar(
                         middle:
                             Text('Search'), // NavigationBar의 제목을 'Search'로 설정
                       ),
                       child: Column(
                         children: [
-                          SizedBox(height: 45.0), // 상단 여백 추가
+                          const SizedBox(height: 45.0), // 상단 여백 추가
                           Row(
                             // 검색 아이콘, 입력창, 화살표 아이콘
                             children: <Widget>[
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
-                              Icon(
+                              const Icon(
                                 Icons.search,
                                 size: 35,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
-                              Expanded(
+                              const Expanded(
                                 child: CupertinoTextField(
                                   placeholder: 'Enter search text',
                                 ),
                               ),
                               CupertinoButton(
                                 padding: EdgeInsets.zero,
-                                child: Icon(Icons.send),
+                                child: const Icon(Icons.send),
                                 onPressed: () {
                                   // 'send' 아이콘을 눌렀을 때의 동작을 여기에 작성
                                 },
@@ -391,11 +434,13 @@ class _CalendarState extends State<Calendar>
                             child: Scrollbar(
                               child: SingleChildScrollView(
                                 child: Column(
-                                  children: List.generate(20, (index) => 'Test $index').map((event) {
-                                    return ListTile(
-                                      title: Text(event),
-                                    );
-                                  }).toList() ??
+                                  children: List.generate(
+                                              20, (index) => 'Test $index')
+                                          .map((event) {
+                                        return ListTile(
+                                          title: Text(event),
+                                        );
+                                      }).toList() ??
                                       [],
                                 ),
                               ),
@@ -410,5 +455,31 @@ class _CalendarState extends State<Calendar>
             ),
           ],
         ));
+  }
+}
+
+class MessageBubble extends StatelessWidget {
+  final String message;
+
+  const MessageBubble({Key? key, required this.message}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Container(
+          decoration: BoxDecoration(
+            color: AppColor.main,
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+          margin: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
+          child: Text(message,
+              style: const TextStyle(fontSize: 16.0),
+              textAlign: TextAlign.center),
+        ),
+      ],
+    );
   }
 }

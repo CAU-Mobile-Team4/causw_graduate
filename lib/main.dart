@@ -1,6 +1,5 @@
+import 'package:causw_graduate/calendar.dart';
 import 'package:flutter/material.dart';
-
-import 'calendar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,9 +15,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.blue,
         primarySwatch: Colors.indigo,
-        fontFamily: 'Pretendard',
+        fontFamily: 'Nunito',
       ),
-      home: Calendar(),
+      home: const Calendar(),
     );
   }
 }
