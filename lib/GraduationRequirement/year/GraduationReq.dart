@@ -1,4 +1,4 @@
-import '../detail/credit/Credit.dart';
+import '../condition/credit/Credit.dart';
 
 abstract class GraduationReq {
   late Credit credit;

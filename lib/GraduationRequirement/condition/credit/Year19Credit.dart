@@ -1,4 +1,4 @@
-import 'package:causw_graduate/GraduationRequirement/detail/credit/Credit.dart';
+import 'package:causw_graduate/GraduationRequirement/condition/credit/Credit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Year19Credit extends Credit {
