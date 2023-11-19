@@ -9,10 +9,10 @@ class InformationEntryPage extends StatefulWidget {
 }
 
 class _InformationEntryPageState extends State<InformationEntryPage> {
-  final _classOfYearList=[2018,2019,2020];
+  final _classOfYearList=[18,19,20];
   final _majorList=["주전공","복수전공","융합전공",];
   var _major="주전공";
-  var _classOfYear=2019;
+  var _classOfYear=19;
   @override
   void initState() {
     super.initState();
@@ -31,19 +31,27 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text("학번"),
-                DropdownButton(
-                  value: _classOfYear,
-                  items: _classOfYearList
-                      .map(
-                          (point)=>DropdownMenuItem(
-                          value: point,
-                          child: Text("$point"))).toList(),
-                  onChanged: (value){
-                    setState(() {
-                      _classOfYear=value!;
-                    });
-                  },
+                Flexible(
+                  flex: 1,
+                    child: Center(child: const Text("학번"))
+                ),
+                Flexible(
+                  flex: 1,
+                  child: Center(
+                    child: DropdownButton(
+                      value: _classOfYear,
+                      items: _classOfYearList
+                          .map(
+                              (year)=>DropdownMenuItem(
+                              value: year,
+                              child: Text("$year"))).toList(),
+                      onChanged: (value){
+                        setState(() {
+                          _classOfYear=value!;
+                        });
+                      },
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -53,21 +61,34 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text("전공종류"),
-                DropdownButton(
-                  value: _major,
-                  items: _majorList
-                      .map(
-                          (major)=>DropdownMenuItem(
-                          value: major,
-                          child: Text(major))).toList(),
-                  onChanged: (value){
-                    setState(() {
-                      _major=value!;
-                    });
-                  },
+                Flexible(
+                  flex: 1,
+                    child: Center(
+                        child: const Text("전공종류")
+                    )
+                ),
+                Flexible(
+                  flex: 1,
+                  child: Center(
+                    child: DropdownButton(
+                      value: _major,
+                      items: _majorList
+                          .map(
+                              (major)=>DropdownMenuItem(
+                              value: major,
+                              child: Text(major))).toList(),
+                      onChanged: (value){
+                        setState(() {
+                          _major=value!;
+                        });
+                      },
+                    ),
+                  ),
                 ),
               ],
+            ),
+            Container(
+              height: 16,
             ),
             ElevatedButton(child: Text('확인'),onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder:
