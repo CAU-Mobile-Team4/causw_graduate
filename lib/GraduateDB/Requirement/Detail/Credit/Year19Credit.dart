@@ -1,5 +1,5 @@
-import 'package:causw_graduate/GraduationRequirement/condition/credit/Credit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'Credit.dart';
 
 class Year19Credit extends Credit {
   @override
