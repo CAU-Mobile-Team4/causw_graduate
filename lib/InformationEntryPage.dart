@@ -32,11 +32,11 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Flexible(
-                  flex: 1,
-                    child: Center(child: const Text("학번"))
+                  flex: 4,
+                    child: Center(child: const Text("학번",style: TextStyle(fontSize: 25),))
                 ),
                 Flexible(
-                  flex: 1,
+                  flex: 3,
                   child: Center(
                     child: DropdownButton(
                       value: _classOfYear,
@@ -44,7 +44,7 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
                           .map(
                               (year)=>DropdownMenuItem(
                               value: year,
-                              child: Text("$year"))).toList(),
+                              child: Text("$year",style: TextStyle(fontSize: 25),))).toList(),
                       onChanged: (value){
                         setState(() {
                           _classOfYear=value!;
@@ -62,13 +62,13 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Flexible(
-                  flex: 1,
+                  flex: 4,
                     child: Center(
-                        child: const Text("전공종류")
+                        child: const Text("전공종류",style: TextStyle(fontSize: 25),)
                     )
                 ),
                 Flexible(
-                  flex: 1,
+                  flex: 3,
                   child: Center(
                     child: DropdownButton(
                       value: _major,
@@ -76,7 +76,7 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
                           .map(
                               (major)=>DropdownMenuItem(
                               value: major,
-                              child: Text(major))).toList(),
+                              child: Text(major,style: TextStyle(fontSize: 25),))).toList(),
                       onChanged: (value){
                         setState(() {
                           _major=value!;
@@ -90,12 +90,14 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
             Container(
               height: 16,
             ),
-            ElevatedButton(child: Text('확인'),onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder:
-                  (context)=> GraduateQualification()
-              )
-              );
-            }),
+            ElevatedButton(
+                child: Text('확인',style: TextStyle(fontSize: 25),),
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder:
+                      (context)=> GraduateQualification()
+                  )
+                  );
+                }),
           ],
         ),
       ),

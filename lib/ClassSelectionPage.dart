@@ -27,11 +27,18 @@ class ClassSelection extends StatelessWidget {
                     elevation: 40.0,
                     child: Column(
                       children: [
-                        Container(
-                          height: 90,
-                          alignment: Alignment.center,
-                          child: Text(
-                            "전공",style: TextStyle(fontSize: 30),
+                        ClipRRect(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(5),
+                            topRight: Radius.circular(5)
+                          ),
+                          child: Container(
+                            height: 90,
+                            alignment: Alignment.center,
+                            color: Color(0xFFB0B2D9),
+                            child: Text(
+                              "전공",style: TextStyle(fontSize: 30),
+                            ),
                           ),
                         ),
                         Divider(
@@ -42,6 +49,7 @@ class ClassSelection extends StatelessWidget {
                           height: 90,
                           alignment: Alignment.center,
                           child: FloatingActionButton(
+                            backgroundColor: Color(0xFFB0B2D9),
                               child: Text('+',style: TextStyle(fontSize: 50),),
                               onPressed:(){
                                 Navigator.push(context, MaterialPageRoute(builder:
@@ -72,11 +80,18 @@ class ClassSelection extends StatelessWidget {
                       elevation: 40.0,
                       child: Column(
                         children: [
-                          Container(
-                            height: 90,
-                            alignment: Alignment.center,
-                            child: Text(
-                              "BSM",style: TextStyle(fontSize: 30),
+                          ClipRRect(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(5),
+                                topRight: Radius.circular(5)
+                            ),
+                            child: Container(
+                              height: 90,
+                              alignment: Alignment.center,
+                              color: Color(0xFFB0B2D9),
+                              child: Text(
+                                "BSM",style: TextStyle(fontSize: 30),
+                              ),
                             ),
                           ),
                           Divider(
@@ -87,6 +102,7 @@ class ClassSelection extends StatelessWidget {
                             height: 90,
                             alignment: Alignment.center,
                             child: FloatingActionButton(
+                                backgroundColor: Color(0xFFB0B2D9),
                                 child: Text('+',style: TextStyle(fontSize: 50),),
                                 onPressed:(){
                                   Navigator.push(context, MaterialPageRoute(builder:
@@ -116,11 +132,18 @@ class ClassSelection extends StatelessWidget {
                       elevation: 40.0,
                       child: Column(
                         children: [
-                          Container(
-                            height: 90,
-                            alignment: Alignment.center,
-                            child: Text(
-                              "교양",style: TextStyle(fontSize: 30),
+                          ClipRRect(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(5),
+                                topRight: Radius.circular(5)
+                            ),
+                            child: Container(
+                              height: 90,
+                              alignment: Alignment.center,
+                              color: Color(0xFFB0B2D9),
+                              child: Text(
+                                "교양",style: TextStyle(fontSize: 30),
+                              ),
                             ),
                           ),
                           Divider(
@@ -131,6 +154,7 @@ class ClassSelection extends StatelessWidget {
                             height: 90,
                             alignment: Alignment.center,
                             child: FloatingActionButton(
+                                backgroundColor: Color(0xFFB0B2D9),
                                 child: Text('+',style: TextStyle(fontSize: 50),),
                                 onPressed:(){
                                   Navigator.push(context, MaterialPageRoute(builder:
