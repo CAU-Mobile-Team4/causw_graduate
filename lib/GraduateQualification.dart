@@ -14,19 +14,35 @@ class _GraduateQualificationState extends State<GraduateQualification> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Graduate Qualification'),),
-      body: ElevatedButton(child: Text('강의 추가'),onPressed: (){
-        Navigator.push(context, MaterialPageRoute(builder:
-            (context)=> ClassSelection()
-        )
-        );
-      }),
-      floatingActionButton: FloatingActionButton(onPressed: (){
-        Navigator.push(context, MaterialPageRoute(builder:
-          (context)=> GraduateInformation()
-        )
-        );
-      },
-      child: const Icon(Icons.quiz),),
+      body: Container(),
+      floatingActionButton: Stack(
+        children: [
+          Align(
+            alignment: Alignment.bottomRight,
+            child: FloatingActionButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder:
+                  (context)=> GraduateInformation()
+              )
+              );
+              },
+              tooltip: "졸업요건 정보",
+              child: const Icon(Icons.quiz),),
+        ),
+          Align(
+            alignment: Alignment(Alignment.bottomRight.x,Alignment.bottomRight.y-0.2),
+            child: FloatingActionButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder:
+                  (context)=> ClassSelection()
+              )
+              );
+            },
+              tooltip: "강의 추가",
+              child: const Icon(Icons.add),
+            ),
+          )
+        ]
+
+      ),
 
     );
   }
