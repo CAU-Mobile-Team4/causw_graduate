@@ -120,9 +120,17 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                 children: [
                   Flexible(
                     flex:1,
-                      child: Container(
-                          decoration: BoxDecoration(
-                          ),child: HalfCircularGraph())
+                      child: Stack(
+                        children:[
+                          Container(
+                            height: 50,
+                              alignment: Alignment.center,
+                              child: Text("학점 그래프",style: TextStyle(fontSize: 15),)),
+                          Container(
+                            decoration: BoxDecoration(
+                            ),child: HalfCircularGraph()),
+                        ]
+                      )
                   ),
                   Flexible(
                       flex: 1,
