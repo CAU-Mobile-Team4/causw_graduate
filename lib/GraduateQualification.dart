@@ -125,7 +125,7 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                           Container(
                             height: 50,
                               alignment: Alignment.center,
-                              child: Text("학점 그래프",style: TextStyle(fontSize: 15),)),
+                              child: Text("학점 그래프",style: TextStyle(fontSize: 15),)),//학점 그래프와 학점은 그냥 출력만 해둔거 나중에 데이터 들어오면 기능 구현될거
                           Container(
                             decoration: BoxDecoration(
                             ),child: HalfCircularGraph()),
