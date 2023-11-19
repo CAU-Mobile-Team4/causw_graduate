@@ -21,32 +21,40 @@ class ClassSelection extends StatelessWidget {
                     shape: ContinuousRectangleBorder(
                       borderRadius:
                         BorderRadius.circular(16.0),
-                      side: BorderSide(width: 1.0)
+                      side: BorderSide(width: 1.0),
+
                     ),
                     elevation: 40.0,
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 90,
+                          alignment: Alignment.center,
+                          child: Text(
+                            "전공",style: TextStyle(fontSize: 30),
+                          ),
+                        ),
+                        Divider(
+                          height: 1,
+                          color: Colors.grey,
+                        ),
+                        Container(
+                          height: 90,
+                          alignment: Alignment.center,
+                          child: FloatingActionButton(
+                              child: Text('+',style: TextStyle(fontSize: 50),),
+                              onPressed:(){
+                                Navigator.push(context, MaterialPageRoute(builder:
+                                    (context)=> MajorClass()
+                                )
+                                );
+                              }),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                  Positioned(
-                    top: 40,
-                    left: 165,
-                    right: 50,
-                    child: Text(
-                          "전공",style: TextStyle(fontSize: 30),
-                        ),
-                  ),
-                  Positioned(
-                    top: 125,
-                    left: 50,
-                    right: 50,
-                    child: FloatingActionButton(
-                        child: Text('+',style: TextStyle(fontSize: 50),),
-                        onPressed:(){
-                          Navigator.push(context, MaterialPageRoute(builder:
-                          (context)=> MajorClass()
-                      )
-                      );
-                    }),
-                  )
+
               ]
               ),
             ),
@@ -56,34 +64,41 @@ class ClassSelection extends StatelessWidget {
                     height: 200,width: 400,
                     child: Card(
                       shape: ContinuousRectangleBorder(
-                          borderRadius:
-                          BorderRadius.circular(16.0),
-                          side: BorderSide(width: 1.0)
+                        borderRadius:
+                        BorderRadius.circular(16.0),
+                        side: BorderSide(width: 1.0),
+
                       ),
                       elevation: 40.0,
-                    ),
-                  ),
-                    Positioned(
-                      top: 40,
-                      left: 165,
-                      right: 50,
-                      child: Text(
-                        "BSM",style: TextStyle(fontSize: 30),
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 90,
+                            alignment: Alignment.center,
+                            child: Text(
+                              "BSM",style: TextStyle(fontSize: 30),
+                            ),
+                          ),
+                          Divider(
+                            height: 1,
+                            color: Colors.grey,
+                          ),
+                          Container(
+                            height: 90,
+                            alignment: Alignment.center,
+                            child: FloatingActionButton(
+                                child: Text('+',style: TextStyle(fontSize: 50),),
+                                onPressed:(){
+                                  Navigator.push(context, MaterialPageRoute(builder:
+                                      (context)=> MajorClass()
+                                  )
+                                  );
+                                }),
+                          ),
+                        ],
                       ),
                     ),
-                    Positioned(
-                      top: 125,
-                      left: 50,
-                      right: 50,
-                      child: FloatingActionButton(
-                          child: Text('+',style: TextStyle(fontSize: 50),),
-                          onPressed:(){
-                            Navigator.push(context, MaterialPageRoute(builder:
-                                (context)=> BSMclassSelection()
-                            )
-                            );
-                          }),
-                    )
+                  ),
                   ]
               ),
             ),
@@ -93,34 +108,41 @@ class ClassSelection extends StatelessWidget {
                     height: 200,width: 400,
                     child: Card(
                       shape: ContinuousRectangleBorder(
-                          borderRadius:
-                          BorderRadius.circular(16.0),
-                          side: BorderSide(width: 1.0)
+                        borderRadius:
+                        BorderRadius.circular(16.0),
+                        side: BorderSide(width: 1.0),
+
                       ),
                       elevation: 40.0,
-                    ),
-                  ),
-                    Positioned(
-                      top: 40,
-                      left: 165,
-                      right: 50,
-                      child: Text(
-                        "교양",style: TextStyle(fontSize: 30),
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 90,
+                            alignment: Alignment.center,
+                            child: Text(
+                              "교양",style: TextStyle(fontSize: 30),
+                            ),
+                          ),
+                          Divider(
+                            height: 1,
+                            color: Colors.grey,
+                          ),
+                          Container(
+                            height: 90,
+                            alignment: Alignment.center,
+                            child: FloatingActionButton(
+                                child: Text('+',style: TextStyle(fontSize: 50),),
+                                onPressed:(){
+                                  Navigator.push(context, MaterialPageRoute(builder:
+                                      (context)=> MajorClass()
+                                  )
+                                  );
+                                }),
+                          ),
+                        ],
                       ),
                     ),
-                    Positioned(
-                      top: 125,
-                      left: 50,
-                      right: 50,
-                      child: FloatingActionButton(
-                          child: Text('+',style: TextStyle(fontSize: 50),),
-                          onPressed:(){
-                            Navigator.push(context, MaterialPageRoute(builder:
-                                (context)=> SelectGEclass()
-                            )
-                            );
-                          }),
-                    )
+                  ),
                   ]
               ),
             ),
