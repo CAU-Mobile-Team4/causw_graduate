@@ -6,9 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class MajorSubjects implements UserDataDetail {
   List<Map<String, dynamic>> majorSubjects = [];
 
-  MajorSubjects() {
-    loadData();
-  }
+  MajorSubjects();
 
   @override
   Future<void> loadData() async {

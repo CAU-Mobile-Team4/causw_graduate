@@ -4,12 +4,18 @@ import 'package:causw_graduate/GraduateDB/UserData/Detail/StudentInfo.dart';
 class UserData {
   static final UserData _instance = UserData._internal();
 
-  StudentInfo studentInfo = StudentInfo();
+  //StudentInfo studentInfo = StudentInfo();
   MajorSubjects majorSubjects = MajorSubjects();
 
   factory UserData() {
     return _instance;
   }
 
-  UserData._internal();
+  UserData._internal() {
+    majorSubjects.loadData();
+  }
+
+  Future<void> initialize() async {
+    await majorSubjects.loadData();
+  }
 }
