@@ -12,22 +12,22 @@ class Year19TotalCredit extends TotalCredit {
     UserData userData = UserData();
     int totalCredits = 0;
     for(Map<String, dynamic> map in userData.majorSubjects.list) {
-      if(map.containsKey('credits') && map['credits'] is num) {
+      if(map.containsKey('credits') && map['credits'] is num && map['isEnrolled'] == true) {
         totalCredits += map['credits'] as int;
       }
     }
     for(Map<String, dynamic> map in userData.bsmSubjects.list) {
-      if(map.containsKey('credits') && map['credits'] is num) {
+      if(map.containsKey('credits') && map['credits'] is num && map['isEnrolled'] == true) {
         totalCredits += map['credits'] as int;
       }
     }
     for(Map<String, dynamic> map in userData.specializedElectiveSubjects.list) {
-      if(map.containsKey('credits') && map['credits'] is num) {
+      if(map.containsKey('credits') && map['credits'] is num && map['isEnrolled'] == true) {
         totalCredits += map['credits'] as int;
       }
     }
     for(Map<String, dynamic> map in userData.coreElectiveSubjects.list) {
-      if(map.containsKey('credits') && map['credits'] is num) {
+      if(map.containsKey('credits') && map['credits'] is num && map['isEnrolled'] == true) {
         totalCredits += map['credits'] as int;
       }
     }
