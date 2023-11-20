@@ -8,6 +8,6 @@ void main() {
 
     UserData userData = UserData();
     await userData.initialize();
-    print(userData.majorSubjects.majorSubjects);
+    print(userData.majorSubjects.list);
   });
 }

@@ -5,9 +5,7 @@ class StudentInfo implements UserDataDetail {
   int? admissionYear;
   String? majorStatus;
 
-  StudentInfo() {
-    loadData();
-  }
+  StudentInfo();
 
   @override
   Future<void> loadData() async {

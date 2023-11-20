@@ -3,19 +3,19 @@ import 'dart:io';
 import 'package:causw_graduate/GraduateDB/UserData/UserDataDetail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class MajorSubjects implements UserDataDetail {
+class BSMSubjects implements UserDataDetail {
   List<Map<String, dynamic>> list = [];
 
-  MajorSubjects();
+  BSMSubjects();
 
   @override
   Future<void> loadData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    String? majorSubjectsString = prefs.getString('majorSubjects');
-    majorSubjectsString ??= await File('assets/database/majorSubjects.json').readAsString();
+    String? bsmSubjectsString = prefs.getString('bsmSubjects');
+    bsmSubjectsString ??= await File('assets/database/bsmSubjects.json').readAsString();
 
-    list = List<Map<String, dynamic>>.from(jsonDecode(majorSubjectsString));
+    list = List<Map<String, dynamic>>.from(jsonDecode(bsmSubjectsString));
   }
 
   @override
@@ -23,6 +23,6 @@ class MajorSubjects implements UserDataDetail {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     String majorSubjectsString = jsonEncode(list);
-    await prefs.setString('majorSubjects', majorSubjectsString);
+    await prefs.setString('bsmSubjects', majorSubjectsString);
   }
 }

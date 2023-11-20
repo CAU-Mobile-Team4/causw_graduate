@@ -43,10 +43,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: userData.majorSubjects.majorSubjects.length,
+      itemCount: userData.majorSubjects.list.length,
       itemBuilder: (context, index) {
         return ListTile(
-          title: Text(userData.majorSubjects.majorSubjects[index]['name']),
+          title: Text(userData.majorSubjects.list[index]['name']),
         );
       },
     );
