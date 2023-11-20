@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:causw_graduate/GraduateDB/UserData/UserDataDetail.dart';
+import 'package:causw_graduate/GraduateDB/UserData/Detail/UserDataDetail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SpecializedElectiveSubjects implements UserDataDetail {
