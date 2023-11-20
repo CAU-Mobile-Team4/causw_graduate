@@ -10,29 +10,29 @@ class Year19TotalCredit extends TotalCredit {
   @override
   void analysisGraduate() {
     UserData userData = UserData();
-    int credits = 0;
+    int totalCredits = 0;
     for(Map<String, dynamic> map in userData.majorSubjects.list) {
-      if(map.containsKey('credit') && map['credit'] is num) {
-        credits += map['credit'] as int;
+      if(map.containsKey('credits') && map['credits'] is num) {
+        totalCredits += map['credits'] as int;
       }
     }
     for(Map<String, dynamic> map in userData.bsmSubjects.list) {
-      if(map.containsKey('credit') && map['credit'] is num) {
-        credits += map['credit'] as int;
+      if(map.containsKey('credits') && map['credits'] is num) {
+        totalCredits += map['credits'] as int;
       }
     }
     for(Map<String, dynamic> map in userData.specializedElectiveSubjects.list) {
-      if(map.containsKey('credit') && map['credit'] is num) {
-        credits += map['credit'] as int;
+      if(map.containsKey('credits') && map['credits'] is num) {
+        totalCredits += map['credits'] as int;
       }
     }
     for(Map<String, dynamic> map in userData.coreElectiveSubjects.list) {
-      if(map.containsKey('credit') && map['credit'] is num) {
-        credits += map['credit'] as int;
+      if(map.containsKey('credits') && map['credits'] is num) {
+        totalCredits += map['credits'] as int;
       }
     }
 
-    satisfied = credits;
+    satisfied = totalCredits;
     if (satisfied >= require) {
       isSatisfied = true;
     }

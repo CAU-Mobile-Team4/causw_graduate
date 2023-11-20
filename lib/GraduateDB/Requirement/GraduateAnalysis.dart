@@ -15,7 +15,7 @@ class GraduateAnalysis {
 
     if (userData.studentInfo.majorStatus == '주전공') {
       if (userData.studentInfo.admissionYear == 19) {
-        graduationReq = Year19GraduationReq();
+        //graduationReq = Year19GraduationReq();
       }
     } else if (userData.studentInfo.majorStatus == '부전공') {
 
@@ -25,6 +25,12 @@ class GraduateAnalysis {
 
     }
     graduationReq = Year19GraduationReq();
+
+    list = graduationReq.list;
+
+    for(DetailCondition condition in list) {
+      condition.analysisGraduate();
+    }
 
     return list;
   }
