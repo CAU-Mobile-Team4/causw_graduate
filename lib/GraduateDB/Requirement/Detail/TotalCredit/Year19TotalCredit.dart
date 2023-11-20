@@ -31,5 +31,10 @@ class Year19TotalCredit extends TotalCredit {
         credits += map['credit'] as int;
       }
     }
+
+    satisfied = credits;
+    if (satisfied >= require) {
+      isSatisfied = true;
+    }
   }
 }

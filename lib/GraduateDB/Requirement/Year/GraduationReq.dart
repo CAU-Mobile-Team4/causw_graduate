@@ -1,3 +1,5 @@
+import 'package:causw_graduate/GraduateDB/Requirement/Detail/DetailCondition.dart';
+
 abstract class GraduationReq {
-  GraduationReq();
+  List<DetailCondition> list = [];
 }
