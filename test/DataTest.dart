@@ -7,7 +7,7 @@ void main() {
     SharedPreferences.setMockInitialValues({});
 
     UserData userData = UserData();
-    await userData.initialize();
+    await userData.loadDataAll();
     print(userData.majorSubjects.list);
   });
 }

@@ -21,7 +21,7 @@ class UserData {
     majorSubjects.loadData();
   }
 
-  Future<void> initialize() async {
+  Future<void> loadDataAll() async {
     await studentInfo.loadData();
     await majorSubjects.loadData();
     await bsmSubjects.loadData();
