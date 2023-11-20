@@ -25,6 +25,7 @@ void main() {
       print(condition.require);
       print(condition.satisfied);
       print(condition.isSatisfied);
+      print("");
     }
   });
 }
