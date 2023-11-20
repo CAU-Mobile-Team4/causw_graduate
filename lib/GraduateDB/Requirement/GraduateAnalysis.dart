@@ -1,8 +1,7 @@
 import 'package:causw_graduate/GraduateDB/Requirement/Detail/DetailCondition.dart';
+import 'package:causw_graduate/GraduateDB/Requirement/Year/GraduationReq.dart';
 import 'package:causw_graduate/GraduateDB/Requirement/Year/Year19GraduationReq.dart';
 import 'package:causw_graduate/GraduateDB/UserData/UserData.dart';
-
-import 'Year/GraduationReq.dart';
 
 class GraduateAnalysis {
   late GraduationReq graduationReq;
