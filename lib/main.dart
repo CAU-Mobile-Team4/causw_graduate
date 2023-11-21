@@ -11,9 +11,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primaryColor: Color(0xFFB0B2D9),
-        //primarySwatch: Color(0xFFB0B2D9),
+      theme:ThemeData(
+        fontFamily: 'Nunito'
       ),
       home: InformationEntryPage(),
     );

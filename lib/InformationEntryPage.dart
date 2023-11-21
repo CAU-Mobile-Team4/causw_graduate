@@ -1,4 +1,5 @@
 import 'package:causw_graduate/GraduateQualification.dart';
+import 'package:causw_graduate/appColor.dart';
 import 'package:flutter/material.dart';
 
 class InformationEntryPage extends StatefulWidget {
@@ -22,12 +23,18 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
   }
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.background,
       //backgroundColor: Colors.#B0B2D9,
-      appBar: AppBar(title: Text('Information Entry'),),
+      appBar: AppBar(title: Text('INFORMATION ENTRY',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),backgroundColor: AppColor.background,),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Container(
+              alignment: Alignment.topLeft,
+                child: Text("  ENTER\n  YOUR\n  INFORMATION",style: TextStyle(fontSize: 40,color: AppColor.main,fontWeight: FontWeight.bold),)
+            ),
+            Container(height: 50,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -91,7 +98,8 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
               height: 16,
             ),
             ElevatedButton(
-                child: Text('확인',style: TextStyle(fontSize: 25),),
+              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(AppColor.purple)),
+                child: Text('ENTER',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
                 onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder:
                       (context)=> GraduateQualification()

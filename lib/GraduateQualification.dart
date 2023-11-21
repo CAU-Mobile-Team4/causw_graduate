@@ -1,5 +1,6 @@
 import 'package:causw_graduate/ClassSelectionPage.dart';
 import 'package:causw_graduate/GraduateInformationPage.dart';
+import 'package:causw_graduate/appColor.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
@@ -29,7 +30,7 @@ class CircularGraphPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint()
-      ..color = Colors.blue
+      ..color = AppColor.yellow
       ..style = PaintingStyle.stroke
       ..strokeWidth = 30.0;
 
@@ -49,7 +50,7 @@ class CircularGraphPainter extends CustomPainter {
     canvas.drawArc(
       Rect.fromCircle(center: center, radius: radius),
       -pi, // 시작 각도
-      pi/2, // 그릴 각도 (반원이므로 pi)
+      pi, // 그릴 각도 (반원이므로 pi)
       false,
       paint,
     );
@@ -107,11 +108,21 @@ class _GraduateQualificationState extends State<GraduateQualification> {
     int unCheckedCount = checkedClasses.where((element) => !element).length;
 
     return Scaffold(
-      appBar: AppBar(title: Text('Graduate Qualification'),),
+      backgroundColor: AppColor.background,
+      appBar: AppBar(title: Text('GRADUATE QUALIFICATION',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),backgroundColor: AppColor.background,),
       body: Column(
         children: [
           Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
+                color: AppColor.purple,
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColor.main.withOpacity(0.5),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: Offset(0, 3), // changes position of shadow
+                      ),
+                  ],
                   border: Border(
                       top: BorderSide(color: Colors.black, width: 1),
                       bottom: BorderSide(color: Colors.black, width: 1))),
@@ -182,7 +193,7 @@ class _GraduateQualificationState extends State<GraduateQualification> {
               itemCount: selectedClasses.length,
               itemBuilder: (context,index){
                 return CheckboxListTile(
-                    title: Text(selectedClasses[index]),
+                    title: Text(selectedClasses[index],style: TextStyle(fontWeight: FontWeight.bold),),
                     value: checkedClasses[classes.indexOf(selectedClasses[index])],
                     onChanged: (value){
                       setState(() {
@@ -194,11 +205,19 @@ class _GraduateQualificationState extends State<GraduateQualification> {
             ),
           ),
           Container(
-              decoration: const BoxDecoration(
-
+              decoration: BoxDecoration(
+                color: AppColor.background,
                   border: Border(
                       top: BorderSide(color: Colors.black, width: 1),
-                      bottom: BorderSide(color: Colors.black, width: 1))),
+                      bottom: BorderSide(color: Colors.black, width: 1)),
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColor.main.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3), // changes position of shadow
+                  ),
+                ],),
               alignment: Alignment.center,
               height: 100,
               child: Row(
@@ -237,7 +256,7 @@ class _GraduateQualificationState extends State<GraduateQualification> {
               itemCount: selectedClasses2.length,
               itemBuilder: (context,index){
                 return CheckboxListTile(
-                    title: Text(selectedClasses2[index]),
+                    title: Text(selectedClasses2[index],style: TextStyle(fontWeight: FontWeight.bold),),
                     value: checkedClasses[classes.indexOf(selectedClasses2[index])],
                     onChanged: (value){
                       setState(() {
@@ -255,7 +274,7 @@ class _GraduateQualificationState extends State<GraduateQualification> {
           Align(
             alignment: Alignment(Alignment.bottomLeft.x+0.2,Alignment.bottomLeft.y),
             child: FloatingActionButton(
-              backgroundColor: Color(0xFFB0B2D9),
+              backgroundColor: AppColor.yellow,
               onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder:
                   (context)=> GraduateInformation()
@@ -268,7 +287,7 @@ class _GraduateQualificationState extends State<GraduateQualification> {
           Align(
             alignment: Alignment(Alignment.bottomLeft.x+0.2,Alignment.bottomLeft.y-0.2),
             child: FloatingActionButton(
-              backgroundColor: Color(0xFFB0B2D9),
+              backgroundColor: AppColor.main,
               onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder:
                   (context)=> ClassSelection()
@@ -276,7 +295,7 @@ class _GraduateQualificationState extends State<GraduateQualification> {
               );
             },
               tooltip: "강의 추가",
-              child: const Icon(Icons.add),
+              child: const Icon(Icons.add,color: AppColor.yellow,),
             ),
           )
         ]

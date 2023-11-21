@@ -1,6 +1,7 @@
 import 'package:causw_graduate/BSMclassSelection.dart';
 import 'package:causw_graduate/GEclassSelectionPage.dart';
 import 'package:causw_graduate/MajorClassSelection.dart';
+import 'package:causw_graduate/appColor.dart';
 import 'package:flutter/material.dart';
 
 class ClassSelection extends StatelessWidget {
@@ -8,7 +9,8 @@ class ClassSelection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Select Class"),),
+      backgroundColor: AppColor.background,
+      appBar: AppBar(title: Text("SELECT CLASS",style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),backgroundColor: AppColor.background,),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -50,7 +52,7 @@ class ClassSelection extends StatelessWidget {
                           alignment: Alignment.center,
                           child: FloatingActionButton(
                             backgroundColor: Color(0xFFB0B2D9),
-                              child: Text('+',style: TextStyle(fontSize: 50),),
+                              child: Icon(Icons.add,size: 50,),
                               onPressed:(){
                                 Navigator.push(context, MaterialPageRoute(builder:
                                     (context)=> MajorClass()
@@ -103,7 +105,7 @@ class ClassSelection extends StatelessWidget {
                             alignment: Alignment.center,
                             child: FloatingActionButton(
                                 backgroundColor: Color(0xFFB0B2D9),
-                                child: Text('+',style: TextStyle(fontSize: 50),),
+                                child: Icon(Icons.add,size: 50,),
                                 onPressed:(){
                                   Navigator.push(context, MaterialPageRoute(builder:
                                       (context)=> MajorClass()
@@ -155,7 +157,7 @@ class ClassSelection extends StatelessWidget {
                             alignment: Alignment.center,
                             child: FloatingActionButton(
                                 backgroundColor: Color(0xFFB0B2D9),
-                                child: Text('+',style: TextStyle(fontSize: 50),),
+                                child: Icon(Icons.add,size: 50,),
                                 onPressed:(){
                                   Navigator.push(context, MaterialPageRoute(builder:
                                       (context)=> MajorClass()
