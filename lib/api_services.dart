@@ -20,7 +20,7 @@ class ApiService {
 
 //일정 추가(nlp)
   static void addScheduleByNlp(int studentID, String statement) async {
-    final url = Uri.parse('$baseUrl/schedule/$studentID');
+    final url = Uri.parse('$baseUrl/schedule/nlp/$studentID');
     final response = await http.post(url, body: statement);
 
     if (response.statusCode != 200) {
