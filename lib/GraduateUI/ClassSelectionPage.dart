@@ -1,3 +1,5 @@
+import 'package:causw_graduate/GraduateUI/BSMclassSelection.dart';
+import 'package:causw_graduate/GraduateUI/GEclassSelectionPage.dart';
 import 'package:causw_graduate/GraduateUI/MajorClassSelection.dart';
 import 'package:causw_graduate/GraduateUI/appColor.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +10,10 @@ class ClassSelection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.background,
-      appBar: AppBar(title: Text("SELECT CLASS",style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),backgroundColor: AppColor.background,),
+      appBar: AppBar(title: Text("SELECT CLASS",style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),backgroundColor: AppColor.background,
+          leading: const BackButton(
+            color: AppColor.purple,
+          )),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -106,7 +111,7 @@ class ClassSelection extends StatelessWidget {
                                 child: Icon(Icons.add,size: 50,),
                                 onPressed:(){
                                   Navigator.push(context, MaterialPageRoute(builder:
-                                      (context)=> MajorClass()
+                                      (context)=> BSMclassSelection()
                                   )
                                   );
                                 }),
@@ -158,7 +163,7 @@ class ClassSelection extends StatelessWidget {
                                 child: Icon(Icons.add,size: 50,),
                                 onPressed:(){
                                   Navigator.push(context, MaterialPageRoute(builder:
-                                      (context)=> MajorClass()
+                                      (context)=> SelectGEclass()
                                   )
                                   );
                                 }),

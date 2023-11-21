@@ -1,3 +1,4 @@
+import 'package:causw_graduate/GraduateUI/appColor.dart';
 import 'package:flutter/material.dart';
 
 class SelectGEclass extends StatefulWidget {
@@ -13,7 +14,10 @@ class _SelectGEclassState extends State<SelectGEclass> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Select GE Class'),),
+        appBar: AppBar(title: Text('Select GE Class',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),backgroundColor: AppColor.background,
+        leading: const BackButton(
+          color: AppColor.purple,
+        )),
         body: ListView.builder(
           itemCount: classes.length,
           itemBuilder: (context,index){

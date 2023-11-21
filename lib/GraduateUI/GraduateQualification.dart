@@ -110,7 +110,10 @@ class _GraduateQualificationState extends State<GraduateQualification> {
 
     return Scaffold(
       backgroundColor: AppColor.background,
-      appBar: AppBar(title: Text('GRADUATE QUALIFICATION',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),backgroundColor: AppColor.background,),
+      appBar: AppBar(title: Text('GRADUATE QUALIFICATION',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),backgroundColor: AppColor.background,
+        leading: const BackButton(
+          color: AppColor.purple,
+        ),),
       body: Column(
         children: [
           Container(

@@ -17,8 +17,13 @@ class _MajorClassState extends State<MajorClass> {
       length: 2,
       child: Scaffold(
         backgroundColor: AppColor.background,
-        appBar: AppBar(title: Text('MAJOR CLASS',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),backgroundColor: AppColor.background,
-        bottom: TabBar(tabs: [Tab(child: Text("전공",style: TextStyle(color: AppColor.main),)),Tab(child: Text("전공 기초",style: TextStyle(color: AppColor.main)))],
+        appBar: AppBar(title: Text('MAJOR CLASS',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),
+        ),
+          leading: const BackButton(
+            color: AppColor.purple,
+          ),
+          backgroundColor: AppColor.background,
+          bottom: TabBar(tabs: [Tab(child: Text("전공",style: TextStyle(color: AppColor.main),)),Tab(child: Text("전공 기초",style: TextStyle(color: AppColor.main)))],
         ),
         ),
         body: TabBarView(children: [Expanded(

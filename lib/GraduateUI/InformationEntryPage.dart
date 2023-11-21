@@ -25,11 +25,10 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
     return Scaffold(
       backgroundColor: AppColor.background,
       //backgroundColor: Colors.#B0B2D9,
-      appBar: AppBar(title: Text('INFORMATION ENTRY',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.w900),),backgroundColor: AppColor.background,),
       body: Center(
         child: Column(
           children: [Container(
-            height: 100,
+            height: 170,
           ),
             Container(
               alignment: Alignment.topLeft,
@@ -52,7 +51,7 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
                           .map(
                               (year)=>DropdownMenuItem(
                               value: year,
-                              child: Text("$year",style: TextStyle(fontSize: 25),))).toList(),
+                              child: Text("$year",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),))).toList(),
                       onChanged: (value){
                         setState(() {
                           _classOfYear=value!;
@@ -72,7 +71,7 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
                 Flexible(
                   flex: 4,
                     child: Center(
-                        child: const Text("전공종류",style: TextStyle(fontSize: 25),)
+                        child: const Text("STATUS",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),)
                     )
                 ),
                 Flexible(
@@ -84,7 +83,7 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
                           .map(
                               (major)=>DropdownMenuItem(
                               value: major,
-                              child: Text(major,style: TextStyle(fontSize: 25),))).toList(),
+                              child: Text(major,style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),))).toList(),
                       onChanged: (value){
                         setState(() {
                           _major=value!;
@@ -99,8 +98,8 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
               height: 16,
             ),
             ElevatedButton(
-              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(AppColor.purple)),
-                child: Text('ENTER',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(AppColor.main)),
+                child: Text('ENTER',style: TextStyle(fontSize: 25,color: AppColor.text,fontWeight: FontWeight.bold),),
                 onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder:
                       (context)=> GraduateQualification()
