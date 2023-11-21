@@ -1,5 +1,6 @@
+import 'package:causw_graduate/GraduateUI/appColor.dart';
 import 'package:flutter/material.dart';
-import 'appColor.dart';
+
 class MajorClass extends StatefulWidget {
   const MajorClass({super.key});
 

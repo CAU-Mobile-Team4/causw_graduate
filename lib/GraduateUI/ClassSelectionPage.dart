@@ -1,7 +1,5 @@
-import 'package:causw_graduate/BSMclassSelection.dart';
-import 'package:causw_graduate/GEclassSelectionPage.dart';
-import 'package:causw_graduate/MajorClassSelection.dart';
-import 'package:causw_graduate/appColor.dart';
+import 'package:causw_graduate/GraduateUI/MajorClassSelection.dart';
+import 'package:causw_graduate/GraduateUI/appColor.dart';
 import 'package:flutter/material.dart';
 
 class ClassSelection extends StatelessWidget {

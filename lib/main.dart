@@ -1,4 +1,4 @@
-import 'package:causw_graduate/InformationEntryPage.dart';
+import 'package:causw_graduate/GraduateUI/InformationEntryPage.dart';
 import 'package:flutter/material.dart';
 
 void main() {

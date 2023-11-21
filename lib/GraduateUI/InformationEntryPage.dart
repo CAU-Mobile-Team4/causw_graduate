@@ -1,5 +1,5 @@
-import 'package:causw_graduate/GraduateQualification.dart';
-import 'package:causw_graduate/appColor.dart';
+import 'package:causw_graduate/GraduateUI/GraduateQualification.dart';
+import 'package:causw_graduate/GraduateUI/appColor.dart';
 import 'package:flutter/material.dart';
 
 class InformationEntryPage extends StatefulWidget {

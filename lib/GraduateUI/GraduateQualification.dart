@@ -1,6 +1,7 @@
-import 'package:causw_graduate/ClassSelectionPage.dart';
-import 'package:causw_graduate/GraduateInformationPage.dart';
-import 'package:causw_graduate/appColor.dart';
+import 'package:causw_graduate/GraduateUI/ClassSelectionPage.dart';
+import 'package:causw_graduate/GraduateUI/GraduateInformationPage.dart';
+
+import 'package:causw_graduate/GraduateUI/appColor.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
