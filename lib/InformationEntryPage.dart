@@ -25,11 +25,12 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
     return Scaffold(
       backgroundColor: AppColor.background,
       //backgroundColor: Colors.#B0B2D9,
-      appBar: AppBar(title: Text('INFORMATION ENTRY',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),backgroundColor: AppColor.background,),
+      appBar: AppBar(title: Text('INFORMATION ENTRY',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.w900),),backgroundColor: AppColor.background,),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: [Container(
+            height: 100,
+          ),
             Container(
               alignment: Alignment.topLeft,
                 child: Text("  ENTER\n  YOUR\n  INFORMATION",style: TextStyle(fontSize: 40,color: AppColor.main,fontWeight: FontWeight.bold),)
@@ -40,7 +41,7 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
               children: [
                 Flexible(
                   flex: 4,
-                    child: Center(child: const Text("학번",style: TextStyle(fontSize: 25),))
+                    child: Center(child: const Text("Entry Year",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),))
                 ),
                 Flexible(
                   flex: 3,

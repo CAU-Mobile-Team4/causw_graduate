@@ -80,7 +80,7 @@ flutter:
       fonts:
         - asset: assets/fonts/Nunito-Italic-VariableFont_wght.ttf
         - asset: assets/fonts/Nunito-VariableFont_wght.ttf
-          weight: 700
+          weight: 900
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
