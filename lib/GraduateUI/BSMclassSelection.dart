@@ -15,7 +15,8 @@ class _BSMclassSelectionState extends State<BSMclassSelection> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Select BSM Class',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),backgroundColor: AppColor.background,
+      backgroundColor: AppColor.background,
+        appBar: AppBar(title: Text('BSM CLASS',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),backgroundColor: AppColor.background,
             leading: const BackButton(
               color: AppColor.purple,
             )),

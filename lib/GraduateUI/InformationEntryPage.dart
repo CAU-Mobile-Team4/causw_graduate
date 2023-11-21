@@ -99,7 +99,7 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
             ),
             ElevatedButton(
               style: ButtonStyle(backgroundColor: MaterialStateProperty.all(AppColor.main)),
-                child: Text('ENTER',style: TextStyle(fontSize: 25,color: AppColor.text,fontWeight: FontWeight.bold),),
+                child: Text('ENTER',style: TextStyle(fontSize: 25,color: AppColor.background,fontWeight: FontWeight.bold),),
                 onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder:
                       (context)=> GraduateQualification()
