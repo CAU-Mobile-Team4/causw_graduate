@@ -1,3 +1,4 @@
+import 'package:causw_graduate/GraduateUI/ClassSelectionPage.dart';
 import 'package:causw_graduate/GraduateUI/appColor.dart';
 import 'package:flutter/material.dart';
 
@@ -16,10 +17,18 @@ class _BSMclassSelectionState extends State<BSMclassSelection> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.background,
-        appBar: AppBar(title: Text('BSM CLASS',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),backgroundColor: AppColor.background,
-            leading: const BackButton(
-              color: AppColor.purple,
-            )),
+        appBar: AppBar(title: Text('BSM CLASS',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),
+        ),
+          centerTitle: true,
+          leading: IconButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder:
+                (context)=> ClassSelection()
+            )
+            );
+          }, icon: Icon(Icons.arrow_back,color: AppColor.purple,)),
+          backgroundColor: AppColor.background,
+          automaticallyImplyLeading: false,
+         ),
         body: ListView.builder(
           itemCount: classes.length,
           itemBuilder: (context,index){

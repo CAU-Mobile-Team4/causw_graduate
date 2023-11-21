@@ -1,3 +1,4 @@
+import 'package:causw_graduate/GraduateUI/ClassSelectionPage.dart';
 import 'package:causw_graduate/GraduateUI/appColor.dart';
 import 'package:flutter/material.dart';
 
@@ -19,9 +20,15 @@ class _SelectGEclassState extends State<SelectGEclass> {
           backgroundColor: AppColor.background,
           appBar: AppBar(title: Text('GE CLASS',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),
           ),
-            leading: const BackButton(
-              color: AppColor.purple,
-            ),
+            leading: IconButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder:
+                  (context)=> ClassSelection()
+              )
+              );
+            }, icon: Icon(Icons.arrow_back,color: AppColor.purple,)),
+            centerTitle: true,
+            automaticallyImplyLeading: false,
+
             backgroundColor: AppColor.background,
             bottom: TabBar(tabs: [Tab(child: Text("핵심 교양",style: TextStyle(color: AppColor.main),)),Tab(child: Text("일반 교양",style: TextStyle(color: AppColor.main)))],
             ),

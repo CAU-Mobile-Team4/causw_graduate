@@ -1,5 +1,8 @@
+import 'package:causw_graduate/GraduateDB/Requirement/Detail/DetailCondition.dart';
+import 'package:causw_graduate/GraduateDB/Requirement/GraduateAnalysis.dart';
 import 'package:causw_graduate/GraduateUI/ClassSelectionPage.dart';
 import 'package:causw_graduate/GraduateUI/GraduateInformationPage.dart';
+import 'package:causw_graduate/GraduateUI/InformationEntryPage.dart';
 
 import 'package:causw_graduate/GraduateUI/appColor.dart';
 import 'package:flutter/material.dart';
@@ -87,6 +90,7 @@ class GraduateQualification extends StatefulWidget {
 class _GraduateQualificationState extends State<GraduateQualification> {
   final classes=List.generate(40, (i) => "Class ${i+1}").toList();
   final List<bool> checkedClasses=List.generate(40, (index) => false);
+  List<DetailCondition> list = GraduateAnalysis().getGraduationAnalysis();
 
   @override
   Widget build(BuildContext context) {
@@ -110,10 +114,39 @@ class _GraduateQualificationState extends State<GraduateQualification> {
 
     return Scaffold(
       backgroundColor: AppColor.background,
-      appBar: AppBar(title: Text('GRADUATE QUALIFICATION',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),backgroundColor: AppColor.background,
-        leading: const BackButton(
-          color: AppColor.purple,
-        ),),
+      appBar: AppBar(title: Text('QUALIFICATION',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold)),
+        centerTitle: true,
+        backgroundColor: AppColor.background,
+        leading: IconButton(
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder:
+              (context)=> InformationEntryPage()
+          )
+          );
+        }, icon: Icon(Icons.arrow_back,color: AppColor.purple,)),
+      actions: <Widget>[
+        IconButton(
+          icon: Icon(Icons.add,color: AppColor.purple,),
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder:
+                (context)=> ClassSelection()
+            )
+            );
+          },
+          tooltip: "강의 추가",
+        ),
+        IconButton(
+          icon: Icon(Icons.question_mark,color: AppColor.purple,),
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder:
+                (context)=> GraduateInformation()
+            )
+            );
+            },
+            tooltip: "졸업 요건"
+        ),
+      ],
+      ),
       body: Column(
         children: [
           Container(
@@ -273,39 +306,6 @@ class _GraduateQualificationState extends State<GraduateQualification> {
           ),
         ],
       ),
-      floatingActionButton: Stack(
-        children: [
-          Align(
-            alignment: Alignment(Alignment.bottomLeft.x+0.2,Alignment.bottomLeft.y),
-            child: FloatingActionButton(
-              backgroundColor: AppColor.yellow,
-              onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder:
-                  (context)=> GraduateInformation()
-              )
-              );
-              },
-              tooltip: "졸업요건 정보",
-              child: const Icon(Icons.quiz),),
-        ),
-          Align(
-            alignment: Alignment(Alignment.bottomLeft.x+0.2,Alignment.bottomLeft.y-0.2),
-            child: FloatingActionButton(
-              backgroundColor: AppColor.main,
-              onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder:
-                  (context)=> ClassSelection()
-              )
-              );
-            },
-              tooltip: "강의 추가",
-              child: const Icon(Icons.add,color: AppColor.yellow,),
-            ),
-          )
-        ]
-
-      ),
-
     );
   }
 }

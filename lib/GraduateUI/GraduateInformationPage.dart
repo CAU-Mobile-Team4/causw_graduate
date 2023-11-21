@@ -13,6 +13,7 @@ class GraduateInformation extends StatelessWidget {
                 color: AppColor.main
             ),
           ),
+          centerTitle: true,
           backgroundColor: AppColor.background,
           leading: const BackButton(
         color: AppColor.purple,

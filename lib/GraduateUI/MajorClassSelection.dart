@@ -1,3 +1,4 @@
+import 'package:causw_graduate/GraduateUI/ClassSelectionPage.dart';
 import 'package:causw_graduate/GraduateUI/appColor.dart';
 import 'package:flutter/material.dart';
 
@@ -19,14 +20,20 @@ class _MajorClassState extends State<MajorClass> {
         backgroundColor: AppColor.background,
         appBar: AppBar(title: Text('MAJOR CLASS',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),
         ),
-          leading: const BackButton(
-            color: AppColor.purple,
-          ),
+          leading: IconButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder:
+                (context)=> ClassSelection()
+            )
+            );
+          }, icon: Icon(Icons.arrow_back,color: AppColor.purple,)),
+          centerTitle: true,
+          automaticallyImplyLeading: false,
           backgroundColor: AppColor.background,
           bottom: TabBar(tabs: [Tab(child: Text("전공",style: TextStyle(color: AppColor.main),)),Tab(child: Text("전공 기초",style: TextStyle(color: AppColor.main)))],
         ),
         ),
-        body: TabBarView(children: [Expanded(
+        body: TabBarView(children: [
+          Expanded(
           child: Container(
               child: ListView.builder(
                 itemCount: classes.length,
@@ -57,9 +64,11 @@ class _MajorClassState extends State<MajorClass> {
                   }
               );
             },
-          )),
-        )],)
+          ),
+
+        )
       ),
+    ])),
     );
   }
 }
