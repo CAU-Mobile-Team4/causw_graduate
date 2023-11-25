@@ -1,7 +1,10 @@
 import 'package:causw_graduate/AppColor.dart';
+import 'package:causw_graduate/schedule.dart';
+import 'package:causw_graduate/schedule_list_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class Calendar extends StatefulWidget {
@@ -15,35 +18,11 @@ class _CalendarState extends State<Calendar>
     with SingleTickerProviderStateMixin {
   DateTime? selectedDay;
   DateTime focusedDay = DateTime.now();
-  bool checked1 = false;
-  bool checked2 = false;
 
-  Map<DateTime, List<String>> events = {
-    DateTime(2023, 11, 14): ['Mid-term Exam', 'Study Group'],
-    DateTime(2023, 11, 15): ['Mid-term 12Exam', 'Study Group'],
-    DateTime(2023, 11, 16): ['Mid-term Exam', 'Study Group'],
-    DateTime(2023, 11, 17): ['Mid-term 12Exam', 'Study Group'],
-    DateTime(2023, 11, 13): [
-      'Test',
-      'Testing',
-      'dmd',
-      '123',
-      '12523',
-      '35645747',
-      'dfsdjksngksg',
-      'sdgnjskdgj'
-    ],
-    // 추가적인 일정...
-  };
-
-  void addEvent(DateTime date, String event) {
-    if (events[date] != null) {
-      // 날짜가 이미 존재하는 경우, 이벤트 리스트에 추가
-      events[date]?.add(event);
-    } else {
-      // 날짜가 존재하지 않는 경우, 새로운 리스트를 생성하고 이벤트 추가
-      events[date] = [event];
-    }
+  @override
+  void initState() {
+    super.initState();
+    context.read<ScheduleListProvider>().updateScheduleList(1);
   }
 
   final TextEditingController _dateController = TextEditingController();
@@ -56,6 +35,8 @@ class _CalendarState extends State<Calendar>
       selectedDay?.month ?? DateTime.now().month,
       selectedDay?.day ?? DateTime.now().day,
     );
+    List<Schedule> events =
+        context.watch<ScheduleListProvider>().scheduleListByDate;
     return Scaffold(
         body: GestureDetector(
           onTap: () {
@@ -107,12 +88,12 @@ class _CalendarState extends State<Calendar>
                         //today 관련
                         isTodayHighlighted: true,
                         todayDecoration: BoxDecoration(
-                          color: AppColor.main,
+                          color: AppColor.mainOpacity,
                           shape: BoxShape.circle,
                         ),
                         //selectedDay 관련
                         selectedDecoration: BoxDecoration(
-                            color: AppColor.purple, shape: BoxShape.circle),
+                            color: AppColor.main, shape: BoxShape.circle),
                         //주말 관련
                         weekendTextStyle: TextStyle(color: Colors.red)),
                     onPageChanged: (pageDate) {
@@ -145,130 +126,21 @@ class _CalendarState extends State<Calendar>
               ),
               const SizedBox(height: 20),
               Expanded(
-                child: Scrollbar(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: events[selectedDayWithoutTime]?.map((event) {
-                            return ListTile(
-                              title: Text(event),
-                              onTap: () {
-                                TextEditingController eventController =
-                                    TextEditingController(text: event);
-                                DateTime selectedDate = DateTime.parse(
-                                    selectedDayWithoutTime.toString());
-                                TextEditingController dateController =
-                                    TextEditingController(
-                                        text: selectedDate
-                                            .toIso8601String()
-                                            .substring(0, 10));
-                                TextEditingController locationController =
-                                    TextEditingController();
-                                TextEditingController detailController =
-                                    TextEditingController();
-
-                                showDialog(
-                                  context: context,
-                                  builder: (context) => AlertDialog(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20.0),
-                                    ),
-                                    title: const Text('Selected Event'),
-                                    content: SizedBox(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.9, // width를 조절
-                                      child: SingleChildScrollView(
-                                        child: Column(
-                                          children: [
-                                            ListTile(
-                                              title: const Text('Event Name: ',
-                                                  style:
-                                                      TextStyle(fontSize: 16)),
-                                              subtitle: CupertinoTextField(
-                                                controller: eventController,
-                                                decoration: const BoxDecoration(
-                                                  border: Border(
-                                                    bottom: BorderSide(
-                                                      color: Colors.grey,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            ListTile(
-                                              title: const Text('Date: ',
-                                                  style:
-                                                      TextStyle(fontSize: 16)),
-                                              subtitle: CupertinoTextField(
-                                                controller: dateController,
-                                                decoration: const BoxDecoration(
-                                                  border: Border(
-                                                    bottom: BorderSide(
-                                                      color: Colors.grey,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            ListTile(
-                                              title: const Text('Location: ',
-                                                  style:
-                                                      TextStyle(fontSize: 16)),
-                                              subtitle: CupertinoTextField(
-                                                controller: locationController,
-                                                decoration: const BoxDecoration(
-                                                  border: Border(
-                                                    bottom: BorderSide(
-                                                      color: Colors.grey,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            ListTile(
-                                              title: const Text('Detail: ',
-                                                  style:
-                                                      TextStyle(fontSize: 16)),
-                                              subtitle: CupertinoTextField(
-                                                controller: detailController,
-                                                decoration: const BoxDecoration(
-                                                  border: Border(
-                                                    bottom: BorderSide(
-                                                      color: Colors.grey,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    actions: <Widget>[
-                                      CupertinoDialogAction(
-                                        child: const Text('Close'),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                      CupertinoDialogAction(
-                                        child: const Text('Apply'),
-                                        onPressed: () {
-                                          // 'Apply' 버튼을 눌렀을 때의 동작을 여기에 작성
-                                          // 예를 들어, eventController.text, dateController.text, locationController.text, detailController.text 값을 사용하여 변경사항을 적용
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              },
-                            );
-                          }).toList() ??
-                          [],
-                    ),
-                  ),
+                child: ListView(
+                  children: events
+                      .where((event) =>
+                          (event.month ==
+                              selectedDayWithoutTime.month.toString()) &&
+                          (event.day == selectedDayWithoutTime.day.toString()))
+                      .map(
+                        (event) => ListTile(
+                          title: Text(event.event),
+                          onTap: () {},
+                        ),
+                      )
+                      .toList(),
                 ),
-              ),
+              )
             ],
           ),
         ),
@@ -334,11 +206,6 @@ class _CalendarState extends State<Calendar>
                         cancelButton: CupertinoActionSheetAction(
                           child: const Text('Add'),
                           onPressed: () {
-                            String event = _eventController.text;
-                            addEvent(
-                                DateTime.parse(_dateController.text), event);
-                            Navigator.of(context).pop();
-
                             // Clear the text fields for the next input.
                             _dateController.clear();
                             _eventController.clear();

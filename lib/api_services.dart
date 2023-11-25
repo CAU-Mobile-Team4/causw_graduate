@@ -3,13 +3,14 @@ import 'package:causw_graduate/schedule.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  static const String baseUrl = 'http://localhost:8080';
+  static const String baseUrl = 'http://3.36.30.78:8080';
 
   //일정 반환
   static Future<List<Schedule>> getSchedules(int studentID) async {
     final url = Uri.parse('$baseUrl/schedule/$studentID');
     final response = await http.get(url);
     if (response.statusCode != 200) {
+      print(response.statusCode);
       throw Error();
     }
     final List<dynamic> schedules = jsonDecode(response.body);

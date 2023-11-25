@@ -1,6 +1,7 @@
 class Schedule {
   final int? scheduleId;
-  final String event, location, month, day, time;
+  final String event, location, month, day;
+  final String? time;
 
   Schedule(
       {this.scheduleId,
@@ -8,7 +9,7 @@ class Schedule {
       required this.location,
       required this.month,
       required this.day,
-      required this.time});
+      this.time});
 
   Schedule.fromJson(Map<String, dynamic> json)
       : event = json['event'],
