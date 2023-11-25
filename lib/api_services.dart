@@ -46,18 +46,18 @@ class ApiService {
   }
 
   //일정 수정
-  static void editSchedule(int studentID, Schedule schedule) async {
-    final url = Uri.parse('$baseUrl/schedule/$studentID');
-    final body = jsonEncode(schedule);
+  static Future<bool> editSchedule(int scheduleID, Schedule schedule) async {
+    final url = Uri.parse('$baseUrl/schedule/$scheduleID');
+    final body = jsonEncode(schedule.toJson());
     final response = await http.put(url,
         headers: {
           'Content-Type': 'application/json',
         },
         body: body);
     if (response.statusCode != 200) {
-      throw Error();
+      return false;
     }
-    return;
+    return true;
   }
 
   //일정 검색

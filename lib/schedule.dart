@@ -11,11 +11,22 @@ class Schedule {
       required this.day,
       this.time});
 
+  Map<String, dynamic> toJson() {
+    return {
+      'id': scheduleId,
+      'event': event,
+      'location': location,
+      'month': month,
+      'day': day,
+      'time': time,
+    };
+  }
+
   Schedule.fromJson(Map<String, dynamic> json)
       : event = json['event'],
         location = json['location'],
         month = json['month'],
         day = json['day'],
         time = json['time'],
-        scheduleId = json['scheduleId'];
+        scheduleId = json['id'];
 }

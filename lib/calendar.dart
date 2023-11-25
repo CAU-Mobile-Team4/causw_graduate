@@ -18,10 +18,15 @@ class _CalendarState extends State<Calendar>
     with SingleTickerProviderStateMixin {
   DateTime? selectedDay;
   DateTime focusedDay = DateTime.now();
+  late List<Schedule> events;
 
   @override
   void initState() {
     super.initState();
+    update();
+  }
+
+  void update() {
     context.read<ScheduleListProvider>().updateScheduleList(1);
   }
 
@@ -35,8 +40,7 @@ class _CalendarState extends State<Calendar>
       selectedDay?.month ?? DateTime.now().month,
       selectedDay?.day ?? DateTime.now().day,
     );
-    List<Schedule> events =
-        context.watch<ScheduleListProvider>().scheduleListByDate;
+
     return Scaffold(
         body: GestureDetector(
           onTap: () {
@@ -45,103 +49,265 @@ class _CalendarState extends State<Calendar>
               currentFocus.unfocus();
             }
           },
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 10,
-              ),
-              Stack(
-                children: [
-                  TableCalendar(
-                    firstDay: DateTime.utc(2020, 3, 6),
-                    lastDay: DateTime.utc(2030, 3, 6),
-                    focusedDay: focusedDay,
-                    selectedDayPredicate: (day) {
-                      return isSameDay(selectedDay, day);
-                    },
-                    onFormatChanged: (format) {
-                      if (selectedDay != null) {
-                        setState(() {});
-                      }
-                    },
-                    availableCalendarFormats: const {
-                      CalendarFormat.month: 'Today',
-                      CalendarFormat.twoWeeks: 'Today',
-                      CalendarFormat.week: 'Today',
-                    },
-                    headerStyle: const HeaderStyle(
-                      formatButtonVisible: true,
-                      titleTextStyle: TextStyle(
-                          fontSize: 23,
-                          fontWeight: FontWeight.bold,
-                          color: AppColor.main),
-                    ),
-                    calendarStyle: const CalendarStyle(
-                        //marker 관련
-                        canMarkersOverflow: false,
-                        markersAutoAligned: true,
-                        markerSize: 10,
-                        markerDecoration: BoxDecoration(
-                          color: AppColor.purple,
-                          shape: BoxShape.circle,
-                        ),
-                        //today 관련
-                        isTodayHighlighted: true,
-                        todayDecoration: BoxDecoration(
-                          color: AppColor.mainOpacity,
-                          shape: BoxShape.circle,
-                        ),
-                        //selectedDay 관련
-                        selectedDecoration: BoxDecoration(
-                            color: AppColor.main, shape: BoxShape.circle),
-                        //주말 관련
-                        weekendTextStyle: TextStyle(color: Colors.red)),
-                    onPageChanged: (pageDate) {
-                      setState(() {
-                        focusedDay = pageDate;
-                      });
-                    },
-                    onDaySelected: (selectedDays, _) {
-                      setState(() {
-                        selectedDay = selectedDays;
-                        focusedDay = selectedDays;
-                      });
-                      //sendDate(selectedDays);
-                      //print('User selected day $selectedDays');
-                    },
-                  ),
-                  Positioned(
-                      top: 9,
-                      right: 62,
-                      child: TextButton(
-                        onPressed: () {
-                          setState(() {
-                            focusedDay = DateTime.now();
-                            selectedDay = DateTime.now();
-                          });
-                        },
-                        child: const Text('  '),
-                      ))
-                ],
-              ),
-              const SizedBox(height: 20),
-              Expanded(
-                child: ListView(
-                  children: events
-                      .where((event) =>
-                          (event.month ==
-                              selectedDayWithoutTime.month.toString()) &&
-                          (event.day == selectedDayWithoutTime.day.toString()))
-                      .map(
-                        (event) => ListTile(
-                          title: Text(event.event),
-                          onTap: () {},
-                        ),
-                      )
-                      .toList(),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 10,
                 ),
-              )
-            ],
+                Stack(
+                  children: [
+                    TableCalendar(
+                      firstDay: DateTime.utc(2020, 3, 6),
+                      lastDay: DateTime.utc(2030, 3, 6),
+                      focusedDay: focusedDay,
+                      selectedDayPredicate: (day) {
+                        return isSameDay(selectedDay, day);
+                      },
+                      onFormatChanged: (format) {
+                        if (selectedDay != null) {
+                          setState(() {});
+                        }
+                      },
+                      availableCalendarFormats: const {
+                        CalendarFormat.month: 'Today',
+                        CalendarFormat.twoWeeks: 'Today',
+                        CalendarFormat.week: 'Today',
+                      },
+                      headerStyle: const HeaderStyle(
+                        formatButtonVisible: true,
+                        titleTextStyle: TextStyle(
+                            fontSize: 23,
+                            fontWeight: FontWeight.bold,
+                            color: AppColor.main),
+                      ),
+                      calendarStyle: const CalendarStyle(
+                          //marker 관련
+                          canMarkersOverflow: false,
+                          markersAutoAligned: true,
+                          markerSize: 10,
+                          markerDecoration: BoxDecoration(
+                            color: AppColor.purple,
+                            shape: BoxShape.circle,
+                          ),
+                          //today 관련
+                          isTodayHighlighted: true,
+                          todayDecoration: BoxDecoration(
+                            color: AppColor.mainOpacity,
+                            shape: BoxShape.circle,
+                          ),
+                          //selectedDay 관련
+                          selectedDecoration: BoxDecoration(
+                              color: AppColor.main, shape: BoxShape.circle),
+                          //주말 관련
+                          weekendTextStyle: TextStyle(color: Colors.red)),
+                      onPageChanged: (pageDate) {
+                        setState(() {
+                          focusedDay = pageDate;
+                        });
+                      },
+                      onDaySelected: (selectedDays, _) {
+                        setState(() {
+                          selectedDay = selectedDays;
+                          focusedDay = selectedDays;
+                        });
+                        //sendDate(selectedDays);
+                        //print('User selected day $selectedDays');
+                      },
+                    ),
+                    Positioned(
+                        top: 9,
+                        right: 62,
+                        child: TextButton(
+                          onPressed: () {
+                            setState(() {
+                              focusedDay = DateTime.now();
+                              selectedDay = DateTime.now();
+                            });
+                          },
+                          child: const Text('  '),
+                        ))
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  '${selectedDayWithoutTime.year}년 ${selectedDayWithoutTime.month}월 ${selectedDayWithoutTime.day}일',
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                Expanded(
+                  child: ListView(
+                    children: context
+                        .watch<ScheduleListProvider>()
+                        .scheduleListByDate
+                        .where((event) =>
+                            (event.month ==
+                                selectedDayWithoutTime.month.toString()) &&
+                            (event.day ==
+                                selectedDayWithoutTime.day.toString()))
+                        .map(
+                          (event) => Container(
+                            margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                            decoration: BoxDecoration(
+                                border: Border.all(),
+                                borderRadius: BorderRadius.circular(20)),
+                            child: ListTile(
+                              leading: Text(event.time ?? '하루종일'),
+                              title: Text(
+                                event.event,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              subtitle: Text(event.location),
+                              onTap: () {
+                                TextEditingController eventController =
+                                    TextEditingController(text: event.event);
+                                TextEditingController monthController =
+                                    TextEditingController(
+                                        text: selectedDayWithoutTime.month
+                                            .toString());
+                                TextEditingController dayController =
+                                    TextEditingController(
+                                        text: selectedDayWithoutTime.day
+                                            .toString());
+                                TextEditingController locationController =
+                                    TextEditingController(text: event.location);
+
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => SingleChildScrollView(
+                                    child: AlertDialog(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      title: const Text('Edit this event'),
+                                      content: SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.9,
+                                        height:
+                                            MediaQuery.of(context).size.width *
+                                                0.7,
+                                        child: SingleChildScrollView(
+                                          child: Column(
+                                            children: [
+                                              ListTile(
+                                                title: const Text(
+                                                  'Event Name',
+                                                  style:
+                                                      TextStyle(fontSize: 16),
+                                                ),
+                                                subtitle: TextField(
+                                                  controller: eventController,
+                                                  decoration:
+                                                      const InputDecoration(
+                                                    enabledBorder:
+                                                        UnderlineInputBorder(),
+                                                  ),
+                                                ),
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Expanded(
+                                                    child: ListTile(
+                                                      title: const Text(
+                                                        'Month',
+                                                        style: TextStyle(
+                                                            fontSize: 16),
+                                                      ),
+                                                      subtitle: TextField(
+                                                        controller:
+                                                            monthController,
+                                                        decoration:
+                                                            const InputDecoration(
+                                                          enabledBorder:
+                                                              UnderlineInputBorder(),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    child: ListTile(
+                                                      title: const Text(
+                                                        'Day',
+                                                        style: TextStyle(
+                                                            fontSize: 16),
+                                                      ),
+                                                      subtitle: TextField(
+                                                        controller:
+                                                            dayController,
+                                                        decoration:
+                                                            const InputDecoration(
+                                                          enabledBorder:
+                                                              UnderlineInputBorder(),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              ListTile(
+                                                title: const Text(
+                                                  'Location',
+                                                  style:
+                                                      TextStyle(fontSize: 16),
+                                                ),
+                                                subtitle: TextField(
+                                                  controller:
+                                                      locationController,
+                                                  decoration:
+                                                      const InputDecoration(
+                                                    enabledBorder:
+                                                        UnderlineInputBorder(),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      actions: <Widget>[
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text('Close'),
+                                        ),
+                                        ElevatedButton(
+                                          onPressed: () async {
+                                            Schedule schedule = Schedule(
+                                              scheduleId: event.scheduleId,
+                                              event: eventController.text,
+                                              location: locationController.text,
+                                              month: monthController.text,
+                                              day: dayController.text,
+                                            );
+                                            await context
+                                                .read<ScheduleListProvider>()
+                                                .editScheduleList(schedule);
+                                            await context
+                                                .read<ScheduleListProvider>()
+                                                .updateScheduleList(1);
+
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: const Text('Apply'),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        )
+                        .toList(),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
         floatingActionButton: SpeedDial(
@@ -322,6 +488,33 @@ class _CalendarState extends State<Calendar>
             ),
           ],
         ));
+  }
+}
+
+class InputWidget extends StatelessWidget {
+  String title;
+  TextEditingController controller;
+
+  InputWidget({
+    required this.title,
+    required this.controller,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(
+        title,
+        style: const TextStyle(fontSize: 16),
+      ),
+      subtitle: TextField(
+        controller: controller,
+        decoration: const InputDecoration(
+          enabledBorder: UnderlineInputBorder(),
+        ),
+      ),
+    );
   }
 }
 

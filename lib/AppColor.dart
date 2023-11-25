@@ -9,4 +9,26 @@ class AppColor extends Color {
   static const text = Color(0xFFC7C8CF);
   static const yellow = Color(0xFFFBC212);
   static const purple = Color(0xFFB0B2D9);
+
+  static MaterialColor createMaterialColor(Color color) {
+    List<int> strengths = <int>[
+      50,
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ];
+    Map<int, Color> swatch = <int, Color>{};
+    final int primary = color.value;
+    for (int strength in strengths) {
+      final double blend = 1.0 - (strength / 900);
+      swatch[strength] = Color.lerp(Colors.white, color, blend)!;
+    }
+    return MaterialColor(primary, swatch);
+  }
 }

@@ -1,3 +1,4 @@
+import 'package:causw_graduate/AppColor.dart';
 import 'package:causw_graduate/calendar.dart';
 import 'package:causw_graduate/schedule_list_provider.dart';
 import 'package:flutter/material.dart';
@@ -19,8 +20,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'First Flutter App',
         theme: ThemeData(
-          primaryColor: Colors.blue,
-          primarySwatch: Colors.indigo,
+          primaryColor: AppColor.main,
+          primarySwatch: AppColor.createMaterialColor(AppColor.main),
           fontFamily: 'Nunito',
         ),
         home: const Calendar(),

@@ -7,15 +7,18 @@ class ScheduleListProvider extends ChangeNotifier {
 
   List<Schedule> get scheduleListByDate => _scheduleListByDate;
 
-  void updateScheduleList(int studentId) async {
+  Future<void> updateScheduleList(int studentId) async {
     _scheduleListByDate = await ApiService.getSchedules(studentId);
     notifyListeners();
   }
 
-  /*void updateScheduleListByDate(String month, String day) {
-    _scheduleListByDate = _scheduleAllList
-        .where((schedule) => schedule.month == month && schedule.day == day)
-        .toList();
+  Future<void> editScheduleList(Schedule schedule) async {
+    bool result = await ApiService.editSchedule(schedule.scheduleId!, schedule);
+    if (result) {
+      print('수정 성공!');
+    } else {
+      print('수정 실패');
+    }
     notifyListeners();
-  }*/
+  }
 }
