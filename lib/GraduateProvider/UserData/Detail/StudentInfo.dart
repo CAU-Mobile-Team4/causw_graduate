@@ -36,9 +36,9 @@ class StudentInfo extends UserDataDetail {
 
   @override
   void fromJson(Map<String, dynamic> json) {
-    _admissionYearList = json['admissionYearList'];
+    _admissionYearList = (json['admissionYearList'] as List).cast<int>();
     _admissionYear = json['admissionYear'];
-    _majorStatusList = json['majorStatusList'];
+    _majorStatusList = (json['majorStatusList'] as List).cast<String>();
     _majorStatus = json['majorStatus'];
   }
 }

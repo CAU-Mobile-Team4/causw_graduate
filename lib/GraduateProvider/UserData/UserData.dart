@@ -1,19 +1,17 @@
 import 'package:causw_graduate/GraduateProvider/UserData/Detail/StudentInfo.dart';
 import 'package:causw_graduate/GraduateProvider/UserData/UserDataDetail.dart';
-import 'package:flutter/material.dart';
 
-class UserDataProvider with ChangeNotifier {
+class UserData {
   final List<UserDataDetail> _detailList = [];
-  final UserDataDetail _studentInfo = StudentInfo();
+  late StudentInfo _studentInfo;
 
-  UserDataProvider() {
+  UserData() {
+    _studentInfo = StudentInfo();
     _detailList.add(_studentInfo);
-    _loadDataAll();
   }
 
-  Future<void> _loadDataAll() async {
+  Future<void> loadDataAll() async {
     await Future.wait(_detailList.map((userDataDetail) => userDataDetail.loadData()));
-    notifyListeners();
   }
 
   Future<void> saveDataAll() async {
@@ -22,5 +20,5 @@ class UserDataProvider with ChangeNotifier {
     }
   }
 
-  UserDataDetail get studentInfo => _studentInfo;
+  StudentInfo get studentInfo => _studentInfo;
 }

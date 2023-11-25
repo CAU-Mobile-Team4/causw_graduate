@@ -18,6 +18,7 @@ abstract class UserDataDetail with ChangeNotifier {
 
     Map<String, dynamic> jsonData = jsonDecode(json);
     fromJson(jsonData);
+    notifyListeners();
   }
 
   Future<void> saveData() async {
