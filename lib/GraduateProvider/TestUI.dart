@@ -1,4 +1,5 @@
 import 'package:causw_graduate/GraduateProvider/UserData/Detail/StudentInfo.dart';
+import 'package:causw_graduate/GraduateProvider/UserData/Detail/Subjects.dart';
 import 'package:causw_graduate/GraduateProvider/UserData/UserData.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +14,7 @@ Future<void> main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => userData.studentInfo),
+        ChangeNotifierProvider(create: (context) => userData.subjects),
       ],
       child: TestUI(),
     ),
@@ -39,13 +41,13 @@ class TestPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Test Page'),
       ),
-      body: TestForm(),
+      body: SubjectsTest(),
     );
   }
 }
 
-class TestForm extends StatelessWidget {
-  TestForm({Key? key}) : super(key: key);
+class StudentInfoTest extends StatelessWidget {
+  const StudentInfoTest({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +68,34 @@ class TestForm extends StatelessWidget {
                   onTap: () {
                     studentInfo.admissionYear = admissionYear;
                   },
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SubjectsTest extends StatelessWidget {
+  const SubjectsTest({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final subjects = Provider.of<Subjects>(context);
+
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: subjects.major.length,
+              itemBuilder: (context, index) {
+                String name = subjects.major[index]['name'];
+                return ListTile(
+                  title: Text(name),
                 );
               },
             ),
