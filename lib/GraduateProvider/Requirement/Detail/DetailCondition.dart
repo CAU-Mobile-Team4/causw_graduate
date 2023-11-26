@@ -3,8 +3,6 @@ abstract class DetailCondition {
   abstract final String conditionName;
   abstract final String guideLine;
 
-  abstract final int admissionYear;
-  abstract final String majorStatus;
   abstract final int require;
 
   int get satisfied;

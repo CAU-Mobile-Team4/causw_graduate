@@ -3,10 +3,6 @@ import 'package:causw_graduate/GraduateProvider/UserData/UserData.dart';
 
 class Year19TotalCredit extends TotalCredit {
   @override
-  final int admissionYear = 19;
-  @override
-  final String majorStatus = '주전공';
-  @override
   final int require = 140;
 
   @override
