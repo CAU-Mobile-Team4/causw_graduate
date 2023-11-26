@@ -45,7 +45,7 @@ class TestPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Test Page'),
       ),
-      body: GraduateListTest(),
+      body: SubjectsTest(),
     );
   }
 }
