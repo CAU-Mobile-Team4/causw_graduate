@@ -1,18 +1,36 @@
 {
   "major": [
-    {"id": 1, "name": "test1", "credits": 3, "isSatisfied": false, "english": false},
-    {"id": 2, "name": "test2", "credits": 3, "isSatisfied": false, "english": false}
+    {"name": "test1", "credits": 3, "isSatisfied": false, "english": false, "isDesignCourse": true},
+    {"name": "test2", "credits": 3, "isSatisfied": false, "english": false, "isDesignCourse": false}
   ],
   "bsm": [
-    {"id": 1, "name": "test1", "credits": 3, "isSatisfied": false, "english": false},
-    {"id": 2, "name": "test2", "credits": 3, "isSatisfied": false, "english": false}
+    {"name": "test1", "credits": 3, "isSatisfied": false, "english": false},
+    {"name": "test2", "credits": 3, "isSatisfied": false, "english": false}
   ],
   "specializedElective": [
-    {"id": 1, "name": "test1", "credits": 3, "isSatisfied": false, "english": false},
-    {"id": 2, "name": "test2", "credits": 3, "isSatisfied": false, "english": false}
+    {"name": "test1", "credits": 3, "isSatisfied": false, "english": false},
+    {"name": "test2", "credits": 3, "isSatisfied": false, "english": false}
   ],
-  "coreElective": [
-    {"id": 1, "name": "test1", "credits": 3, "isSatisfied": false, "english": false},
-    {"id": 2, "name": "test2", "credits": 3, "isSatisfied": false, "english": false}
-  ]
+  "coreElective": {
+    "convergence": [
+      {"name": "test1", "credits": 3, "isSatisfied": false},
+      {"name": "test2", "credits": 3, "isSatisfied": false}
+    ],
+    "communication": [
+      {"name": "test1", "credits": 3, "isSatisfied": false},
+      {"name": "test2", "credits": 3, "isSatisfied": false}
+    ],
+    "creativity": [
+      {"name": "test1", "credits": 3, "isSatisfied": false},
+      {"name": "test2", "credits": 3, "isSatisfied": false}
+    ],
+    "challenge": [
+      {"name": "test1", "credits": 3, "isSatisfied": false},
+      {"name": "test2", "credits": 3, "isSatisfied": false}
+    ],
+    "trust": [
+      {"name": "test1", "credits": 3, "isSatisfied": false},
+      {"name": "test2", "credits": 3, "isSatisfied": false}
+    ]
+  }
 }
