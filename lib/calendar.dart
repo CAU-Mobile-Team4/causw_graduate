@@ -18,7 +18,6 @@ class _CalendarState extends State<Calendar>
     with SingleTickerProviderStateMixin {
   DateTime? selectedDay;
   DateTime focusedDay = DateTime.now();
-  late List<Schedule> events;
 
   @override
   void initState() {
@@ -40,7 +39,7 @@ class _CalendarState extends State<Calendar>
       selectedDay?.month ?? DateTime.now().month,
       selectedDay?.day ?? DateTime.now().day,
     );
-
+    //context.read<ScheduleListProvider>().updateScheduleList(1);
     return Scaffold(
         body: GestureDetector(
           onTap: () {
@@ -287,11 +286,8 @@ class _CalendarState extends State<Calendar>
                                             await context
                                                 .read<ScheduleListProvider>()
                                                 .editScheduleList(schedule);
-                                            await context
-                                                .read<ScheduleListProvider>()
-                                                .updateScheduleList(1);
 
-                                            Navigator.of(context).pop();
+                                            Navigator.pop(context);
                                           },
                                           child: const Text('Apply'),
                                         ),
@@ -375,6 +371,8 @@ class _CalendarState extends State<Calendar>
                             // Clear the text fields for the next input.
                             _dateController.clear();
                             _eventController.clear();
+
+                            Navigator.pop(context);
                           },
                         ),
                       ),
