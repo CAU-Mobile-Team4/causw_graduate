@@ -20,18 +20,18 @@ class ApiService {
   }
 
 //일정 추가(nlp)
-  static void addScheduleByNlp(int studentID, String statement) async {
+  static Future<bool> addScheduleByNlp(int studentID, String statement) async {
     final url = Uri.parse('$baseUrl/schedule/nlp/$studentID');
     final response = await http.post(url, body: statement);
 
     if (response.statusCode != 200) {
-      throw Error();
+      return false;
     }
-    return;
+    return true;
   }
 
   //일정 추가
-  static void addSchedule(int studentID, Schedule schedule) async {
+  static Future<bool> addSchedule(int studentID, Schedule schedule) async {
     final url = Uri.parse('$baseUrl/schedule/$studentID');
     final body = jsonEncode(schedule);
     final response = await http.post(url,
@@ -40,9 +40,9 @@ class ApiService {
         },
         body: body);
     if (response.statusCode != 200) {
-      throw Error();
+      return false;
     }
-    return;
+    return true;
   }
 
   //일정 수정
@@ -76,12 +76,12 @@ class ApiService {
   }
 
   //일정 삭제
-  static void deleteSchedules(int studentID, int scheduleID) async {
+  static Future<bool> deleteSchedules(int studentID, int scheduleID) async {
     final url = Uri.parse('$baseUrl/schedule/$studentID/$scheduleID');
     final response = await http.delete(url);
     if (response.statusCode != 200) {
-      throw Error();
+      return false;
     }
-    return;
+    return true;
   }
 }
