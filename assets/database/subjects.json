@@ -7,11 +7,11 @@
     {"id": 1, "name": "test1", "credits": 3, "isSatisfied": false, "english": false},
     {"id": 2, "name": "test2", "credits": 3, "isSatisfied": false, "english": false}
   ],
-  "coreElective": [
+  "specializedElective": [
     {"id": 1, "name": "test1", "credits": 3, "isSatisfied": false, "english": false},
     {"id": 2, "name": "test2", "credits": 3, "isSatisfied": false, "english": false}
   ],
-  "specializedElective": [
+  "coreElective": [
     {"id": 1, "name": "test1", "credits": 3, "isSatisfied": false, "english": false},
     {"id": 2, "name": "test2", "credits": 3, "isSatisfied": false, "english": false}
   ]
