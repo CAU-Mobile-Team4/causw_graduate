@@ -29,9 +29,8 @@ class _CalendarState extends State<Calendar>
     context.read<ScheduleListProvider>().updateScheduleList(1);
   }
 
-  final TextEditingController _dateController = TextEditingController();
-  final TextEditingController _eventController = TextEditingController();
   final TextEditingController _searchController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -40,453 +39,520 @@ class _CalendarState extends State<Calendar>
       selectedDay?.month ?? DateTime.now().month,
       selectedDay?.day ?? DateTime.now().day,
     );
-    //context.read<ScheduleListProvider>().updateScheduleList(1);
+
     return Scaffold(
-        body: GestureDetector(
-          onTap: () {
-            FocusScopeNode currentFocus = FocusScope.of(context);
-            if (!currentFocus.hasPrimaryFocus) {
-              currentFocus.unfocus();
-            }
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 10,
-                ),
-                Stack(
-                  children: [
-                    TableCalendar(
-                      firstDay: DateTime.utc(2020, 3, 6),
-                      lastDay: DateTime.utc(2030, 3, 6),
-                      focusedDay: focusedDay,
-                      selectedDayPredicate: (day) {
-                        return isSameDay(selectedDay, day);
-                      },
-                      onFormatChanged: (format) {
-                        if (selectedDay != null) {
-                          setState(() {});
+      body: GestureDetector(
+        onTap: () {
+          FocusScopeNode currentFocus = FocusScope.of(context);
+          if (!currentFocus.hasPrimaryFocus) {
+            currentFocus.unfocus();
+          }
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 10,
+              ),
+              Stack(
+                children: [
+                  TableCalendar(
+                    firstDay: DateTime.utc(2020, 3, 6),
+                    lastDay: DateTime.utc(2030, 3, 6),
+                    focusedDay: focusedDay,
+                    selectedDayPredicate: (day) {
+                      return isSameDay(selectedDay, day);
+                    },
+                    onFormatChanged: (format) {
+                      if (selectedDay != null) {
+                        setState(() {});
+                      }
+                    },
+                    availableCalendarFormats: const {
+                      CalendarFormat.month: 'Today',
+                      CalendarFormat.twoWeeks: 'Today',
+                      CalendarFormat.week: 'Today',
+                    },
+                    headerStyle: const HeaderStyle(
+                      formatButtonVisible: true,
+                      titleTextStyle: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: AppColor.main),
+                    ),
+                    calendarStyle: const CalendarStyle(
+                      //marker 관련
+                        canMarkersOverflow: false,
+                        markersAutoAligned: true,
+                        markerSize: 10,
+                        markerDecoration: BoxDecoration(
+                          color: AppColor.purple,
+                          shape: BoxShape.circle,
+                        ),
+                        //today 관련
+                        isTodayHighlighted: true,
+                        todayDecoration: BoxDecoration(
+                          color: AppColor.mainOpacity,
+                          shape: BoxShape.circle,
+                        ),
+                        //selectedDay 관련
+                        selectedDecoration: BoxDecoration(
+                            color: AppColor.main, shape: BoxShape.circle),
+                        //주말 관련
+                        weekendTextStyle: TextStyle(color: Colors.red)),
+                    onPageChanged: (pageDate) {
+                      setState(() {
+                        focusedDay = pageDate;
+                      });
+                    },
+                    onDaySelected: (selectedDays, _) {
+                      setState(() {
+                        selectedDay = selectedDays;
+                        focusedDay = selectedDays;
+                      });
+                      //sendDate(selectedDays);
+                      //print('User selected day $selectedDays');
+                    },
+                  ),
+                  Positioned(
+                      top: 9,
+                      right: 62,
+                      child: TextButton(
+                        onPressed: () {
+                          setState(() {
+                            focusedDay = DateTime.now();
+                            selectedDay = DateTime.now();
+                          });
+                        },
+                        child: const Text('  '),
+                      ))
+                ],
+              ),
+              const SizedBox(height: 20),
+              Text(
+                '${selectedDayWithoutTime.year}년 ${selectedDayWithoutTime.month}월 ${selectedDayWithoutTime.day}일',
+                style:
+                const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              Expanded(
+                child: ListView(
+                  children: context
+                      .watch<ScheduleListProvider>()
+                      .scheduleListByDate
+                      .where((event) =>
+                  (event.month ==
+                      selectedDayWithoutTime.month.toString()) &&
+                      (event.day == selectedDayWithoutTime.day.toString()))
+                      .map(
+                        (event) => Dismissible(
+                      key: Key(event.scheduleId.toString()),
+                      onDismissed: (direction){
+                        if (event.scheduleId != null) {
+                          context.read<ScheduleListProvider>().deleteScheduleList(event.scheduleId!);
+                        } else {
+                          print('Error: scheduleId is null');
                         }
                       },
-                      availableCalendarFormats: const {
-                        CalendarFormat.month: 'Today',
-                        CalendarFormat.twoWeeks: 'Today',
-                        CalendarFormat.week: 'Today',
-                      },
-                      headerStyle: const HeaderStyle(
-                        formatButtonVisible: true,
-                        titleTextStyle: TextStyle(
-                            fontSize: 23,
-                            fontWeight: FontWeight.bold,
-                            color: AppColor.main),
-                      ),
-                      calendarStyle: const CalendarStyle(
-                          //marker 관련
-                          canMarkersOverflow: false,
-                          markersAutoAligned: true,
-                          markerSize: 10,
-                          markerDecoration: BoxDecoration(
-                            color: AppColor.purple,
-                            shape: BoxShape.circle,
+                      child: Container(
+                        margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                        decoration: BoxDecoration(
+                            border: Border.all(),
+                            borderRadius: BorderRadius.circular(20)),
+                        child: ListTile(
+                          leading: Text(event.time ?? '하루종일'),
+                          title: Text(
+                            event.event,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
                           ),
-                          //today 관련
-                          isTodayHighlighted: true,
-                          todayDecoration: BoxDecoration(
-                            color: AppColor.mainOpacity,
-                            shape: BoxShape.circle,
+                          subtitle: Text(
+                            event.location,
+                            style: const TextStyle(fontSize: 16),
                           ),
-                          //selectedDay 관련
-                          selectedDecoration: BoxDecoration(
-                              color: AppColor.main, shape: BoxShape.circle),
-                          //주말 관련
-                          weekendTextStyle: TextStyle(color: Colors.red)),
-                      onPageChanged: (pageDate) {
-                        setState(() {
-                          focusedDay = pageDate;
-                        });
-                      },
-                      onDaySelected: (selectedDays, _) {
-                        setState(() {
-                          selectedDay = selectedDays;
-                          focusedDay = selectedDays;
-                        });
-                        //sendDate(selectedDays);
-                        //print('User selected day $selectedDays');
-                      },
-                    ),
-                    Positioned(
-                        top: 9,
-                        right: 62,
-                        child: TextButton(
-                          onPressed: () {
-                            setState(() {
-                              focusedDay = DateTime.now();
-                              selectedDay = DateTime.now();
-                            });
-                          },
-                          child: const Text('  '),
-                        ))
-                  ],
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  '${selectedDayWithoutTime.year}년 ${selectedDayWithoutTime.month}월 ${selectedDayWithoutTime.day}일',
-                  style: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                Expanded(
-                  child: ListView(
-                    children: context
-                        .watch<ScheduleListProvider>()
-                        .scheduleListByDate
-                        .where((event) =>
-                            (event.month ==
-                                selectedDayWithoutTime.month.toString()) &&
-                            (event.day ==
-                                selectedDayWithoutTime.day.toString()))
-                        .map(
-                          (event) => Dismissible(
-                            key: Key(event.scheduleId.toString()),
-                            onDismissed: (direction){
-                              if (event.scheduleId != null) {
-                                context.read<ScheduleListProvider>().deleteScheduleList(event.scheduleId!);
-                              } else {
-                                print('Error: scheduleId is null');
-                              }
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
-                              decoration: BoxDecoration(
-                                  border: Border.all(),
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: ListTile(
-                                leading: Text(event.time ?? '하루종일'),
-                                title: Text(
-                                  event.event,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                subtitle: Text(event.location),
-                                onTap: () {
-                                  TextEditingController eventController =
-                                      TextEditingController(text: event.event);
-                                  TextEditingController monthController =
-                                      TextEditingController(
-                                          text: selectedDayWithoutTime.month
-                                              .toString());
-                                  TextEditingController dayController =
-                                      TextEditingController(
-                                          text: selectedDayWithoutTime.day
-                                              .toString());
-                                  TextEditingController locationController =
-                                      TextEditingController(text: event.location);
+                          onTap: () {
+                            TextEditingController eventController =
+                            TextEditingController(text: event.event);
+                            TextEditingController monthController =
+                            TextEditingController(
+                                text: selectedDayWithoutTime.month
+                                    .toString());
+                            TextEditingController dayController =
+                            TextEditingController(
+                                text: selectedDayWithoutTime.day
+                                    .toString());
+                            TextEditingController locationController =
+                            TextEditingController(text: event.location);
 
-                                  showDialog(
-                                    context: context,
-                                    builder: (context) => SingleChildScrollView(
-                                      child: AlertDialog(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(20),
-                                        ),
-                                        title: const Text('Edit this event'),
-                                        content: SizedBox(
-                                          width:
-                                              MediaQuery.of(context).size.width *
-                                                  0.9,
-                                          height:
-                                              MediaQuery.of(context).size.width *
-                                                  0.7,
-                                          child: SingleChildScrollView(
-                                            child: Column(
-                                              children: [
-                                                ListTile(
+                            showDialog(
+                              context: context,
+                              builder: (context) => SingleChildScrollView(
+                                child: AlertDialog(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  title: const Text(
+                                    'Edit this event',
+                                    style: TextStyle(
+                                        color: AppColor.main,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 24),
+                                  ),
+                                  content: SizedBox(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.9,
+                                    height:
+                                    MediaQuery.of(context).size.width *
+                                        0.7,
+                                    child: SingleChildScrollView(
+                                      child: Column(
+                                        children: [
+                                          ListTile(
+                                            title: const Text(
+                                              'Event Name',
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                              ),
+                                            ),
+                                            subtitle: TextField(
+                                              controller: eventController,
+                                              decoration:
+                                              const InputDecoration(
+                                                enabledBorder:
+                                                UnderlineInputBorder(),
+                                              ),
+                                            ),
+                                          ),
+                                          Row(
+                                            children: [
+                                              Expanded(
+                                                child: ListTile(
                                                   title: const Text(
-                                                    'Event Name',
-                                                    style:
-                                                        TextStyle(fontSize: 16),
-                                                  ),
-                                                  subtitle: TextField(
-                                                    controller: eventController,
-                                                    decoration:
-                                                        const InputDecoration(
-                                                      enabledBorder:
-                                                          UnderlineInputBorder(),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    Expanded(
-                                                      child: ListTile(
-                                                        title: const Text(
-                                                          'Month',
-                                                          style: TextStyle(
-                                                              fontSize: 16),
-                                                        ),
-                                                        subtitle: TextField(
-                                                          controller:
-                                                              monthController,
-                                                          decoration:
-                                                              const InputDecoration(
-                                                            enabledBorder:
-                                                                UnderlineInputBorder(),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      child: ListTile(
-                                                        title: const Text(
-                                                          'Day',
-                                                          style: TextStyle(
-                                                              fontSize: 16),
-                                                        ),
-                                                        subtitle: TextField(
-                                                          controller:
-                                                              dayController,
-                                                          decoration:
-                                                              const InputDecoration(
-                                                            enabledBorder:
-                                                                UnderlineInputBorder(),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                ListTile(
-                                                  title: const Text(
-                                                    'Location',
-                                                    style:
-                                                        TextStyle(fontSize: 16),
+                                                    'Month',
+                                                    style: TextStyle(
+                                                        fontSize: 20),
                                                   ),
                                                   subtitle: TextField(
                                                     controller:
-                                                        locationController,
+                                                    monthController,
                                                     decoration:
-                                                        const InputDecoration(
+                                                    const InputDecoration(
                                                       enabledBorder:
-                                                          UnderlineInputBorder(),
+                                                      UnderlineInputBorder(),
                                                     ),
                                                   ),
                                                 ),
-                                              ],
+                                              ),
+                                              Expanded(
+                                                child: ListTile(
+                                                  title: const Text(
+                                                    'Day',
+                                                    style: TextStyle(
+                                                        fontSize: 20),
+                                                  ),
+                                                  subtitle: TextField(
+                                                    controller: dayController,
+                                                    decoration:
+                                                    const InputDecoration(
+                                                      enabledBorder:
+                                                      UnderlineInputBorder(),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          ListTile(
+                                            title: const Text(
+                                              'Location',
+                                              style: TextStyle(fontSize: 20),
                                             ),
-                                          ),
-                                        ),
-                                        actions: <Widget>[
-                                          ElevatedButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: const Text('Close'),
-                                          ),
-                                          ElevatedButton(
-                                            onPressed: () async {
-                                              Schedule schedule = Schedule(
-                                                scheduleId: event.scheduleId,
-                                                event: eventController.text,
-                                                location: locationController.text,
-                                                month: monthController.text,
-                                                day: dayController.text,
-                                              );
-                                              await context
-                                                  .read<ScheduleListProvider>()
-                                                  .editScheduleList(schedule);
-
-                                              Navigator.pop(context);
-                                            },
-                                            child: const Text('Apply'),
+                                            subtitle: TextField(
+                                              controller: locationController,
+                                              decoration:
+                                              const InputDecoration(
+                                                enabledBorder:
+                                                UnderlineInputBorder(),
+                                              ),
+                                            ),
                                           ),
                                         ],
                                       ),
                                     ),
-                                  );
-                                },
+                                  ),
+                                  actions: <Widget>[
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Text('Close'),
+                                    ),
+                                    ElevatedButton(
+                                      onPressed: () async {
+                                        Schedule schedule = Schedule(
+                                          scheduleId: event.scheduleId,
+                                          event: eventController.text,
+                                          location: locationController.text,
+                                          month: monthController.text,
+                                          day: dayController.text,
+                                        );
+                                        await context
+                                            .read<ScheduleListProvider>()
+                                            .editScheduleList(schedule);
+
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Text('Apply'),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ),
-                        )
-                        .toList(),
-                  ),
-                )
-              ],
-            ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  )
+                      .toList(),
+                ),
+              )
+            ],
           ),
         ),
-        floatingActionButton: SpeedDial(
-          animatedIcon: AnimatedIcons.menu_close,
-          children: [
-            SpeedDialChild(
-              child: const Icon(Icons.add),
-              label: 'Add Event',
-              onTap: () {
-                showModalBottomSheet(
-                  context: context,
-                  isScrollControlled: true,
-                  builder: (BuildContext context) {
-                    return Padding(
-                      padding: EdgeInsets.only(
-                        bottom: MediaQuery.of(context).viewInsets.bottom,
-                      ),
-                      child: CupertinoActionSheet(
-                        title: const Text('Add Event'),
-                        message: Column(
+      ),
+      floatingActionButton: SpeedDial(
+        animatedIcon: AnimatedIcons.menu_close,
+        children: [
+          SpeedDialChild(
+            child: const Icon(Icons.add),
+            label: 'Add Event',
+            onTap: () {
+              TextEditingController eventController = TextEditingController();
+              TextEditingController monthController = TextEditingController(
+                  text: selectedDayWithoutTime.month.toString());
+              TextEditingController dayController = TextEditingController(
+                  text: selectedDayWithoutTime.day.toString());
+              TextEditingController locationController =
+              TextEditingController();
+              showDialog(
+                context: context,
+                builder: (context) => SingleChildScrollView(
+                  child: AlertDialog(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    title: const Text(
+                      'Add this event',
+                      style: TextStyle(
+                          fontSize: 24,
+                          color: AppColor.main,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    content: SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      height: MediaQuery.of(context).size.width * 0.7,
+                      child: SingleChildScrollView(
+                        child: Column(
                           children: [
-                            GestureDetector(
-                              onTap: () async {
-                                DateTime? chosenDate = await showDatePicker(
-                                  context: context,
-                                  initialDate: DateTime.now(),
-                                  firstDate: DateTime(2021),
-                                  lastDate: DateTime(2025),
-                                );
-                                if (chosenDate != null) {
-                                  _dateController.text =
-                                      chosenDate.toString().substring(0, 10);
-                                }
-                              },
-                              child: AbsorbPointer(
-                                child: CupertinoTextField(
-                                  controller: _dateController,
-                                  placeholder: 'Tap to choose date',
-                                  decoration: const BoxDecoration(
-                                    border: Border(
-                                      bottom: BorderSide(
-                                        color: Colors.grey,
+                            ListTile(
+                              title: const Text(
+                                'Event Name',
+                                style: TextStyle(fontSize: 20),
+                              ),
+                              subtitle: TextField(
+                                controller: eventController,
+                                decoration: const InputDecoration(
+                                  enabledBorder: UnderlineInputBorder(),
+                                ),
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: ListTile(
+                                    title: const Text(
+                                      'Month',
+                                      style: TextStyle(fontSize: 20),
+                                    ),
+                                    subtitle: TextField(
+                                      controller: monthController,
+                                      decoration: const InputDecoration(
+                                        enabledBorder: UnderlineInputBorder(),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ),
-                            CupertinoTextField(
-                              controller: _eventController,
-                              placeholder: 'Enter event',
-                              decoration: const BoxDecoration(
-                                border: Border(
-                                  bottom: BorderSide(
-                                    color: Colors.grey,
+                                Expanded(
+                                  child: ListTile(
+                                    title: const Text(
+                                      'Day',
+                                      style: TextStyle(fontSize: 20),
+                                    ),
+                                    subtitle: TextField(
+                                      controller: dayController,
+                                      decoration: const InputDecoration(
+                                        enabledBorder: UnderlineInputBorder(),
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
+                              ],
                             ),
-                          ],
-                        ),
-                        cancelButton: CupertinoActionSheetAction(
-                          child: const Text('Add'),
-                          onPressed: () {
-                            // Clear the text fields for the next input.
-                            _dateController.clear();
-                            _eventController.clear();
-
-                            Navigator.pop(context);
-                          },
-                        ),
-                      ),
-                    );
-                  },
-                );
-              },
-            ),
-            SpeedDialChild(
-              child: const Icon(Icons.chat_bubble_outline),
-              label: 'NLP add',
-              onTap: () {
-                showModalBottomSheet(
-                  context: context,
-                  isScrollControlled: true,
-                  builder: (BuildContext context) {
-                    return Padding(
-                      padding: EdgeInsets.only(
-                        bottom: MediaQuery.of(context).viewInsets.bottom,
-                      ),
-                      child: CupertinoActionSheet(
-                        title: const Row(
-                          children: <Widget>[
-                            Icon(Icons.chat_bubble_outline),
-                            SizedBox(width: 10), // 아이콘과 텍스트 입력 필드 사이의 간격
-                            Expanded(
-                              child: CupertinoTextField(
-                                placeholder: 'Enter text',
+                            ListTile(
+                              title: const Text(
+                                'Location',
+                                style: TextStyle(fontSize: 20),
                               ),
-                            ),
-                          ],
-                        ),
-                        cancelButton: CupertinoActionSheetAction(
-                          child: const Text('Add'),
-                          onPressed: () {
-                            // 아무런 동작을 수행하지 않습니다.
-                            Navigator.of(context).pop();
-                          },
-                        ),
-                      ),
-                    );
-                  },
-                );
-              },
-            ),
-            SpeedDialChild(
-              child: const Icon(Icons.search),
-              label: 'Search',
-              onTap: () {
-                showModalBottomSheet(
-                  context: context,
-                  isScrollControlled: true,
-                  builder: (BuildContext context) {
-                    return CupertinoPageScaffold(
-                      navigationBar: const CupertinoNavigationBar(
-                        middle:
-                            Text('Search'), // NavigationBar의 제목을 'Search'로 설정
-                      ),
-                      child: Column(
-                        children: [
-                          const SizedBox(height: 45.0), // 상단 여백 추가
-                          Row(
-                            // 검색 아이콘, 입력창, 화살표 아이콘
-                            children: <Widget>[
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              const Icon(
-                                Icons.search,
-                                size: 35,
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Expanded(
-                                child: CupertinoTextField(
-                                  placeholder: 'Enter search text',
-                                  controller: _searchController,
+                              subtitle: TextField(
+                                controller: locationController,
+                                decoration: const InputDecoration(
+                                  enabledBorder: UnderlineInputBorder(),
                                 ),
                               ),
-                              CupertinoButton(
-                                padding: EdgeInsets.zero,
-                                child: const Icon(Icons.send),
-                                onPressed: () {
-                                  // 'send' 아이콘을 눌렀을 때의 동작을 여기에 작성
-                                },
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    actions: <Widget>[
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text(
+                          'Close',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () async {
+                          Schedule schedule = Schedule(
+                            event: eventController.text,
+                            location: locationController.text,
+                            month: monthController.text,
+                            day: dayController.text,
+                          );
+                          await context
+                              .read<ScheduleListProvider>()
+                              .addScheduleList(schedule);
+
+                          Navigator.pop(context);
+                        },
+                        child: const Text('Apply'),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+          SpeedDialChild(
+            child: const Icon(Icons.chat_bubble_outline),
+            label: 'NLP add',
+            onTap: () {
+              TextEditingController eventController = TextEditingController();
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                builder: (BuildContext context) {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                      bottom: MediaQuery.of(context).viewInsets.bottom,
+                    ),
+                    child: CupertinoActionSheet(
+                      title: Row(
+                        children: <Widget>[
+                          const Icon(Icons.chat_bubble_outline),
+                          const SizedBox(width: 10), // 아이콘과 텍스트 입력 필드 사이의 간격
                           Expanded(
-                            child: ListView(
-                              children: context
-                                  .watch<ScheduleListProvider>()
-                                  .scheduleListByDate
-                                  .where((event) =>
-                              event.event.contains(_searchController.text))
-                                  .map(
-                                    (event) => Container(
-                                  margin: const EdgeInsets.fromLTRB(10, 0, 10, 5),
-                                  decoration: BoxDecoration(
-                                      border: Border.all(),
-                                      borderRadius: BorderRadius.circular(20)),
-                                  child: ListTile(
+                            child: TextField(
+                              controller: eventController,
+                              decoration: const InputDecoration(
+                                label: Text('Tell me your schedule'),
+                                enabledBorder: UnderlineInputBorder(),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      cancelButton: CupertinoActionSheetAction(
+                        child: const Text(
+                          'Add',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {
+                          context
+                              .read<ScheduleListProvider>()
+                              .addScheduleListByNlp(eventController.text);
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
+          ),
+          SpeedDialChild(
+            child: const Icon(Icons.search),
+            label: 'Search',
+            onTap: () {
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                builder: (BuildContext context) {
+                  return CupertinoPageScaffold(
+                    navigationBar: const CupertinoNavigationBar(
+                      middle:
+                      Text('Search'), // NavigationBar의 제목을 'Search'로 설정
+                    ),
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 45.0), // 상단 여백 추가
+                        Row(
+                          // 검색 아이콘, 입력창, 화살표 아이콘
+                          children: <Widget>[
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            const Icon(
+                              Icons.search,
+                              size: 35,
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Expanded(
+                              child: CupertinoTextField(
+                                placeholder: 'Enter search text',
+                                controller: _searchController,
+                              ),
+                            ),
+                            CupertinoButton(
+                              padding: EdgeInsets.zero,
+                              child: const Icon(Icons.send),
+                              onPressed: () {
+                                // 'send' 아이콘을 눌렀을 때의 동작을 여기에 작성
+                              },
+                            ),
+                          ],
+                        ),
+                        Expanded(
+                          child: ListView(
+                            children: context
+                                .watch<ScheduleListProvider>()
+                                .scheduleListByDate
+                                .where((event) =>
+                                event.event.contains(_searchController.text))
+                                .map(
+                                  (event) => Container(
+                                margin: const EdgeInsets.fromLTRB(10, 0, 10, 5),
+                                decoration: BoxDecoration(
+                                    border: Border.all(),
+                                    borderRadius: BorderRadius.circular(20)),
+                                child: ListTile(
                                     leading: Text(event.time ?? '하루종일'),
                                     title: Text(
                                       event.event,
@@ -503,46 +569,20 @@ class _CalendarState extends State<Calendar>
                                         selectedDay = DateTime(2023,int.parse(event.month),int.parse(event.day));
                                       });
                                     }
-                                  ),
                                 ),
-                              )
-                                  .toList(),
-                            ),
-                          )
-                        ],
-                      ),
-                    );
-                  },
-                );
-              },
-            ),
-          ],
-        ));
-  }
-}
-
-class InputWidget extends StatelessWidget {
-  String title;
-  TextEditingController controller;
-
-  InputWidget({
-    required this.title,
-    required this.controller,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(
-        title,
-        style: const TextStyle(fontSize: 16),
-      ),
-      subtitle: TextField(
-        controller: controller,
-        decoration: const InputDecoration(
-          enabledBorder: UnderlineInputBorder(),
-        ),
+                              ),
+                            )
+                                .toList(),
+                          ),
+                        )
+                      ],
+                    ),
+                  );
+                },
+              );
+            },
+          ),
+        ],
       ),
     );
   }
@@ -566,7 +606,7 @@ class MessageBubble extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
           margin: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
           child: Text(message,
-              style: const TextStyle(fontSize: 16.0),
+              style: const TextStyle(fontSize: 20.0),
               textAlign: TextAlign.center),
         ),
       ],
