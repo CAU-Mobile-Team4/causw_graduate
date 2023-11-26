@@ -36,10 +36,12 @@ class GraduateAnalysis with ChangeNotifier {
     graduateReq = Year19GraduateReq();
 
     for(DetailCondition condition in graduateReq.condition) {
-      if(condition.isSatisfied) {
-        _satisfiedCondition.add(condition);
-      } else {
-        _requiredCondition.add(condition);
+      if (condition.type != 0) {
+        if(condition.isSatisfied) {
+          _satisfiedCondition.add(condition);
+        } else {
+          _requiredCondition.add(condition);
+        }
       }
     }
     notifyListeners();

@@ -2,9 +2,9 @@ import 'package:causw_graduate/GraduateProvider/Requirement/Detail/DetailConditi
 
 abstract class TotalCredit extends DetailCondition {
   @override
-  int type = 1;
+  final int type = 1;
   @override
-  String conditionName = '총 학점';
+  final String conditionName = '총 학점';
   @override
-  String guideLine = '테스트 가이드라인';
+  final String guideLine = '테스트 가이드라인';
 }

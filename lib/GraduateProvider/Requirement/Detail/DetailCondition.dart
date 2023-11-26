@@ -1,5 +1,5 @@
 abstract class DetailCondition {
-  abstract final int type;
+  abstract final int type; //0: 해당 세부 조건을 미적용
   abstract final String conditionName;
   abstract final String guideLine;
 
