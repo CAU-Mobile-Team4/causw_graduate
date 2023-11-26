@@ -25,16 +25,20 @@ class Year19TotalCredit extends TotalCredit {
         totalCredit += subject['credits'] as int;
       }
     }
-    for(Map<String, dynamic> subject in userData.subjects.coreElective) {
-      if(subject['isSatisfied'] == true) {
-        totalCredit += subject['credits'] as int;
-      }
-    }
     for(Map<String, dynamic> subject in userData.subjects.specializedElective) {
       if(subject['isSatisfied'] == true) {
         totalCredit += subject['credits'] as int;
       }
     }
+    userData.subjects.coreElective.forEach((key, value) {
+      if (value is List<Map<String, dynamic>>) {
+        for(Map<String, dynamic> subject in value) {
+          if(subject['isSatisfied'] == true) {
+            totalCredit += subject['credits'] as int;
+          }
+        }
+      }
+    });
 
     satisfied = totalCredit;
     if (satisfied >= require) {

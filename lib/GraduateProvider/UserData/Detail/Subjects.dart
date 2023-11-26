@@ -7,12 +7,12 @@ class Subjects extends UserDataDetail {
   late List<Map<String, dynamic>> _major;
   late List<Map<String, dynamic>> _bsm;
   late List<Map<String, dynamic>> _specializedElective;
-  late List<Map<String, dynamic>> _coreElective;
+  late Map<String, dynamic> _coreElective;
 
   List<Map<String, dynamic>> get major => _major;
   List<Map<String, dynamic>> get bsm => _bsm;
   List<Map<String, dynamic>> get specializedElective => _specializedElective;
-  List<Map<String, dynamic>> get coreElective => _coreElective;
+  Map<String, dynamic> get coreElective => _coreElective;
 
   set major(List<Map<String, dynamic>> value) {
     _major = value;
@@ -29,7 +29,7 @@ class Subjects extends UserDataDetail {
     notifyListeners();
   }
 
-  set coreElective(List<Map<String, dynamic>> value) {
+  set coreElective(Map<String, dynamic> value) {
     _coreElective = value;
     notifyListeners();
   }
@@ -49,6 +49,6 @@ class Subjects extends UserDataDetail {
     _major = (json['major'] as List).cast<Map<String, dynamic>>();
     _bsm = (json['bsm'] as List).cast<Map<String, dynamic>>();
     _specializedElective = (json['specializedElective'] as List).cast<Map<String, dynamic>>();
-    _coreElective = (json['coreElective'] as List).cast<Map<String, dynamic>>();
+    _coreElective = json['coreElective'];
   }
 }
