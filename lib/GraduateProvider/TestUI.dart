@@ -117,11 +117,48 @@ class GraduateListTest extends StatelessWidget {
   Widget build(BuildContext context) {
     final graduateAnalysis = Provider.of<GraduateAnalysis>(context);
 
+    Widget _buildTextBasedOnType(DetailCondition condition) {
+      switch (condition.type) {
+        case 1:
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(condition.conditionName),
+              Text('${condition.satisfied}/${condition.require}')
+            ],
+          );
+        case 2:
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('${condition.conditionName} (아래 ${condition.subCondition.length}개 중 ${condition.require}개 이상 만족)'),
+              Text('${condition.satisfied}/${condition.require}')
+            ],
+          );
+        case 3:
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('-> ${condition.conditionName}'),
+              Text('${condition.satisfied}/${condition.require}')
+            ],
+          );
+        default:
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(condition.conditionName),
+              Text('${condition.satisfied}/${condition.require}')
+            ],
+          );
+      }
+    }
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
-          Text('${graduateAnalysis.satisfiedCondition.length}', style: TextStyle(fontSize: 20)),
+          Text('${graduateAnalysis.satisfiedConditionCount}', style: TextStyle(fontSize: 20)),
           Expanded(
             child: ListView.builder(
               itemCount: graduateAnalysis.satisfiedCondition.length,
@@ -133,20 +170,14 @@ class GraduateListTest extends StatelessWidget {
               },
             ),
           ),
-          Text('${graduateAnalysis.requiredCondition.length}', style: TextStyle(fontSize: 20)),
+          Text('${graduateAnalysis.requiredConditionCount}', style: TextStyle(fontSize: 20)),
           Expanded(
             child: ListView.builder(
               itemCount: graduateAnalysis.requiredCondition.length,
               itemBuilder: (context, index) {
                 DetailCondition condition = graduateAnalysis.requiredCondition[index];
                 return ListTile(
-                  title: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(condition.conditionName),
-                      Text('${condition.satisfied}/${condition.require}')
-                    ],
-                  ),
+                  title: _buildTextBasedOnType(condition)
                 );
               },
             ),
