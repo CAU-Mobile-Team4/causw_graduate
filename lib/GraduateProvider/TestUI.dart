@@ -45,7 +45,7 @@ class TestPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Test Page'),
       ),
-      body: SubjectsTest(),
+      body: GraduateListTest(),
     );
   }
 }
@@ -140,7 +140,13 @@ class GraduateListTest extends StatelessWidget {
               itemBuilder: (context, index) {
                 DetailCondition condition = graduateAnalysis.requiredCondition[index];
                 return ListTile(
-                  title: Text(condition.conditionName),
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(condition.conditionName),
+                      Text('${condition.satisfied}/${condition.require}')
+                    ],
+                  ),
                 );
               },
             ),
