@@ -23,6 +23,7 @@ class AppColor extends Color {
       800,
       900
     ];
+
     Map<int, Color> swatch = <int, Color>{};
     final int primary = color.value;
     for (int strength in strengths) {

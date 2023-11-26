@@ -7,8 +7,6 @@ class ScheduleListProvider extends ChangeNotifier {
 
   List<Schedule> get scheduleListByDate => _scheduleListByDate;
 
-  void editSchedule(Schedule schedule) {}
-
   Future<void> updateScheduleList(int studentId) async {
     _scheduleListByDate = await ApiService.getSchedules(studentId);
     notifyListeners();
@@ -21,24 +19,17 @@ class ScheduleListProvider extends ChangeNotifier {
     } else {
       print('수정 실패');
     }
-    _scheduleListByDate
-        .removeWhere((element) => element.scheduleId == schedule.scheduleId);
-    _scheduleListByDate.add(schedule);
-
-    notifyListeners();
+    updateScheduleList(1);
   }
 
   Future<void> deleteScheduleList(int scheduleId) async {
     bool result = await ApiService.deleteSchedules(1, scheduleId);
     if (result) {
-      print('추가 성공!');
+      print('삭제 성공!');
     } else {
-      print('추가 실패');
+      print('삭제 실패');
     }
-    _scheduleListByDate
-        .removeWhere((element) => element.scheduleId == scheduleId);
-
-    notifyListeners();
+    updateScheduleList(1);
   }
 
   Future<void> addScheduleList(Schedule schedule) async {
@@ -48,9 +39,7 @@ class ScheduleListProvider extends ChangeNotifier {
     } else {
       print('추가 실패');
     }
-    _scheduleListByDate.add(schedule);
-
-    notifyListeners();
+    updateScheduleList(1);
   }
 
   Future<void> addScheduleListByNlp(String statement) async {
@@ -61,7 +50,5 @@ class ScheduleListProvider extends ChangeNotifier {
       print('추가 실패');
     }
     updateScheduleList(1);
-
-    notifyListeners();
   }
 }

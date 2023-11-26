@@ -22,9 +22,17 @@ class ApiService {
 //일정 추가(nlp)
   static Future<bool> addScheduleByNlp(int studentID, String statement) async {
     final url = Uri.parse('$baseUrl/schedule/nlp/$studentID');
-    final response = await http.post(url, body: statement);
+
+    final body = {'text': statement};
+
+    final response = await http.post(url,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode(body));
 
     if (response.statusCode != 200) {
+      print(response.statusCode);
       return false;
     }
     return true;
