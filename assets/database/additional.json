@@ -1,0 +1,22 @@
+{
+  "counseling": {
+    "advisorList": [0, 1, 2, 3, 4],
+    "advisorCount": 0,
+    "otherList": [0, 1, 2],
+    "otherCount": 0
+  },
+  "thesis": {
+    "standard": false,
+    "topcit": false
+  },
+  "hanja": {
+    "test": false,
+    "class": false
+  },
+  "internship": {
+    "industrialIntership": false,
+    "fieldTrainig": false,
+    "startUp": false,
+    "undergraduateResearchAssistant": false
+  }
+}

@@ -17,6 +17,7 @@ Future<void> main() async {
       providers: [
         ChangeNotifierProvider(create: (context) => userData.studentInfo),
         ChangeNotifierProvider(create: (context) => userData.subjects),
+        ChangeNotifierProvider(create: (context) => userData.additionalCondition),
         ChangeNotifierProvider(create: (context) => GraduateAnalysis()),
       ],
       child: TestUI(),
