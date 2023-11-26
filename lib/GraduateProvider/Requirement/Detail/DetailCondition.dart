@@ -14,6 +14,7 @@ abstract class DetailCondition {
 
   int get satisfied;
   bool get isSatisfied;
+  List<DetailCondition> subCondition = [];
 
   void analysisUpdate();
 }

@@ -14,8 +14,8 @@
     "class": false
   },
   "internship": {
-    "industrialIntership": false,
-    "fieldTrainig": false,
+    "industrialInternship": false,
+    "fieldTraining": false,
     "startUp": false,
     "undergraduateResearchAssistant": false
   }

@@ -1,6 +1,7 @@
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/BSMCredit/Year19BSMCredit.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/Counseling/Year19Counseling.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/DesignCourseCredit/Year19DesignCourseCredit.dart';
+import 'package:causw_graduate/GraduateProvider/Requirement/Detail/Internship/Year19Internship.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/MajorCredit/Year19MajorCredit.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/RequiredMajor/Year19RequiredMajorCredit.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/SpecializedElectiveCredit/Year19SpecializedElectiveCredit.dart';
@@ -16,6 +17,7 @@ class Year19GraduateReq extends GraduateReq {
     bsmCredit = Year19BSMCredit();
     specializedElectiveCredit = Year19SpecializedElectiveCredit();
     counseling = Year19Counseling();
+    internship = Year19Internship();
     initializeList();
   }
 }
