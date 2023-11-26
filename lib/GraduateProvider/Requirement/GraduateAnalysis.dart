@@ -11,6 +11,10 @@ class GraduateAnalysis with ChangeNotifier {
   List<DetailCondition> get satisfiedCondition => _satisfiedCondition;
   List<DetailCondition> get requiredCondition => _requiredCondition;
 
+  GraduateAnalysis() {
+    update();
+  }
+
   void update() {
     UserData userData = UserData();
     GraduateReq graduateReq;

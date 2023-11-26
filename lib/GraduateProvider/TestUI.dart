@@ -1,3 +1,5 @@
+import 'package:causw_graduate/GraduateProvider/Requirement/Detail/DetailCondition.dart';
+import 'package:causw_graduate/GraduateProvider/Requirement/GraduateAnalysis.dart';
 import 'package:causw_graduate/GraduateProvider/UserData/Detail/StudentInfo.dart';
 import 'package:causw_graduate/GraduateProvider/UserData/Detail/Subjects.dart';
 import 'package:causw_graduate/GraduateProvider/UserData/UserData.dart';
@@ -15,6 +17,7 @@ Future<void> main() async {
       providers: [
         ChangeNotifierProvider(create: (context) => userData.studentInfo),
         ChangeNotifierProvider(create: (context) => userData.subjects),
+        ChangeNotifierProvider(create: (context) => GraduateAnalysis()),
       ],
       child: TestUI(),
     ),
@@ -41,7 +44,7 @@ class TestPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Test Page'),
       ),
-      body: SubjectsTest(),
+      body: GraduateListTest(),
     );
   }
 }
@@ -96,6 +99,47 @@ class SubjectsTest extends StatelessWidget {
                 String name = subjects.major[index]['name'];
                 return ListTile(
                   title: Text(name),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class GraduateListTest extends StatelessWidget {
+  const GraduateListTest({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final graduateAnalysis = Provider.of<GraduateAnalysis>(context);
+
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        children: [
+          Text('${graduateAnalysis.satisfiedCondition.length}', style: TextStyle(fontSize: 20)),
+          Expanded(
+            child: ListView.builder(
+              itemCount: graduateAnalysis.satisfiedCondition.length,
+              itemBuilder: (context, index) {
+                DetailCondition condition = graduateAnalysis.satisfiedCondition[index];
+                return ListTile(
+                  title: Text(condition.conditionName),
+                );
+              },
+            ),
+          ),
+          Text('${graduateAnalysis.requiredCondition.length}', style: TextStyle(fontSize: 20)),
+          Expanded(
+            child: ListView.builder(
+              itemCount: graduateAnalysis.requiredCondition.length,
+              itemBuilder: (context, index) {
+                DetailCondition condition = graduateAnalysis.requiredCondition[index];
+                return ListTile(
+                  title: Text(condition.conditionName),
                 );
               },
             ),
