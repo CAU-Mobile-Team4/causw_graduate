@@ -1,18 +1,18 @@
 {
   "major": [
-    {"id": 1, "name": "test1", "credits": 3, "isEnrolled": false, "english": false},
-    {"id": 2, "name": "test2", "credits": 3, "isEnrolled": false, "english": false}
+    {"id": 1, "name": "test1", "credits": 3, "isSatisfied": false, "english": false},
+    {"id": 2, "name": "test2", "credits": 3, "isSatisfied": false, "english": false}
   ],
   "bsm": [
-    {"id": 1, "name": "test1", "credits": 3, "isEnrolled": false, "english": false},
-    {"id": 2, "name": "test2", "credits": 3, "isEnrolled": false, "english": false}
+    {"id": 1, "name": "test1", "credits": 3, "isSatisfied": false, "english": false},
+    {"id": 2, "name": "test2", "credits": 3, "isSatisfied": false, "english": false}
   ],
   "coreElective": [
-    {"id": 1, "name": "test1", "credits": 3, "isEnrolled": false, "english": false},
-    {"id": 2, "name": "test2", "credits": 3, "isEnrolled": false, "english": false}
+    {"id": 1, "name": "test1", "credits": 3, "isSatisfied": false, "english": false},
+    {"id": 2, "name": "test2", "credits": 3, "isSatisfied": false, "english": false}
   ],
   "specializedElective": [
-    {"id": 1, "name": "test1", "credits": 3, "isEnrolled": false, "english": false},
-    {"id": 2, "name": "test2", "credits": 3, "isEnrolled": false, "english": false}
+    {"id": 1, "name": "test1", "credits": 3, "isSatisfied": false, "english": false},
+    {"id": 2, "name": "test2", "credits": 3, "isSatisfied": false, "english": false}
   ]
 }
