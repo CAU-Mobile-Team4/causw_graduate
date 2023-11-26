@@ -1,5 +1,3 @@
-import 'package:causw_graduate/GraduateDB/Requirement/Detail/DetailCondition.dart';
-import 'package:causw_graduate/GraduateDB/Requirement/GraduateAnalysis.dart';
 import 'package:causw_graduate/GraduateUI/ClassSelectionPage.dart';
 import 'package:causw_graduate/GraduateUI/GraduateInformationPage.dart';
 import 'package:causw_graduate/GraduateUI/InformationEntryPage.dart';
@@ -90,7 +88,6 @@ class GraduateQualification extends StatefulWidget {
 class _GraduateQualificationState extends State<GraduateQualification> {
   final classes=List.generate(40, (i) => "Class ${i+1}").toList();
   final List<bool> checkedClasses=List.generate(40, (index) => false);
-  List<DetailCondition> list = GraduateAnalysis().getGraduationAnalysis();
 
   @override
   Widget build(BuildContext context) {

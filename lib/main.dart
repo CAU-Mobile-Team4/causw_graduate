@@ -1,10 +1,7 @@
-import 'package:causw_graduate/GraduateDB/UserData/UserData.dart';
 import 'package:causw_graduate/GraduateUI/InformationEntryPage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  UserData userData = UserData();
-  userData.loadDataAll();
   runApp(MyApp());
 }
 
