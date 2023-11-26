@@ -21,11 +21,12 @@ class ScheduleListProvider extends ChangeNotifier {
     } else {
       print('수정 실패');
     }
-    _scheduleListByDate
+    /*_scheduleListByDate
         .removeWhere((element) => element.scheduleId == schedule.scheduleId);
     _scheduleListByDate.add(schedule);
 
-    notifyListeners();
+    notifyListeners();*/
+    updateScheduleList(1);
   }
 
   Future<void> deleteScheduleList(int scheduleId) async {
@@ -35,10 +36,11 @@ class ScheduleListProvider extends ChangeNotifier {
     } else {
       print('추가 실패');
     }
-    _scheduleListByDate
+    /*_scheduleListByDate
         .removeWhere((element) => element.scheduleId == scheduleId);
 
-    notifyListeners();
+    notifyListeners();*/
+    updateScheduleList(1);
   }
 
   Future<void> addScheduleList(Schedule schedule) async {
