@@ -16,6 +16,31 @@ class AdditionalCondition extends UserDataDetail {
   Map<String, dynamic> get hanja => _hanja;
   Map<String, dynamic> get internship => _internship;
 
+  set additionalCredit(Map<String, dynamic> value) {
+    _additionalCredit = value;
+    notifyListeners();
+  }
+
+  set counseling(Map<String, dynamic> value) {
+    _counseling = value;
+    notifyListeners();
+  }
+
+  set thesis(Map<String, dynamic> value) {
+    _thesis = value;
+    notifyListeners();
+  }
+
+  set hanja(Map<String, dynamic> value) {
+    _hanja = value;
+    notifyListeners();
+  }
+
+  set internship(Map<String, dynamic> value) {
+    _internship = value;
+    notifyListeners();
+  }
+
   @override
   Map<String, dynamic> toJson() {
     return {
