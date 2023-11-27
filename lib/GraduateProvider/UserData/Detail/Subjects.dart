@@ -14,23 +14,24 @@ class Subjects extends UserDataDetail {
   List<Map<String, dynamic>> get specializedElective => _specializedElective;
   Map<String, dynamic> get coreElective => _coreElective;
 
-  set major(List<Map<String, dynamic>> value) {
-    _major = value;
-    notifyListeners();
-  }
-
-  set bsm(List<Map<String, dynamic>> value) {
-    _bsm = value;
-    notifyListeners();
-  }
-
-  set specializedElective(List<Map<String, dynamic>> value) {
-    _specializedElective = value;
-    notifyListeners();
-  }
-
-  set coreElective(Map<String, dynamic> value) {
-    _coreElective = value;
+  void updateSubject(String subjectType, int index, String key, [String? value]) {
+    if(subjectType == 'major') {
+      if(value != null) {
+        _major[index][key] = !_major[index][key];
+      }
+    } else if(subjectType == 'bsm') {
+      if(value != null) {
+        _bsm[index][key] = !_bsm[index][key];
+      }
+    } else if(subjectType == 'specializedElective') {
+      if(value != null) {
+        _specializedElective[index][key] = !_specializedElective[index][key];
+      }
+    } else if(subjectType == 'coreElective') {
+      if(value != null) {
+        _coreElective[index][key] = !_coreElective[index][key];
+      }
+    }
     notifyListeners();
   }
 
