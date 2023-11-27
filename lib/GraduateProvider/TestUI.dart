@@ -165,7 +165,7 @@ class GraduateListTest extends StatelessWidget {
               itemBuilder: (context, index) {
                 DetailCondition condition = graduateAnalysis.satisfiedCondition[index];
                 return ListTile(
-                  title: Text(condition.conditionName),
+                  title: _buildTextBasedOnType(condition)
                 );
               },
             ),

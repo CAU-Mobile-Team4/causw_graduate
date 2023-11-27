@@ -39,6 +39,9 @@ class Year19TotalCredit extends TotalCredit {
         }
       }
     });
+    userData.additionalCondition.additionalCredit.forEach((key, value) {
+      totalCredit += value as int;
+    });
 
     satisfied = totalCredit;
     if (satisfied >= require) {

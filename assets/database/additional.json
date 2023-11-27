@@ -1,4 +1,7 @@
 {
+  "additionalCredit": {
+    "normalElective": 0
+  },
   "counseling": {
     "advisorList": [0, 1, 2, 3, 4],
     "advisorCount": 0,
