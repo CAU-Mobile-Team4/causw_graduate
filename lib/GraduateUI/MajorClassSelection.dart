@@ -1,6 +1,8 @@
+import 'package:causw_graduate/GraduateProvider/UserData/Detail/Subjects.dart';
 import 'package:causw_graduate/GraduateUI/ClassSelectionPage.dart';
 import 'package:causw_graduate/GraduateUI/appColor.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MajorClass extends StatefulWidget {
   const MajorClass({super.key});
@@ -14,6 +16,8 @@ class _MajorClassState extends State<MajorClass> {
   final List<bool> checkedClasses=List.generate(100, (index) => false);
   @override
   Widget build(BuildContext context) {
+    final subjects = Provider.of<Subjects>(context);
+
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -36,16 +40,14 @@ class _MajorClassState extends State<MajorClass> {
           Expanded(
           child: Container(
               child: ListView.builder(
-                itemCount: classes.length,
+                itemCount: subjects.major.length,
                 itemBuilder: (context,index){
                   return CheckboxListTile(
-                      title: Text(classes[index],style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),
-                      value: checkedClasses[index],
+                      title: Text('${subjects.major[index]['name']}',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),
+                      value: subjects.major[index]['isSatisfied'],
                       onChanged: (value){
-                        setState(() {
-                      checkedClasses[index]=value!;
-                    });
-                  }
+                        subjects.updateSubject('major', index, 'isSatisfied');
+                      }
               );
             },
           )),
