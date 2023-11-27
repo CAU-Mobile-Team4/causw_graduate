@@ -1,3 +1,5 @@
+import 'package:causw_graduate/GraduateProvider/Requirement/Detail/DetailCondition.dart';
+import 'package:causw_graduate/GraduateProvider/Requirement/GraduateAnalysis.dart';
 import 'package:causw_graduate/GraduateUI/ClassSelectionPage.dart';
 import 'package:causw_graduate/GraduateUI/GraduateInformationPage.dart';
 import 'package:causw_graduate/GraduateUI/InformationEntryPage.dart';
@@ -5,6 +7,8 @@ import 'package:causw_graduate/GraduateUI/InformationEntryPage.dart';
 import 'package:causw_graduate/GraduateUI/appColor.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
+
+import 'package:provider/provider.dart';
 
 class HalfCircularGraph extends StatefulWidget {
   const HalfCircularGraph({super.key});
@@ -91,6 +95,44 @@ class _GraduateQualificationState extends State<GraduateQualification> {
 
   @override
   Widget build(BuildContext context) {
+    final graduateAnalysis = Provider.of<GraduateAnalysis>(context);
+
+    Widget _buildTextBasedOnType(DetailCondition condition) {
+      switch (condition.type) {
+        case 1:
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(condition.conditionName),
+              Text('${condition.satisfied}/${condition.require}')
+            ],
+          );
+        case 2:
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('${condition.conditionName} (아래 ${condition.subCondition.length}개 중 ${condition.require}개 이상 만족)'),
+              Text('${condition.satisfied}/${condition.require}')
+            ],
+          );
+        case 3:
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('-> ${condition.conditionName}'),
+              Text('${condition.satisfied}/${condition.require}')
+            ],
+          );
+        default:
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(condition.conditionName),
+              Text('${condition.satisfied}/${condition.require}')
+            ],
+          );
+      }
+    }
 
     List<String> selectedClasses = [];
     for (int i = 0; i < classes.length; i++) {
@@ -223,17 +265,12 @@ class _GraduateQualificationState extends State<GraduateQualification> {
           Expanded(
             child: ListView.builder(
               shrinkWrap: true,
-                padding: EdgeInsets.all(8.0),
-              itemCount: selectedClasses.length,
+              padding: EdgeInsets.all(8.0),
+              itemCount: graduateAnalysis.satisfiedCondition.length,
               itemBuilder: (context,index){
-                return CheckboxListTile(
-                    title: Text(selectedClasses[index],style: TextStyle(fontWeight: FontWeight.bold),),
-                    value: checkedClasses[classes.indexOf(selectedClasses[index])],
-                    onChanged: (value){
-                      setState(() {
-                        checkedClasses[classes.indexOf(selectedClasses[index])] = value!;
-                      });
-                    }
+                DetailCondition condition = graduateAnalysis.satisfiedCondition[index];
+                return ListTile(
+                    title: _buildTextBasedOnType(condition)
                 );
               },
             ),
@@ -287,16 +324,11 @@ class _GraduateQualificationState extends State<GraduateQualification> {
             child: ListView.builder(
               shrinkWrap: true,
               padding: EdgeInsets.all(8.0),
-              itemCount: selectedClasses2.length,
+              itemCount: graduateAnalysis.requiredCondition.length,
               itemBuilder: (context,index){
-                return CheckboxListTile(
-                    title: Text(selectedClasses2[index],style: TextStyle(fontWeight: FontWeight.bold),),
-                    value: checkedClasses[classes.indexOf(selectedClasses2[index])],
-                    onChanged: (value){
-                      setState(() {
-                        checkedClasses[classes.indexOf(selectedClasses2[index])] = value!;
-                      });
-                    }
+                DetailCondition condition = graduateAnalysis.requiredCondition[index];
+                return ListTile(
+                    title: _buildTextBasedOnType(condition)
                 );
               },
             ),
