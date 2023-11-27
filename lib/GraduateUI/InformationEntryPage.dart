@@ -1,6 +1,8 @@
+import 'package:causw_graduate/GraduateProvider/UserData/Detail/StudentInfo.dart';
 import 'package:causw_graduate/GraduateUI/GraduateQualification.dart';
 import 'package:causw_graduate/GraduateUI/appColor.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class InformationEntryPage extends StatefulWidget {
   const InformationEntryPage({super.key});
@@ -14,14 +16,10 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
   final _majorList=["주전공","복수전공","융합전공",];
   var _major="주전공";
   var _classOfYear=19;
-  @override
-  void initState() {
-    super.initState();
-    setState(() {
-      _classOfYear = _classOfYearList[0];
-    });
-  }
+
   Widget build(BuildContext context) {
+    final studentInfo = Provider.of<StudentInfo>(context);
+
     return Scaffold(
       backgroundColor: AppColor.background,
       //backgroundColor: Colors.#B0B2D9,
@@ -46,16 +44,14 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
                   flex: 3,
                   child: Center(
                     child: DropdownButton(
-                      value: _classOfYear,
-                      items: _classOfYearList
+                      value: studentInfo.admissionYear,
+                      items: studentInfo.admissionYearList
                           .map(
-                              (year)=>DropdownMenuItem(
-                              value: year,
-                              child: Text("$year",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),))).toList(),
+                              (admissionYear)=>DropdownMenuItem(
+                              value: admissionYear,
+                              child: Text("$admissionYear",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),))).toList(),
                       onChanged: (value){
-                        setState(() {
-                          _classOfYear=value!;
-                        });
+                        studentInfo.admissionYear = value!;
                       },
                     ),
                   ),
@@ -78,16 +74,14 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
                   flex: 3,
                   child: Center(
                     child: DropdownButton(
-                      value: _major,
-                      items: _majorList
+                      value: studentInfo.majorStatus,
+                      items: studentInfo.majorStatusList
                           .map(
                               (major)=>DropdownMenuItem(
                               value: major,
                               child: Text(major,style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),))).toList(),
                       onChanged: (value){
-                        setState(() {
-                          _major=value!;
-                        });
+                        studentInfo.majorStatus = value!;
                       },
                     ),
                   ),
@@ -112,5 +106,3 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
     );
   }
 }
-
-
