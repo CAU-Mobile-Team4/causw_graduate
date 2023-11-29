@@ -1,6 +1,6 @@
 import 'package:causw_graduate/AppColor.dart';
-import 'package:causw_graduate/calendar.dart';
-import 'package:causw_graduate/schedule_list_provider.dart';
+import 'package:causw_graduate/calendar/calendar.dart';
+import 'package:causw_graduate/calendar/schedule_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

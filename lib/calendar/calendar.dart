@@ -1,6 +1,6 @@
 import 'package:causw_graduate/AppColor.dart';
-import 'package:causw_graduate/schedule.dart';
-import 'package:causw_graduate/schedule_list_provider.dart';
+import 'package:causw_graduate/calendar/schedule.dart';
+import 'package:causw_graduate/calendar/schedule_list_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -30,7 +30,6 @@ class _CalendarState extends State<Calendar>
   }
 
   final TextEditingController _searchController = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +81,7 @@ class _CalendarState extends State<Calendar>
                           color: AppColor.main),
                     ),
                     calendarStyle: const CalendarStyle(
-                      //marker 관련
+                        //marker 관련
                         canMarkersOverflow: false,
                         markersAutoAligned: true,
                         markerSize: 10,
@@ -133,7 +132,7 @@ class _CalendarState extends State<Calendar>
               Text(
                 '${selectedDayWithoutTime.year}년 ${selectedDayWithoutTime.month}월 ${selectedDayWithoutTime.day}일',
                 style:
-                const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               Expanded(
                 child: ListView(
@@ -141,180 +140,186 @@ class _CalendarState extends State<Calendar>
                       .watch<ScheduleListProvider>()
                       .scheduleListByDate
                       .where((event) =>
-                  (event.month ==
-                      selectedDayWithoutTime.month.toString()) &&
-                      (event.day == selectedDayWithoutTime.day.toString()))
+                          (event.month ==
+                              selectedDayWithoutTime.month.toString()) &&
+                          (event.day == selectedDayWithoutTime.day.toString()))
                       .map(
                         (event) => Dismissible(
-                      key: Key(event.scheduleId.toString()),
-                      onDismissed: (direction){
-                        if (event.scheduleId != null) {
-                          context.read<ScheduleListProvider>().deleteScheduleList(event.scheduleId!);
-                        } else {
-                          print('Error: scheduleId is null');
-                        }
-                      },
-                      child: Container(
-                        margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
-                        decoration: BoxDecoration(
-                            border: Border.all(),
-                            borderRadius: BorderRadius.circular(20)),
-                        child: ListTile(
-                          leading: Text(event.time ?? '하루종일'),
-                          title: Text(
-                            event.event,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                            ),
-                          ),
-                          subtitle: Text(
-                            event.location,
-                            style: const TextStyle(fontSize: 16),
-                          ),
-                          onTap: () {
-                            TextEditingController eventController =
-                            TextEditingController(text: event.event);
-                            TextEditingController monthController =
-                            TextEditingController(
-                                text: selectedDayWithoutTime.month
-                                    .toString());
-                            TextEditingController dayController =
-                            TextEditingController(
-                                text: selectedDayWithoutTime.day
-                                    .toString());
-                            TextEditingController locationController =
-                            TextEditingController(text: event.location);
+                          key: Key(event.scheduleId.toString()),
+                          onDismissed: (direction) {
+                            if (event.scheduleId != null) {
+                              context
+                                  .read<ScheduleListProvider>()
+                                  .deleteScheduleList(event.scheduleId!);
+                            } else {
+                              print('Error: scheduleId is null');
+                            }
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                            decoration: BoxDecoration(
+                                border: Border.all(),
+                                borderRadius: BorderRadius.circular(20)),
+                            child: ListTile(
+                              leading: Text(event.time ?? '하루종일'),
+                              title: Text(
+                                event.event,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
+                              ),
+                              subtitle: Text(
+                                event.location,
+                                style: const TextStyle(fontSize: 16),
+                              ),
+                              onTap: () {
+                                TextEditingController eventController =
+                                    TextEditingController(text: event.event);
+                                TextEditingController monthController =
+                                    TextEditingController(
+                                        text: selectedDayWithoutTime.month
+                                            .toString());
+                                TextEditingController dayController =
+                                    TextEditingController(
+                                        text: selectedDayWithoutTime.day
+                                            .toString());
+                                TextEditingController locationController =
+                                    TextEditingController(text: event.location);
 
-                            showDialog(
-                              context: context,
-                              builder: (context) => SingleChildScrollView(
-                                child: AlertDialog(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  title: const Text(
-                                    'Edit this event',
-                                    style: TextStyle(
-                                        color: AppColor.main,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 24),
-                                  ),
-                                  content: SizedBox(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.9,
-                                    height:
-                                    MediaQuery.of(context).size.width *
-                                        0.7,
-                                    child: SingleChildScrollView(
-                                      child: Column(
-                                        children: [
-                                          ListTile(
-                                            title: const Text(
-                                              'Event Name',
-                                              style: TextStyle(
-                                                fontSize: 20,
-                                              ),
-                                            ),
-                                            subtitle: TextField(
-                                              controller: eventController,
-                                              decoration:
-                                              const InputDecoration(
-                                                enabledBorder:
-                                                UnderlineInputBorder(),
-                                              ),
-                                            ),
-                                          ),
-                                          Row(
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => SingleChildScrollView(
+                                    child: AlertDialog(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      title: const Text(
+                                        'Edit this event',
+                                        style: TextStyle(
+                                            color: AppColor.main,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 24),
+                                      ),
+                                      content: SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.9,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.7,
+                                        child: SingleChildScrollView(
+                                          child: Column(
                                             children: [
-                                              Expanded(
-                                                child: ListTile(
-                                                  title: const Text(
-                                                    'Month',
-                                                    style: TextStyle(
-                                                        fontSize: 20),
+                                              ListTile(
+                                                title: const Text(
+                                                  'Event Name',
+                                                  style: TextStyle(
+                                                    fontSize: 20,
                                                   ),
-                                                  subtitle: TextField(
-                                                    controller:
-                                                    monthController,
-                                                    decoration:
-                                                    const InputDecoration(
-                                                      enabledBorder:
-                                                      UnderlineInputBorder(),
-                                                    ),
+                                                ),
+                                                subtitle: TextField(
+                                                  controller: eventController,
+                                                  decoration:
+                                                      const InputDecoration(
+                                                    enabledBorder:
+                                                        UnderlineInputBorder(),
                                                   ),
                                                 ),
                                               ),
-                                              Expanded(
-                                                child: ListTile(
-                                                  title: const Text(
-                                                    'Day',
-                                                    style: TextStyle(
-                                                        fontSize: 20),
-                                                  ),
-                                                  subtitle: TextField(
-                                                    controller: dayController,
-                                                    decoration:
-                                                    const InputDecoration(
-                                                      enabledBorder:
-                                                      UnderlineInputBorder(),
+                                              Row(
+                                                children: [
+                                                  Expanded(
+                                                    child: ListTile(
+                                                      title: const Text(
+                                                        'Month',
+                                                        style: TextStyle(
+                                                            fontSize: 20),
+                                                      ),
+                                                      subtitle: TextField(
+                                                        controller:
+                                                            monthController,
+                                                        decoration:
+                                                            const InputDecoration(
+                                                          enabledBorder:
+                                                              UnderlineInputBorder(),
+                                                        ),
+                                                      ),
                                                     ),
+                                                  ),
+                                                  Expanded(
+                                                    child: ListTile(
+                                                      title: const Text(
+                                                        'Day',
+                                                        style: TextStyle(
+                                                            fontSize: 20),
+                                                      ),
+                                                      subtitle: TextField(
+                                                        controller:
+                                                            dayController,
+                                                        decoration:
+                                                            const InputDecoration(
+                                                          enabledBorder:
+                                                              UnderlineInputBorder(),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              ListTile(
+                                                title: const Text(
+                                                  'Location',
+                                                  style:
+                                                      TextStyle(fontSize: 20),
+                                                ),
+                                                subtitle: TextField(
+                                                  controller:
+                                                      locationController,
+                                                  decoration:
+                                                      const InputDecoration(
+                                                    enabledBorder:
+                                                        UnderlineInputBorder(),
                                                   ),
                                                 ),
                                               ),
                                             ],
                                           ),
-                                          ListTile(
-                                            title: const Text(
-                                              'Location',
-                                              style: TextStyle(fontSize: 20),
-                                            ),
-                                            subtitle: TextField(
-                                              controller: locationController,
-                                              decoration:
-                                              const InputDecoration(
-                                                enabledBorder:
-                                                UnderlineInputBorder(),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
+                                        ),
                                       ),
+                                      actions: <Widget>[
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text('Close'),
+                                        ),
+                                        ElevatedButton(
+                                          onPressed: () async {
+                                            Schedule schedule = Schedule(
+                                              scheduleId: event.scheduleId,
+                                              event: eventController.text,
+                                              location: locationController.text,
+                                              month: monthController.text,
+                                              day: dayController.text,
+                                            );
+                                            await context
+                                                .read<ScheduleListProvider>()
+                                                .editScheduleList(schedule);
+
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text('Apply'),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                  actions: <Widget>[
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: const Text('Close'),
-                                    ),
-                                    ElevatedButton(
-                                      onPressed: () async {
-                                        Schedule schedule = Schedule(
-                                          scheduleId: event.scheduleId,
-                                          event: eventController.text,
-                                          location: locationController.text,
-                                          month: monthController.text,
-                                          day: dayController.text,
-                                        );
-                                        await context
-                                            .read<ScheduleListProvider>()
-                                            .editScheduleList(schedule);
-
-                                        Navigator.pop(context);
-                                      },
-                                      child: const Text('Apply'),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
+                                );
+                              },
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  )
+                      )
                       .toList(),
                 ),
               )
@@ -335,7 +340,7 @@ class _CalendarState extends State<Calendar>
               TextEditingController dayController = TextEditingController(
                   text: selectedDayWithoutTime.day.toString());
               TextEditingController locationController =
-              TextEditingController();
+                  TextEditingController();
               showDialog(
                 context: context,
                 builder: (context) => SingleChildScrollView(
@@ -505,8 +510,7 @@ class _CalendarState extends State<Calendar>
                 builder: (BuildContext context) {
                   return CupertinoPageScaffold(
                     navigationBar: const CupertinoNavigationBar(
-                      middle:
-                      Text('Search'), // NavigationBar의 제목을 'Search'로 설정
+                      middle: Text('Search'), // NavigationBar의 제목을 'Search'로 설정
                     ),
                     child: Column(
                       children: [
@@ -544,34 +548,41 @@ class _CalendarState extends State<Calendar>
                             children: context
                                 .watch<ScheduleListProvider>()
                                 .scheduleListByDate
-                                .where((event) =>
-                                event.event.contains(_searchController.text))
+                                .where((event) => event.event
+                                    .contains(_searchController.text))
                                 .map(
                                   (event) => Container(
-                                margin: const EdgeInsets.fromLTRB(10, 0, 10, 5),
-                                decoration: BoxDecoration(
-                                    border: Border.all(),
-                                    borderRadius: BorderRadius.circular(20)),
-                                child: ListTile(
-                                    leading: Text(event.time ?? '하루종일'),
-                                    title: Text(
-                                      event.event,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    subtitle: Text(event.location),
-                                    onTap: () {
-                                      setState(() {
-                                        _searchController.clear();
-                                        Navigator.pop(context);
-                                        focusedDay = DateTime(2023,int.parse(event.month), int.parse(event.day));
-                                        selectedDay = DateTime(2023,int.parse(event.month),int.parse(event.day));
-                                      });
-                                    }
-                                ),
-                              ),
-                            )
+                                    margin:
+                                        const EdgeInsets.fromLTRB(10, 0, 10, 5),
+                                    decoration: BoxDecoration(
+                                        border: Border.all(),
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    child: ListTile(
+                                        leading: Text(event.time ?? '하루종일'),
+                                        title: Text(
+                                          event.event,
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        subtitle: Text(event.location),
+                                        onTap: () {
+                                          setState(() {
+                                            _searchController.clear();
+                                            Navigator.pop(context);
+                                            focusedDay = DateTime(
+                                                2023,
+                                                int.parse(event.month),
+                                                int.parse(event.day));
+                                            selectedDay = DateTime(
+                                                2023,
+                                                int.parse(event.month),
+                                                int.parse(event.day));
+                                          });
+                                        }),
+                                  ),
+                                )
                                 .toList(),
                           ),
                         )

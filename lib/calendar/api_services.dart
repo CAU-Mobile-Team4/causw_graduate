@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:causw_graduate/schedule.dart';
+import 'package:causw_graduate/calendar/schedule.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {

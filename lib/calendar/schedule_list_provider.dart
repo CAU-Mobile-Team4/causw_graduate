@@ -1,5 +1,5 @@
-import 'package:causw_graduate/api_services.dart';
-import 'package:causw_graduate/schedule.dart';
+import 'package:causw_graduate/calendar/api_services.dart';
+import 'package:causw_graduate/calendar/schedule.dart';
 import 'package:flutter/material.dart';
 
 class ScheduleListProvider extends ChangeNotifier {
