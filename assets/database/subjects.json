@@ -18,7 +18,8 @@
     {"name": "자료구조", "credits": 3, "isSatisfied": false, "english": false, "isRequired": true, "isDesignCourse": false},
     {"name": "컴퓨터구조", "credits": 3, "isSatisfied": false, "english": false, "isRequired": true, "isDesignCourse": false},
     {"name": "운영체제", "credits": 3, "isSatisfied": false, "english": false, "isRequired": true, "isDesignCourse": false},
-    {"name": "알고리즘", "credits": 3, "isSatisfied": false, "english": false, "isRequired": true, "isDesignCourse": false}
+    {"name": "알고리즘", "credits": 3, "isSatisfied": false, "english": false, "isRequired": true, "isDesignCourse": false},
+    {"name": "코딩부트캠프", "credits": 3, "isSatisfied": false, "english": false, "isRequired": true, "isDesignCourse": false}
   ],
   "basicMajor": [
     {"name": "기초전공 나중에", "credits": 3, "isSatisfied": false, "english": false}

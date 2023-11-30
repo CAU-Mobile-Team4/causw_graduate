@@ -11,6 +11,7 @@ abstract class GraduateReq {
   late DetailCondition internship;
   late DetailCondition capstone;
   late DetailCondition hanja;
+  late DetailCondition codingBootCamp;
 
   List<DetailCondition> condition = [];
 
@@ -25,5 +26,6 @@ abstract class GraduateReq {
     condition.add(internship);
     condition.add(capstone);
     condition.add(hanja);
+    condition.add(codingBootCamp);
   }
 }

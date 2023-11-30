@@ -1,5 +1,6 @@
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/BSMCredit/Year19BSMCredit.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/Capstone/Year19Capstone.dart';
+import 'package:causw_graduate/GraduateProvider/Requirement/Detail/CodingBootCamp/Year19CodingBootCamp.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/Counseling/Year19Counseling.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/DesignCourseCredit/Year19DesignCourseCredit.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/Hanja/Year19Hanja.dart';
@@ -22,6 +23,7 @@ class Year19GraduateReq extends GraduateReq {
     internship = Year19Internship();
     capstone = Year19Capstone();
     hanja = Year19Hanja();
+    codingBootCamp = Year19CodingBootCamp();
     initializeList();
   }
 }
