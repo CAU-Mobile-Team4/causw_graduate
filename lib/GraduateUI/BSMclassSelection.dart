@@ -1,5 +1,5 @@
 import 'package:causw_graduate/GraduateUI/ClassSelectionPage.dart';
-import 'package:causw_graduate/GraduateUI/appColor.dart';
+import 'package:causw_graduate/AppColor.dart';
 import 'package:flutter/material.dart';
 
 class BSMclassSelection extends StatefulWidget {
@@ -21,7 +21,7 @@ class _BSMclassSelectionState extends State<BSMclassSelection> {
         ),
           centerTitle: true,
           leading: IconButton(onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder:
+            Navigator.pop(context, MaterialPageRoute(builder:
                 (context)=> ClassSelection()
             )
             );

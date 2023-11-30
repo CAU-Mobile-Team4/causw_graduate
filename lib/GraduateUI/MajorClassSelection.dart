@@ -1,6 +1,6 @@
 import 'package:causw_graduate/GraduateProvider/UserData/Detail/Subjects.dart';
 import 'package:causw_graduate/GraduateUI/ClassSelectionPage.dart';
-import 'package:causw_graduate/GraduateUI/appColor.dart';
+import 'package:causw_graduate/AppColor.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -25,7 +25,7 @@ class _MajorClassState extends State<MajorClass> {
         appBar: AppBar(title: Text('MAJOR CLASS',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),
         ),
           leading: IconButton(onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder:
+            Navigator.pop(context, MaterialPageRoute(builder:
                 (context)=> ClassSelection()
             )
             );

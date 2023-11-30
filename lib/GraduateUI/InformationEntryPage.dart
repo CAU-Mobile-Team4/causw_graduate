@@ -1,6 +1,6 @@
 import 'package:causw_graduate/GraduateProvider/UserData/Detail/StudentInfo.dart';
 import 'package:causw_graduate/GraduateUI/GraduateQualification.dart';
-import 'package:causw_graduate/GraduateUI/appColor.dart';
+import 'package:causw_graduate/AppColor.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,10 +12,6 @@ class InformationEntryPage extends StatefulWidget {
 }
 
 class _InformationEntryPageState extends State<InformationEntryPage> {
-  final _classOfYearList=[18,19,20];
-  final _majorList=["주전공","복수전공","융합전공",];
-  var _major="주전공";
-  var _classOfYear=19;
 
   Widget build(BuildContext context) {
     final studentInfo = Provider.of<StudentInfo>(context);

@@ -1,10 +1,11 @@
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/DetailCondition.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/GraduateAnalysis.dart';
 import 'package:causw_graduate/GraduateUI/ClassSelectionPage.dart';
+import 'package:causw_graduate/GraduateUI/EachGraduateQualificationInfo.dart';
 import 'package:causw_graduate/GraduateUI/GraduateInformationPage.dart';
 import 'package:causw_graduate/GraduateUI/InformationEntryPage.dart';
 
-import 'package:causw_graduate/GraduateUI/appColor.dart';
+import 'package:causw_graduate/AppColor.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
@@ -56,7 +57,7 @@ class CircularGraphPainter extends CustomPainter {
     canvas.drawArc(
       Rect.fromCircle(center: center, radius: radius),
       -pi, // 시작 각도
-      pi, // 그릴 각도 (반원이므로 pi)
+      pi/2, // 그릴 각도 (반원이므로 pi)
       false,
       paint,
     );
@@ -99,20 +100,22 @@ class _GraduateQualificationState extends State<GraduateQualification> {
 
     Widget _buildTextBasedOnType(DetailCondition condition) {
       switch (condition.type) {
-        case 1:
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(condition.conditionName),
-              Text('${condition.satisfied}/${condition.require}')
-            ],
-          );
         case 2:
           return Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('${condition.conditionName} (아래 ${condition.subCondition.length}개 중 ${condition.require}개 이상 만족)'),
-              Text('${condition.satisfied}/${condition.require}')
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder:
+                    (context)=> EachGraduateQualificationInfo(guideline: condition.guideLine,)
+                    ));
+                  }, icon: Icon(Icons.question_mark)),
+                  Text('${condition.satisfied}/${condition.require}'),
+                ],
+              )
             ],
           );
         case 3:
@@ -120,7 +123,18 @@ class _GraduateQualificationState extends State<GraduateQualification> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('-> ${condition.conditionName}'),
-              Text('${condition.satisfied}/${condition.require}')
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder:
+                    (context)=> EachGraduateQualificationInfo(guideline: condition.guideLine)
+                    ));
+                  },
+                      icon: Icon(Icons.question_mark)),
+                  Text('${condition.satisfied}/${condition.require}'),
+                ],
+              )
             ],
           );
         default:
@@ -128,7 +142,17 @@ class _GraduateQualificationState extends State<GraduateQualification> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(condition.conditionName),
-              Text('${condition.satisfied}/${condition.require}')
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  IconButton(onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder:
+                    (context)=> EachGraduateQualificationInfo(guideline: condition.guideLine)
+                    ));
+                  }, icon: Icon(Icons.question_mark)),
+                  Text('${condition.satisfied}/${condition.require}'),
+                ],
+              )
             ],
           );
       }
@@ -158,7 +182,7 @@ class _GraduateQualificationState extends State<GraduateQualification> {
         backgroundColor: AppColor.background,
         leading: IconButton(
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder:
+              Navigator.pop(context, MaterialPageRoute(builder:
               (context)=> InformationEntryPage()
           )
           );
@@ -190,7 +214,7 @@ class _GraduateQualificationState extends State<GraduateQualification> {
         children: [
           Container(
               decoration: BoxDecoration(
-                color: AppColor.purple,
+                color: AppColor.background,
                   boxShadow: [
                     BoxShadow(
                       color: AppColor.main.withOpacity(0.5),

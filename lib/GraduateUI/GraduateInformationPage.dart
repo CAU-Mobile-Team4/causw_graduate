@@ -1,4 +1,4 @@
-import 'package:causw_graduate/GraduateUI/appColor.dart';
+import 'package:causw_graduate/AppColor.dart';
 import 'package:flutter/material.dart';
 
 class GraduateInformation extends StatelessWidget {

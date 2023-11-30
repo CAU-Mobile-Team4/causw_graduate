@@ -1,5 +1,5 @@
 import 'package:causw_graduate/GraduateUI/ClassSelectionPage.dart';
-import 'package:causw_graduate/GraduateUI/appColor.dart';
+import 'package:causw_graduate/AppColor.dart';
 import 'package:flutter/material.dart';
 
 class SelectGEclass extends StatefulWidget {
@@ -21,7 +21,7 @@ class _SelectGEclassState extends State<SelectGEclass> {
           appBar: AppBar(title: Text('GE CLASS',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),
           ),
             leading: IconButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder:
+              Navigator.pop(context, MaterialPageRoute(builder:
                   (context)=> ClassSelection()
               )
               );

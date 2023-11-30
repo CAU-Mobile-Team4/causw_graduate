@@ -3,7 +3,7 @@ import 'package:causw_graduate/GraduateUI/GEclassSelectionPage.dart';
 import 'package:causw_graduate/GraduateUI/GraduateQualification.dart';
 import 'package:causw_graduate/GraduateUI/GraduationETCPage.dart';
 import 'package:causw_graduate/GraduateUI/MajorClassSelection.dart';
-import 'package:causw_graduate/GraduateUI/appColor.dart';
+import 'package:causw_graduate/AppColor.dart';
 import 'package:flutter/material.dart';
 
 class ClassSelection extends StatelessWidget {
@@ -16,7 +16,7 @@ class ClassSelection extends StatelessWidget {
       AppBar(title: Text("SELECT CLASS",style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),backgroundColor: AppColor.background,
 
         leading: IconButton(onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder:
+          Navigator.pop(context, MaterialPageRoute(builder:
               (context)=> GraduateQualification()
           )
           );

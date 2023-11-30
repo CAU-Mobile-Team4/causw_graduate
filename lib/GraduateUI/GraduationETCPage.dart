@@ -1,5 +1,5 @@
 import 'package:causw_graduate/GraduateUI/ClassSelectionPage.dart';
-import 'package:causw_graduate/GraduateUI/appColor.dart';
+import 'package:causw_graduate/AppColor.dart';
 import 'package:flutter/material.dart';
 
 class GraduateEtc extends StatefulWidget {
@@ -20,7 +20,7 @@ class _GraduateEtcState extends State<GraduateEtc> {
     ),
           centerTitle: true,
           leading: IconButton(onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder:
+            Navigator.pop(context, MaterialPageRoute(builder:
                 (context)=> ClassSelection()
             )
             );
