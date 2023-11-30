@@ -9,6 +9,7 @@ abstract class GraduateReq {
   late DetailCondition specializedElectiveCredit;
   late DetailCondition counseling;
   late DetailCondition internship;
+  late DetailCondition capstone;
 
   List<DetailCondition> condition = [];
 
@@ -21,5 +22,6 @@ abstract class GraduateReq {
     condition.add(specializedElectiveCredit);
     condition.add(counseling);
     condition.add(internship);
+    condition.add(capstone);
   }
 }
