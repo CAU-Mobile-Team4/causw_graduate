@@ -37,24 +37,24 @@
   ],
   "coreElective": {
     "convergence": [
-      {"name": "test1", "credits": 3, "isSatisfied": false},
-      {"name": "test2", "credits": 3, "isSatisfied": false}
+      {"name": "convergence test1", "credits": 3, "isSatisfied": false},
+      {"name": "convergence test2", "credits": 3, "isSatisfied": false}
     ],
     "communication": [
-      {"name": "test1", "credits": 3, "isSatisfied": false},
-      {"name": "test2", "credits": 3, "isSatisfied": false}
+      {"name": "communication test1", "credits": 3, "isSatisfied": false},
+      {"name": "communication test2", "credits": 3, "isSatisfied": false}
     ],
     "creativity": [
-      {"name": "test1", "credits": 3, "isSatisfied": false},
-      {"name": "test2", "credits": 3, "isSatisfied": false}
+      {"name": "creativity test1", "credits": 3, "isSatisfied": false},
+      {"name": "creativity test2", "credits": 3, "isSatisfied": false}
     ],
     "challenge": [
-      {"name": "test1", "credits": 3, "isSatisfied": false},
-      {"name": "test2", "credits": 3, "isSatisfied": false}
+      {"name": "challenge test1", "credits": 3, "isSatisfied": false},
+      {"name": "challenge test2", "credits": 3, "isSatisfied": false}
     ],
     "trust": [
-      {"name": "test1", "credits": 3, "isSatisfied": false},
-      {"name": "test2", "credits": 3, "isSatisfied": false}
+      {"name": "trust test1", "credits": 3, "isSatisfied": false},
+      {"name": "trust test2", "credits": 3, "isSatisfied": false}
     ]
   }
 }
