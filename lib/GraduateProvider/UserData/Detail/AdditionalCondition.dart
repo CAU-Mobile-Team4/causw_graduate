@@ -16,28 +16,30 @@ class AdditionalCondition extends UserDataDetail {
   Map<String, dynamic> get hanja => _hanja;
   Map<String, dynamic> get internship => _internship;
 
-  set additionalCredit(Map<String, dynamic> value) {
-    _additionalCredit = value;
+  void updateAdditionalCredit(String key, int value) {
+    _additionalCredit[key] = value;
     notifyListeners();
   }
 
-  set counseling(Map<String, dynamic> value) {
-    _counseling = value;
+  void updateCounseling(String key, int value) {
+    if (key == 'advisorCount' || key == 'otherCount') {
+      _counseling[key] = value;
+      notifyListeners();
+    }
+  }
+
+  void updateThesis(String key) {
+    _thesis[key] = !_thesis[key];
     notifyListeners();
   }
 
-  set thesis(Map<String, dynamic> value) {
-    _thesis = value;
+  void updateHanja(String key) {
+    _hanja[key] = !_hanja[key];
     notifyListeners();
   }
 
-  set hanja(Map<String, dynamic> value) {
-    _hanja = value;
-    notifyListeners();
-  }
-
-  set internship(Map<String, dynamic> value) {
-    _internship = value;
+  void updateInternship(String key) {
+    _internship[key] = !_internship[key];
     notifyListeners();
   }
 
