@@ -5,11 +5,13 @@ class Subjects extends UserDataDetail {
   final String key = 'subjects';
 
   late List<Map<String, dynamic>> _major;
+  late List<Map<String, dynamic>> _basicMajor;
   late List<Map<String, dynamic>> _bsm;
   late List<Map<String, dynamic>> _specializedElective;
   late Map<String, dynamic> _coreElective;
 
   List<Map<String, dynamic>> get major => _major;
+  List<Map<String, dynamic>> get basicMajor => _basicMajor;
   List<Map<String, dynamic>> get bsm => _bsm;
   List<Map<String, dynamic>> get specializedElective => _specializedElective;
   Map<String, dynamic> get coreElective => _coreElective;
@@ -18,6 +20,10 @@ class Subjects extends UserDataDetail {
     if(subjectType == 'major') {
       if(value == null) {
         _major[index][key] = !_major[index][key];
+      }
+    } else if(subjectType == 'basicMajor') {
+      if(value == null) {
+        _basicMajor[index][key] = !_basicMajor[index][key];
       }
     } else if(subjectType == 'bsm') {
       if(value == null) {
@@ -39,6 +45,7 @@ class Subjects extends UserDataDetail {
   Map<String, dynamic> toJson() {
     return {
       'major': _major,
+      'basicMajor': _basicMajor,
       'bsm': _bsm,
       'specializedElective': _specializedElective,
       'coreElective': _coreElective
@@ -48,6 +55,7 @@ class Subjects extends UserDataDetail {
   @override
   void fromJson(Map<String, dynamic> json) {
     _major = (json['major'] as List).cast<Map<String, dynamic>>();
+    _basicMajor = (json['basicMajor'] as List).cast<Map<String, dynamic>>();
     _bsm = (json['bsm'] as List).cast<Map<String, dynamic>>();
     _specializedElective = (json['specializedElective'] as List).cast<Map<String, dynamic>>();
     _coreElective = json['coreElective'];
