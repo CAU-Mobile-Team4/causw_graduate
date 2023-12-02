@@ -95,6 +95,32 @@ class _CalendarState extends State<Calendar>
                           fontWeight: FontWeight.bold,
                           color: AppColor.main),
                     ),
+                    eventLoader: (day) {
+                      var provider = context.read<ScheduleListProvider>();
+                      return provider.scheduleListByDate
+                          .where((event) =>
+                              (event.year == day.year.toString()) &&
+                              (event.month == day.month.toString()) &&
+                              (event.day == day.day.toString()))
+                          .toList();
+                    },
+                    calendarBuilders: CalendarBuilders(
+                      markerBuilder: (context, date, events) {
+                        if (events.isNotEmpty) {
+                          return Positioned(
+                            right: 1,
+                            bottom: 1,
+                            child: Text(
+                              '${events.length}',
+                              style: TextStyle(
+                                color: Colors.red,
+                                fontSize: 12.0,
+                              ),
+                            ),
+                          );
+                        }
+                      },
+                    ),
                     calendarStyle: const CalendarStyle(
                         //marker 관련
                         canMarkersOverflow: false,
@@ -154,7 +180,9 @@ class _CalendarState extends State<Calendar>
                   children: context
                       .watch<ScheduleListProvider>()
                       .scheduleListByDate
-                      .where((event) => (event.year == selectedDayWithoutTime.year.toString()) &&
+                      .where((event) =>
+                          (event.year ==
+                              selectedDayWithoutTime.year.toString()) &&
                           (event.month ==
                               selectedDayWithoutTime.month.toString()) &&
                           (event.day == selectedDayWithoutTime.day.toString()))
@@ -176,7 +204,9 @@ class _CalendarState extends State<Calendar>
                                 border: Border.all(),
                                 borderRadius: BorderRadius.circular(20)),
                             child: ListTile(
-                              leading: Container(width: 40,height: 50,
+                              leading: Container(
+                                  width: 40,
+                                  height: 50,
                                   decoration: BoxDecoration(
                                     border: Border(
                                       right: BorderSide(
@@ -200,7 +230,8 @@ class _CalendarState extends State<Calendar>
                               onTap: () {
                                 TextEditingController eventController =
                                     TextEditingController(text: event.event);
-                                TextEditingController yearController = TextEditingController(text: event.year);
+                                TextEditingController yearController =
+                                    TextEditingController(text: event.year);
                                 TextEditingController monthController =
                                     TextEditingController(
                                         text: selectedDayWithoutTime.month
@@ -212,7 +243,7 @@ class _CalendarState extends State<Calendar>
                                 TextEditingController locationController =
                                     TextEditingController(text: event.location);
                                 TextEditingController timeController =
-                                TextEditingController(text: event.time);
+                                    TextEditingController(text: event.time);
 
                                 showDialog(
                                   context: context,
@@ -265,11 +296,11 @@ class _CalendarState extends State<Calendar>
                                                       ),
                                                       subtitle: TextField(
                                                         controller:
-                                                        yearController,
+                                                            yearController,
                                                         decoration:
-                                                        const InputDecoration(
+                                                            const InputDecoration(
                                                           enabledBorder:
-                                                          UnderlineInputBorder(),
+                                                              UnderlineInputBorder(),
                                                         ),
                                                       ),
                                                     ),
@@ -319,8 +350,7 @@ class _CalendarState extends State<Calendar>
                                                       TextStyle(fontSize: 20),
                                                 ),
                                                 subtitle: TextField(
-                                                  controller:
-                                                      timeController,
+                                                  controller: timeController,
                                                   decoration:
                                                       const InputDecoration(
                                                     enabledBorder:
@@ -332,15 +362,15 @@ class _CalendarState extends State<Calendar>
                                                 title: const Text(
                                                   'Location',
                                                   style:
-                                                  TextStyle(fontSize: 20),
+                                                      TextStyle(fontSize: 20),
                                                 ),
                                                 subtitle: TextField(
                                                   controller:
-                                                  locationController,
+                                                      locationController,
                                                   decoration:
-                                                  const InputDecoration(
+                                                      const InputDecoration(
                                                     enabledBorder:
-                                                    UnderlineInputBorder(),
+                                                        UnderlineInputBorder(),
                                                   ),
                                                 ),
                                               ),
@@ -397,15 +427,15 @@ class _CalendarState extends State<Calendar>
             label: 'Add Event',
             onTap: () {
               TextEditingController eventController = TextEditingController();
-              TextEditingController yearController = TextEditingController(text: selectedDayWithoutTime.year.toString());
+              TextEditingController yearController = TextEditingController(
+                  text: selectedDayWithoutTime.year.toString());
               TextEditingController monthController = TextEditingController(
                   text: selectedDayWithoutTime.month.toString());
               TextEditingController dayController = TextEditingController(
                   text: selectedDayWithoutTime.day.toString());
               TextEditingController locationController =
                   TextEditingController();
-              TextEditingController timeController =
-              TextEditingController();
+              TextEditingController timeController = TextEditingController();
               showDialog(
                 context: context,
                 builder: (context) => SingleChildScrollView(
@@ -694,7 +724,8 @@ class _CalendarState extends State<Calendar>
                 return;
               }
 
-              TextEditingController studentNumberController = TextEditingController();
+              TextEditingController studentNumberController =
+                  TextEditingController();
               TextEditingController nameController = TextEditingController();
               showModalBottomSheet(
                 context: context,
@@ -711,7 +742,8 @@ class _CalendarState extends State<Calendar>
                             Row(
                               children: <Widget>[
                                 const Icon(Icons.numbers_rounded),
-                                const SizedBox(width: 10), // 아이콘과 텍스트 입력 필드 사이의 간격
+                                const SizedBox(
+                                    width: 10), // 아이콘과 텍스트 입력 필드 사이의 간격
                                 Expanded(
                                   child: TextField(
                                     controller: studentNumberController,
@@ -727,7 +759,8 @@ class _CalendarState extends State<Calendar>
                             Row(
                               children: <Widget>[
                                 const Icon(Icons.person_outline),
-                                const SizedBox(width: 10), // 아이콘과 텍스트 입력 필드 사이의 간격
+                                const SizedBox(
+                                    width: 10), // 아이콘과 텍스트 입력 필드 사이의 간격
                                 Expanded(
                                   child: TextField(
                                     controller: nameController,
@@ -749,11 +782,16 @@ class _CalendarState extends State<Calendar>
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               onPressed: () async {
-                                Student loginStudent = Student(id: int.parse(studentNumberController.text), name: nameController.text);
-                                bool isLogin = await ApiService.login(loginStudent);
+                                Student loginStudent = Student(
+                                    id: int.parse(studentNumberController.text),
+                                    name: nameController.text);
+                                bool isLogin =
+                                    await ApiService.login(loginStudent);
 
-                                if(isLogin) {
-                                  student.setInfo(int.parse(studentNumberController.text), nameController.text);
+                                if (isLogin) {
+                                  student.setInfo(
+                                      int.parse(studentNumberController.text),
+                                      nameController.text);
                                   Navigator.of(context).pop();
                                 }
                               },
@@ -765,11 +803,14 @@ class _CalendarState extends State<Calendar>
                                 TextButton(
                                   child: Text(
                                     '회원가입',
-                                    style: TextStyle(fontWeight: FontWeight.bold),
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
                                   ),
                                   onPressed: () {
-                                    TextEditingController JoinIDController = TextEditingController();
-                                    TextEditingController JoinNameController = TextEditingController();
+                                    TextEditingController JoinIDController =
+                                        TextEditingController();
+                                    TextEditingController JoinNameController =
+                                        TextEditingController();
 
                                     showModalBottomSheet(
                                       context: context,
@@ -778,36 +819,55 @@ class _CalendarState extends State<Calendar>
                                           heightFactor: 0.7,
                                           child: Padding(
                                             padding: EdgeInsets.only(
-                                              bottom: MediaQuery.of(context).viewInsets.bottom,
+                                              bottom: MediaQuery.of(context)
+                                                  .viewInsets
+                                                  .bottom,
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsets.all(16.0),
+                                              padding:
+                                                  const EdgeInsets.all(16.0),
                                               child: SingleChildScrollView(
                                                 child: Column(
                                                   children: <Widget>[
                                                     TextField(
-                                                      controller: JoinIDController,
-                                                      decoration: const InputDecoration(
+                                                      controller:
+                                                          JoinIDController,
+                                                      decoration:
+                                                          const InputDecoration(
                                                         label: Text('학번'),
-                                                        enabledBorder: UnderlineInputBorder(),
+                                                        enabledBorder:
+                                                            UnderlineInputBorder(),
                                                       ),
-                                                      keyboardType: TextInputType.number,
+                                                      keyboardType:
+                                                          TextInputType.number,
                                                     ),
                                                     TextField(
-                                                      controller: JoinNameController,
-                                                      decoration: const InputDecoration(
+                                                      controller:
+                                                          JoinNameController,
+                                                      decoration:
+                                                          const InputDecoration(
                                                         label: Text('이름'),
-                                                        enabledBorder: UnderlineInputBorder(),
+                                                        enabledBorder:
+                                                            UnderlineInputBorder(),
                                                       ),
                                                     ),
                                                     TextButton(
                                                       child: Text('회원가입'),
                                                       onPressed: () async {
-                                                        Student loginStudent = Student(id: int.parse(JoinIDController.text), name: JoinNameController.text);
-                                                        bool isJoined = await ApiService.join(loginStudent);
+                                                        Student loginStudent = Student(
+                                                            id: int.parse(
+                                                                JoinIDController
+                                                                    .text),
+                                                            name:
+                                                                JoinNameController
+                                                                    .text);
+                                                        bool isJoined =
+                                                            await ApiService.join(
+                                                                loginStudent);
 
-                                                        if(isJoined) {
-                                                          Navigator.of(context).pop();
+                                                        if (isJoined) {
+                                                          Navigator.of(context)
+                                                              .pop();
                                                         }
                                                       },
                                                     ),
