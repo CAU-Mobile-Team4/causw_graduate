@@ -1,12 +1,13 @@
 class Schedule {
   final int? scheduleId;
-  final String event, location, month, day;
+  final String event, location,year, month, day;
   final String? time;
 
   Schedule(
       {this.scheduleId,
       required this.event,
       required this.location,
+        required this.year,
       required this.month,
       required this.day,
       this.time});
@@ -16,6 +17,7 @@ class Schedule {
       'id': scheduleId,
       'event': event,
       'location': location,
+      'year' : year,
       'month': month,
       'day': day,
       'time': time,
@@ -25,6 +27,7 @@ class Schedule {
   Schedule.fromJson(Map<String, dynamic> json)
       : event = json['event'],
         location = json['location'],
+        year = json['year'],
         month = json['month'],
         day = json['day'],
         time = json['time'],

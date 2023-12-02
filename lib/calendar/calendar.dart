@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:causw_graduate/AppColor.dart';
 import 'package:causw_graduate/calendar/schedule.dart';
 import 'package:causw_graduate/calendar/schedule_list_provider.dart';
@@ -6,6 +7,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
+
+Color getRandomColor() {
+  final random = Random();
+  return Color.fromRGBO(
+    random.nextInt(256),
+    random.nextInt(256),
+    random.nextInt(256),
+    1,
+  );
+}
 
 class Calendar extends StatefulWidget {
   const Calendar({super.key});
@@ -139,7 +150,7 @@ class _CalendarState extends State<Calendar>
                   children: context
                       .watch<ScheduleListProvider>()
                       .scheduleListByDate
-                      .where((event) =>
+                      .where((event) => (event.year == selectedDayWithoutTime.year.toString()) &&
                           (event.month ==
                               selectedDayWithoutTime.month.toString()) &&
                           (event.day == selectedDayWithoutTime.day.toString()))
@@ -161,7 +172,16 @@ class _CalendarState extends State<Calendar>
                                 border: Border.all(),
                                 borderRadius: BorderRadius.circular(20)),
                             child: ListTile(
-                              leading: Text(event.time ?? '하루종일'),
+                              leading: Container(width: 40,height: 50,
+                                  decoration: BoxDecoration(
+                                    border: Border(
+                                      right: BorderSide(
+                                        width: 2.0,
+                                        color: getRandomColor(),
+                                      ),
+                                    ),
+                                  ),
+                                  child: Text('${event.time ?? '하루종일'}')),
                               title: Text(
                                 event.event,
                                 style: const TextStyle(
@@ -176,6 +196,7 @@ class _CalendarState extends State<Calendar>
                               onTap: () {
                                 TextEditingController eventController =
                                     TextEditingController(text: event.event);
+                                TextEditingController yearController = TextEditingController(text: event.year);
                                 TextEditingController monthController =
                                     TextEditingController(
                                         text: selectedDayWithoutTime.month
@@ -207,7 +228,7 @@ class _CalendarState extends State<Calendar>
                                                 0.9,
                                         height:
                                             MediaQuery.of(context).size.height *
-                                                0.7,
+                                                0.4,
                                         child: SingleChildScrollView(
                                           child: Column(
                                             children: [
@@ -229,6 +250,24 @@ class _CalendarState extends State<Calendar>
                                               ),
                                               Row(
                                                 children: [
+                                                  Expanded(
+                                                    child: ListTile(
+                                                      title: const Text(
+                                                        'Year',
+                                                        style: TextStyle(
+                                                            fontSize: 20),
+                                                      ),
+                                                      subtitle: TextField(
+                                                        controller:
+                                                        yearController,
+                                                        decoration:
+                                                        const InputDecoration(
+                                                          enabledBorder:
+                                                          UnderlineInputBorder(),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
                                                   Expanded(
                                                     child: ListTile(
                                                       title: const Text(
@@ -300,6 +339,7 @@ class _CalendarState extends State<Calendar>
                                               scheduleId: event.scheduleId,
                                               event: eventController.text,
                                               location: locationController.text,
+                                              year: yearController.text,
                                               month: monthController.text,
                                               day: dayController.text,
                                             );
@@ -335,6 +375,7 @@ class _CalendarState extends State<Calendar>
             label: 'Add Event',
             onTap: () {
               TextEditingController eventController = TextEditingController();
+              TextEditingController yearController = TextEditingController(text: selectedDayWithoutTime.year.toString());
               TextEditingController monthController = TextEditingController(
                   text: selectedDayWithoutTime.month.toString());
               TextEditingController dayController = TextEditingController(
@@ -357,7 +398,7 @@ class _CalendarState extends State<Calendar>
                     ),
                     content: SizedBox(
                       width: MediaQuery.of(context).size.width * 0.9,
-                      height: MediaQuery.of(context).size.width * 0.7,
+                      height: MediaQuery.of(context).size.width * 0.6,
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
@@ -375,6 +416,20 @@ class _CalendarState extends State<Calendar>
                             ),
                             Row(
                               children: [
+                                Expanded(
+                                  child: ListTile(
+                                    title: const Text(
+                                      'Year',
+                                      style: TextStyle(fontSize: 20),
+                                    ),
+                                    subtitle: TextField(
+                                      controller: yearController,
+                                      decoration: const InputDecoration(
+                                        enabledBorder: UnderlineInputBorder(),
+                                      ),
+                                    ),
+                                  ),
+                                ),
                                 Expanded(
                                   child: ListTile(
                                     title: const Text(
@@ -436,6 +491,7 @@ class _CalendarState extends State<Calendar>
                           Schedule schedule = Schedule(
                             event: eventController.text,
                             location: locationController.text,
+                            year: yearController.text,
                             month: monthController.text,
                             day: dayController.text,
                           );
@@ -538,7 +594,7 @@ class _CalendarState extends State<Calendar>
                               padding: EdgeInsets.zero,
                               child: const Icon(Icons.send),
                               onPressed: () {
-                                // 'send' 아이콘을 눌렀을 때의 동작을 여기에 작성
+                                update();
                               },
                             ),
                           ],
@@ -591,6 +647,15 @@ class _CalendarState extends State<Calendar>
                   );
                 },
               );
+            },
+          ),
+          SpeedDialChild(
+            child: Icon(Icons.refresh),
+            label: 'Update',
+            onTap: () async {
+              print(context.watch<ScheduleListProvider>().scheduleListByDate.toList());
+              print('updated');
+              update();
             },
           ),
         ],
