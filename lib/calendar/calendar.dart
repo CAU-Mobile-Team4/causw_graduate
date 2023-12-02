@@ -390,6 +390,7 @@ class _CalendarState extends State<Calendar>
                                       decoration: const InputDecoration(
                                         enabledBorder: UnderlineInputBorder(),
                                       ),
+                                      keyboardType: TextInputType.number,
                                     ),
                                   ),
                                 ),
@@ -404,6 +405,7 @@ class _CalendarState extends State<Calendar>
                                       decoration: const InputDecoration(
                                         enabledBorder: UnderlineInputBorder(),
                                       ),
+                                      keyboardType: TextInputType.number,
                                     ),
                                   ),
                                 ),
