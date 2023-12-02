@@ -50,7 +50,7 @@ class ScheduleListProvider extends ChangeNotifier {
       print('추가 실패');
     }
     _scheduleListByDate.add(schedule);
-
+    updateScheduleList(stuID);
     notifyListeners();
   }
 
