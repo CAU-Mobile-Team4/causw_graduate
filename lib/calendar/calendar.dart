@@ -211,6 +211,8 @@ class _CalendarState extends State<Calendar>
                                             .toString());
                                 TextEditingController locationController =
                                     TextEditingController(text: event.location);
+                                TextEditingController timeController =
+                                TextEditingController(text: event.time);
 
                                 showDialog(
                                   context: context,
@@ -232,7 +234,7 @@ class _CalendarState extends State<Calendar>
                                                 0.9,
                                         height:
                                             MediaQuery.of(context).size.height *
-                                                0.4,
+                                                0.5,
                                         child: SingleChildScrollView(
                                           child: Column(
                                             children: [
@@ -312,17 +314,33 @@ class _CalendarState extends State<Calendar>
                                               ),
                                               ListTile(
                                                 title: const Text(
-                                                  'Location',
+                                                  'Time',
                                                   style:
                                                       TextStyle(fontSize: 20),
                                                 ),
                                                 subtitle: TextField(
                                                   controller:
-                                                      locationController,
+                                                      timeController,
                                                   decoration:
                                                       const InputDecoration(
                                                     enabledBorder:
                                                         UnderlineInputBorder(),
+                                                  ),
+                                                ),
+                                              ),
+                                              ListTile(
+                                                title: const Text(
+                                                  'Location',
+                                                  style:
+                                                  TextStyle(fontSize: 20),
+                                                ),
+                                                subtitle: TextField(
+                                                  controller:
+                                                  locationController,
+                                                  decoration:
+                                                  const InputDecoration(
+                                                    enabledBorder:
+                                                    UnderlineInputBorder(),
                                                   ),
                                                 ),
                                               ),
@@ -386,6 +404,8 @@ class _CalendarState extends State<Calendar>
                   text: selectedDayWithoutTime.day.toString());
               TextEditingController locationController =
                   TextEditingController();
+              TextEditingController timeController =
+              TextEditingController();
               showDialog(
                 context: context,
                 builder: (context) => SingleChildScrollView(
@@ -402,7 +422,7 @@ class _CalendarState extends State<Calendar>
                     ),
                     content: SizedBox(
                       width: MediaQuery.of(context).size.width * 0.9,
-                      height: MediaQuery.of(context).size.width * 0.6,
+                      height: MediaQuery.of(context).size.width * 0.9,
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
@@ -466,6 +486,18 @@ class _CalendarState extends State<Calendar>
                             ),
                             ListTile(
                               title: const Text(
+                                'Time',
+                                style: TextStyle(fontSize: 20),
+                              ),
+                              subtitle: TextField(
+                                controller: timeController,
+                                decoration: const InputDecoration(
+                                  enabledBorder: UnderlineInputBorder(),
+                                ),
+                              ),
+                            ),
+                            ListTile(
+                              title: const Text(
                                 'Location',
                                 style: TextStyle(fontSize: 20),
                               ),
@@ -498,6 +530,7 @@ class _CalendarState extends State<Calendar>
                             year: yearController.text,
                             month: monthController.text,
                             day: dayController.text,
+                            time: timeController.text,
                           );
                           await context
                               .read<ScheduleListProvider>()
@@ -654,14 +687,6 @@ class _CalendarState extends State<Calendar>
             },
           ),
           SpeedDialChild(
-<<<<<<< HEAD
-            child: Icon(Icons.refresh),
-            label: 'Update',
-            onTap: () async {
-              print(context.watch<ScheduleListProvider>().scheduleListByDate.toList());
-              print('updated');
-              update();
-=======
             child: const Icon(Icons.person),
             label: 'Get My Schedules',
             onTap: () {
@@ -805,7 +830,6 @@ class _CalendarState extends State<Calendar>
                   );
                 },
               );
->>>>>>> c2aac899352a22243959947dceb5838af0a16a7b
             },
           ),
         ],
