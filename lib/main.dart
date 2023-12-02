@@ -4,6 +4,7 @@ import 'package:causw_graduate/calendar/calendar.dart';
 import 'package:causw_graduate/calendar/schedule_list_provider.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/GraduateAnalysis.dart';
 import 'package:causw_graduate/GraduateProvider/UserData/UserData.dart';
+import 'package:causw_graduate/calendar/student.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -22,6 +23,7 @@ Future<void> main() async {
             create: (context) => userData.additionalCondition),
         ChangeNotifierProvider(create: (context) => GraduateAnalysis()),
         ChangeNotifierProvider(create: (context) => ScheduleListProvider()),
+        ChangeNotifierProvider(create: (context) => Student(id: 1, name: 'default')),
       ],
       child: const MyApp(),
     ),
