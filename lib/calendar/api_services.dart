@@ -1,9 +1,52 @@
 import 'dart:convert';
 import 'package:causw_graduate/calendar/schedule.dart';
+import 'package:causw_graduate/calendar/student.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {
   static const String baseUrl = 'http://3.36.30.78:8080';
+
+  // 회원가입
+  static Future<bool> join(Student student) async {
+    final url = Uri.parse('$baseUrl/join');
+    final body = {
+      "id": student.id,
+      "name": student.name,
+    };
+
+    final response = await http.post(url,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode(body));
+
+    if (response.statusCode != 200) {
+      print(response.statusCode);
+      return false;
+    }
+    return true;
+  }
+
+  // 로그인
+  static Future<bool> login(Student student) async {
+    final url = Uri.parse('$baseUrl/login');
+    final body = {
+      "id": student.id,
+      "name": student.name,
+    };
+
+    final response = await http.post(url,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode(body));
+
+    if (response.statusCode != 200) {
+      print(response.statusCode);
+      return false;
+    }
+    return true;
+  }
 
   //일정 반환
   static Future<List<Schedule>> getSchedules(int studentID) async {

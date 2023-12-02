@@ -1,7 +1,9 @@
 import 'dart:math';
 import 'package:causw_graduate/AppColor.dart';
+import 'package:causw_graduate/calendar/api_services.dart';
 import 'package:causw_graduate/calendar/schedule.dart';
 import 'package:causw_graduate/calendar/schedule_list_provider.dart';
+import 'package:causw_graduate/calendar/student.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -37,13 +39,15 @@ class _CalendarState extends State<Calendar>
   }
 
   void update() {
-    context.read<ScheduleListProvider>().updateScheduleList(1);
+    Student student = context.read<Student>();
+    context.read<ScheduleListProvider>().updateScheduleList(student.id);
   }
 
   final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    var student = Provider.of<Student>(context);
     DateTime selectedDayWithoutTime = DateTime(
       selectedDay?.year ?? DateTime.now().year,
       selectedDay?.month ?? DateTime.now().month,
@@ -650,12 +654,158 @@ class _CalendarState extends State<Calendar>
             },
           ),
           SpeedDialChild(
+<<<<<<< HEAD
             child: Icon(Icons.refresh),
             label: 'Update',
             onTap: () async {
               print(context.watch<ScheduleListProvider>().scheduleListByDate.toList());
               print('updated');
               update();
+=======
+            child: const Icon(Icons.person),
+            label: 'Get My Schedules',
+            onTap: () {
+              if (student.id != 1) {
+                return;
+              }
+
+              TextEditingController studentNumberController = TextEditingController();
+              TextEditingController nameController = TextEditingController();
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                builder: (BuildContext context) {
+                  return SingleChildScrollView(
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom,
+                      ),
+                      child: CupertinoActionSheet(
+                        title: Column(
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                const Icon(Icons.numbers_rounded),
+                                const SizedBox(width: 10), // 아이콘과 텍스트 입력 필드 사이의 간격
+                                Expanded(
+                                  child: TextField(
+                                    controller: studentNumberController,
+                                    decoration: const InputDecoration(
+                                      label: Text('학번'),
+                                      enabledBorder: UnderlineInputBorder(),
+                                    ),
+                                    keyboardType: TextInputType.number,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: <Widget>[
+                                const Icon(Icons.person_outline),
+                                const SizedBox(width: 10), // 아이콘과 텍스트 입력 필드 사이의 간격
+                                Expanded(
+                                  child: TextField(
+                                    controller: nameController,
+                                    decoration: const InputDecoration(
+                                      label: Text('이름'),
+                                      enabledBorder: UnderlineInputBorder(),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        cancelButton: Column(
+                          children: [
+                            CupertinoActionSheetAction(
+                              child: const Text(
+                                'Log in',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              onPressed: () async {
+                                Student loginStudent = Student(id: int.parse(studentNumberController.text), name: nameController.text);
+                                bool isLogin = await ApiService.login(loginStudent);
+
+                                if(isLogin) {
+                                  student.setInfo(int.parse(studentNumberController.text), nameController.text);
+                                  Navigator.of(context).pop();
+                                }
+                              },
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("회원가입을 하지 않으셨나요? "),
+                                TextButton(
+                                  child: Text(
+                                    '회원가입',
+                                    style: TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  onPressed: () {
+                                    TextEditingController JoinIDController = TextEditingController();
+                                    TextEditingController JoinNameController = TextEditingController();
+
+                                    showModalBottomSheet(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return FractionallySizedBox(
+                                          heightFactor: 0.7,
+                                          child: Padding(
+                                            padding: EdgeInsets.only(
+                                              bottom: MediaQuery.of(context).viewInsets.bottom,
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(16.0),
+                                              child: SingleChildScrollView(
+                                                child: Column(
+                                                  children: <Widget>[
+                                                    TextField(
+                                                      controller: JoinIDController,
+                                                      decoration: const InputDecoration(
+                                                        label: Text('학번'),
+                                                        enabledBorder: UnderlineInputBorder(),
+                                                      ),
+                                                      keyboardType: TextInputType.number,
+                                                    ),
+                                                    TextField(
+                                                      controller: JoinNameController,
+                                                      decoration: const InputDecoration(
+                                                        label: Text('이름'),
+                                                        enabledBorder: UnderlineInputBorder(),
+                                                      ),
+                                                    ),
+                                                    TextButton(
+                                                      child: Text('회원가입'),
+                                                      onPressed: () async {
+                                                        Student loginStudent = Student(id: int.parse(JoinIDController.text), name: JoinNameController.text);
+                                                        bool isJoined = await ApiService.join(loginStudent);
+
+                                                        if(isJoined) {
+                                                          Navigator.of(context).pop();
+                                                        }
+                                                      },
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              );
+>>>>>>> c2aac899352a22243959947dceb5838af0a16a7b
             },
           ),
         ],
