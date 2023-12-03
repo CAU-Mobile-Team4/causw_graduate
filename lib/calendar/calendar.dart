@@ -96,6 +96,41 @@ class _CalendarState extends State<Calendar>
                           fontWeight: FontWeight.bold,
                           color: AppColor.main),
                     ),
+                    eventLoader: (day) {
+                      var provider = context.read<ScheduleListProvider>();
+                      return provider.scheduleListByDate
+                          .where((event) =>
+                              (event.year == day.year.toString()) &&
+                              (event.month == day.month.toString()) &&
+                              (event.day == day.day.toString()))
+                          .toList();
+                    },
+                    calendarBuilders: CalendarBuilders(
+                      markerBuilder: (context, date, events) {
+                        if (events.isNotEmpty) {
+                          return Stack(
+                            children: [
+                              Container(
+                                alignment: Alignment.center,
+                                width: 17,
+                                height: 17,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: AppColor.yellow,
+                                ),
+                                child: Text(
+                                  '${events.length}',
+                                  style: const TextStyle(
+                                    fontSize: 12.0,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+                        }
+                        return null;
+                      },
+                    ),
                     calendarStyle: const CalendarStyle(
                         //marker 관련
                         canMarkersOverflow: false,
