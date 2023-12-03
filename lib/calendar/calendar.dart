@@ -203,7 +203,8 @@ class _CalendarState extends State<Calendar>
                             if (event.scheduleId != null) {
                               context
                                   .read<ScheduleListProvider>()
-                                  .deleteScheduleList(event.scheduleId!);
+                                  .deleteScheduleList(
+                                      student.id, event.scheduleId!);
                             } else {
                               print('Error: scheduleId is null');
                             }
@@ -225,7 +226,9 @@ class _CalendarState extends State<Calendar>
                                       ),
                                     ),
                                   ),
-                                  child: Text(event.time ?? '하루종일')),
+                                  child: event.time == ''
+                                      ? const Text('하루종일')
+                                      : Text(event.time ?? '하루종일')),
                               title: Text(
                                 event.event,
                                 style: const TextStyle(
@@ -408,7 +411,9 @@ class _CalendarState extends State<Calendar>
                                             );
                                             await context
                                                 .read<ScheduleListProvider>()
-                                                .editScheduleList(schedule);
+                                                .editScheduleList(
+                                                    student.id, schedule);
+
                                             Navigator.pop(context);
                                           },
                                           child: const Text('Apply'),
@@ -505,6 +510,7 @@ class _CalendarState extends State<Calendar>
                                       decoration: const InputDecoration(
                                         enabledBorder: UnderlineInputBorder(),
                                       ),
+                                      keyboardType: TextInputType.number,
                                     ),
                                   ),
                                 ),
@@ -519,6 +525,7 @@ class _CalendarState extends State<Calendar>
                                       decoration: const InputDecoration(
                                         enabledBorder: UnderlineInputBorder(),
                                       ),
+                                      keyboardType: TextInputType.number,
                                     ),
                                   ),
                                 ),
@@ -574,7 +581,7 @@ class _CalendarState extends State<Calendar>
                           );
                           await context
                               .read<ScheduleListProvider>()
-                              .addScheduleList(schedule);
+                              .addScheduleList(student.id, schedule);
 
                           Navigator.pop(context);
                         },
@@ -623,7 +630,8 @@ class _CalendarState extends State<Calendar>
                         onPressed: () {
                           context
                               .read<ScheduleListProvider>()
-                              .addScheduleListByNlp(eventController.text);
+                              .addScheduleListByNlp(
+                                  student.id, eventController.text);
                           Navigator.of(context).pop();
                         },
                       ),
@@ -801,6 +809,9 @@ class _CalendarState extends State<Calendar>
                                   student.setInfo(
                                       int.parse(studentNumberController.text),
                                       nameController.text);
+                                  context
+                                      .read<ScheduleListProvider>()
+                                      .updateScheduleList(loginStudent.id);
                                   Navigator.of(context).pop();
                                 }
                               },
