@@ -32,9 +32,9 @@ class ScheduleListProvider extends ChangeNotifier {
   Future<void> deleteScheduleList(int scheduleId) async {
     bool result = await ApiService.deleteSchedules(1, scheduleId);
     if (result) {
-      print('추가 성공!');
+      print('삭제 성공!');
     } else {
-      print('추가 실패');
+      print('삭제 실패');
     }
     /*_scheduleListByDate
         .removeWhere((element) => element.scheduleId == scheduleId);
@@ -51,7 +51,6 @@ class ScheduleListProvider extends ChangeNotifier {
       print('추가 실패');
     }
     _scheduleListByDate.add(schedule);
-
     notifyListeners();
   }
 

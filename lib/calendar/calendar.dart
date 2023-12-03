@@ -55,6 +55,7 @@ class _CalendarState extends State<Calendar>
     );
 
     return Scaffold(
+      backgroundColor: AppColor.background,
       body: GestureDetector(
         onTap: () {
           FocusScopeNode currentFocus = FocusScope.of(context);
@@ -154,7 +155,9 @@ class _CalendarState extends State<Calendar>
                   children: context
                       .watch<ScheduleListProvider>()
                       .scheduleListByDate
-                      .where((event) => (event.year == selectedDayWithoutTime.year.toString()) &&
+                      .where((event) =>
+                          (event.year ==
+                              selectedDayWithoutTime.year.toString()) &&
                           (event.month ==
                               selectedDayWithoutTime.month.toString()) &&
                           (event.day == selectedDayWithoutTime.day.toString()))
@@ -176,16 +179,18 @@ class _CalendarState extends State<Calendar>
                                 border: Border.all(),
                                 borderRadius: BorderRadius.circular(20)),
                             child: ListTile(
-                              leading: Container(width: 40,height: 50,
-                                  decoration: BoxDecoration(
+                              leading: Container(
+                                  width: 40,
+                                  height: 50,
+                                  decoration: const BoxDecoration(
                                     border: Border(
                                       right: BorderSide(
-                                        width: 2.0,
-                                        color: getRandomColor(),
+                                        width: 5.0,
+                                        color: AppColor.yellow,
                                       ),
                                     ),
                                   ),
-                                  child: Text('${event.time ?? '하루종일'}')),
+                                  child: Text(event.time ?? '하루종일')),
                               title: Text(
                                 event.event,
                                 style: const TextStyle(
@@ -198,9 +203,11 @@ class _CalendarState extends State<Calendar>
                                 style: const TextStyle(fontSize: 16),
                               ),
                               onTap: () {
+                                print(event.scheduleId);
                                 TextEditingController eventController =
                                     TextEditingController(text: event.event);
-                                TextEditingController yearController = TextEditingController(text: event.year);
+                                TextEditingController yearController =
+                                    TextEditingController(text: event.year);
                                 TextEditingController monthController =
                                     TextEditingController(
                                         text: selectedDayWithoutTime.month
@@ -263,11 +270,11 @@ class _CalendarState extends State<Calendar>
                                                       ),
                                                       subtitle: TextField(
                                                         controller:
-                                                        yearController,
+                                                            yearController,
                                                         decoration:
-                                                        const InputDecoration(
+                                                            const InputDecoration(
                                                           enabledBorder:
-                                                          UnderlineInputBorder(),
+                                                              UnderlineInputBorder(),
                                                         ),
                                                       ),
                                                     ),
@@ -350,7 +357,6 @@ class _CalendarState extends State<Calendar>
                                             await context
                                                 .read<ScheduleListProvider>()
                                                 .editScheduleList(schedule);
-
                                             Navigator.pop(context);
                                           },
                                           child: const Text('Apply'),
@@ -379,7 +385,8 @@ class _CalendarState extends State<Calendar>
             label: 'Add Event',
             onTap: () {
               TextEditingController eventController = TextEditingController();
-              TextEditingController yearController = TextEditingController(text: selectedDayWithoutTime.year.toString());
+              TextEditingController yearController = TextEditingController(
+                  text: selectedDayWithoutTime.year.toString());
               TextEditingController monthController = TextEditingController(
                   text: selectedDayWithoutTime.month.toString());
               TextEditingController dayController = TextEditingController(
@@ -615,7 +622,6 @@ class _CalendarState extends State<Calendar>
                                     margin:
                                         const EdgeInsets.fromLTRB(10, 0, 10, 5),
                                     decoration: BoxDecoration(
-                                        border: Border.all(),
                                         borderRadius:
                                             BorderRadius.circular(20)),
                                     child: ListTile(
@@ -654,14 +660,6 @@ class _CalendarState extends State<Calendar>
             },
           ),
           SpeedDialChild(
-<<<<<<< HEAD
-            child: Icon(Icons.refresh),
-            label: 'Update',
-            onTap: () async {
-              print(context.watch<ScheduleListProvider>().scheduleListByDate.toList());
-              print('updated');
-              update();
-=======
             child: const Icon(Icons.person),
             label: 'Get My Schedules',
             onTap: () {
@@ -669,7 +667,8 @@ class _CalendarState extends State<Calendar>
                 return;
               }
 
-              TextEditingController studentNumberController = TextEditingController();
+              TextEditingController studentNumberController =
+                  TextEditingController();
               TextEditingController nameController = TextEditingController();
               showModalBottomSheet(
                 context: context,
@@ -686,7 +685,8 @@ class _CalendarState extends State<Calendar>
                             Row(
                               children: <Widget>[
                                 const Icon(Icons.numbers_rounded),
-                                const SizedBox(width: 10), // 아이콘과 텍스트 입력 필드 사이의 간격
+                                const SizedBox(
+                                    width: 10), // 아이콘과 텍스트 입력 필드 사이의 간격
                                 Expanded(
                                   child: TextField(
                                     controller: studentNumberController,
@@ -702,7 +702,8 @@ class _CalendarState extends State<Calendar>
                             Row(
                               children: <Widget>[
                                 const Icon(Icons.person_outline),
-                                const SizedBox(width: 10), // 아이콘과 텍스트 입력 필드 사이의 간격
+                                const SizedBox(
+                                    width: 10), // 아이콘과 텍스트 입력 필드 사이의 간격
                                 Expanded(
                                   child: TextField(
                                     controller: nameController,
@@ -724,11 +725,16 @@ class _CalendarState extends State<Calendar>
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               onPressed: () async {
-                                Student loginStudent = Student(id: int.parse(studentNumberController.text), name: nameController.text);
-                                bool isLogin = await ApiService.login(loginStudent);
+                                Student loginStudent = Student(
+                                    id: int.parse(studentNumberController.text),
+                                    name: nameController.text);
+                                bool isLogin =
+                                    await ApiService.login(loginStudent);
 
-                                if(isLogin) {
-                                  student.setInfo(int.parse(studentNumberController.text), nameController.text);
+                                if (isLogin) {
+                                  student.setInfo(
+                                      int.parse(studentNumberController.text),
+                                      nameController.text);
                                   Navigator.of(context).pop();
                                 }
                               },
@@ -736,15 +742,18 @@ class _CalendarState extends State<Calendar>
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("회원가입을 하지 않으셨나요? "),
+                                const Text("회원가입을 하지 않으셨나요? "),
                                 TextButton(
-                                  child: Text(
+                                  child: const Text(
                                     '회원가입',
-                                    style: TextStyle(fontWeight: FontWeight.bold),
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
                                   ),
                                   onPressed: () {
-                                    TextEditingController JoinIDController = TextEditingController();
-                                    TextEditingController JoinNameController = TextEditingController();
+                                    TextEditingController JoinIDController =
+                                        TextEditingController();
+                                    TextEditingController JoinNameController =
+                                        TextEditingController();
 
                                     showModalBottomSheet(
                                       context: context,
@@ -753,36 +762,55 @@ class _CalendarState extends State<Calendar>
                                           heightFactor: 0.7,
                                           child: Padding(
                                             padding: EdgeInsets.only(
-                                              bottom: MediaQuery.of(context).viewInsets.bottom,
+                                              bottom: MediaQuery.of(context)
+                                                  .viewInsets
+                                                  .bottom,
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsets.all(16.0),
+                                              padding:
+                                                  const EdgeInsets.all(16.0),
                                               child: SingleChildScrollView(
                                                 child: Column(
                                                   children: <Widget>[
                                                     TextField(
-                                                      controller: JoinIDController,
-                                                      decoration: const InputDecoration(
+                                                      controller:
+                                                          JoinIDController,
+                                                      decoration:
+                                                          const InputDecoration(
                                                         label: Text('학번'),
-                                                        enabledBorder: UnderlineInputBorder(),
+                                                        enabledBorder:
+                                                            UnderlineInputBorder(),
                                                       ),
-                                                      keyboardType: TextInputType.number,
+                                                      keyboardType:
+                                                          TextInputType.number,
                                                     ),
                                                     TextField(
-                                                      controller: JoinNameController,
-                                                      decoration: const InputDecoration(
+                                                      controller:
+                                                          JoinNameController,
+                                                      decoration:
+                                                          const InputDecoration(
                                                         label: Text('이름'),
-                                                        enabledBorder: UnderlineInputBorder(),
+                                                        enabledBorder:
+                                                            UnderlineInputBorder(),
                                                       ),
                                                     ),
                                                     TextButton(
-                                                      child: Text('회원가입'),
+                                                      child: const Text('회원가입'),
                                                       onPressed: () async {
-                                                        Student loginStudent = Student(id: int.parse(JoinIDController.text), name: JoinNameController.text);
-                                                        bool isJoined = await ApiService.join(loginStudent);
+                                                        Student loginStudent = Student(
+                                                            id: int.parse(
+                                                                JoinIDController
+                                                                    .text),
+                                                            name:
+                                                                JoinNameController
+                                                                    .text);
+                                                        bool isJoined =
+                                                            await ApiService.join(
+                                                                loginStudent);
 
-                                                        if(isJoined) {
-                                                          Navigator.of(context).pop();
+                                                        if (isJoined) {
+                                                          Navigator.of(context)
+                                                              .pop();
                                                         }
                                                       },
                                                     ),
@@ -805,7 +833,13 @@ class _CalendarState extends State<Calendar>
                   );
                 },
               );
->>>>>>> c2aac899352a22243959947dceb5838af0a16a7b
+            },
+          ),
+          SpeedDialChild(
+            child: const Icon(Icons.home_filled),
+            label: 'Go to The HomePage',
+            onTap: () {
+              Navigator.pop(context);
             },
           ),
         ],
