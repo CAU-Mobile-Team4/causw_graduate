@@ -1,6 +1,8 @@
+import 'package:causw_graduate/GraduateProvider/UserData/Detail/Subjects.dart';
 import 'package:causw_graduate/GraduateUI/ClassSelectionPage.dart';
 import 'package:causw_graduate/AppColor.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BSMclassSelection extends StatefulWidget {
   const BSMclassSelection({super.key});
@@ -15,6 +17,7 @@ class _BSMclassSelectionState extends State<BSMclassSelection> {
   final List<bool> checkedClasses=List.generate(100, (index) => false);
   @override
   Widget build(BuildContext context) {
+    final subjects = Provider.of<Subjects>(context);
     return Scaffold(
       backgroundColor: AppColor.background,
         appBar: AppBar(title: Text('BSM CLASS',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),
@@ -30,15 +33,13 @@ class _BSMclassSelectionState extends State<BSMclassSelection> {
           automaticallyImplyLeading: false,
          ),
         body: ListView.builder(
-          itemCount: classes.length,
+          itemCount: subjects.bsm.length,
           itemBuilder: (context,index){
             return CheckboxListTile(
-                title: Text(classes[index]),
-                value: checkedClasses[index],
+                title: Text('${subjects.bsm[index]['name']}',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),
+                value: subjects.bsm[index]['isSatisfied'],
                 onChanged: (value){
-                  setState(() {
-                    checkedClasses[index]=value!;
-                  });
+                  subjects.updateSubject('bsm', index, 'isSatisfied');
                 }
             );
           },

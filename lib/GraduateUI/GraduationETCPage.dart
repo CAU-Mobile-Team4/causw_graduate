@@ -16,7 +16,7 @@ class _GraduateEtcState extends State<GraduateEtc> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: AppColor.background,
-        appBar: AppBar(title: Text('GE CLASS',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),
+        appBar: AppBar(title: Text('ETC',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),
     ),
           centerTitle: true,
           leading: IconButton(onPressed: (){

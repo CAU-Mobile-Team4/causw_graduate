@@ -42,7 +42,7 @@ class _SelectGEclassState extends State<SelectGEclass> {
               children: [Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('도전'),IconButton(onPressed:(){
+                  Text('CHALLENGE',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),IconButton(onPressed:(){
                     showDialog(
                       context: context,
                       builder: (BuildContext context) => AlertDialog(
@@ -78,7 +78,7 @@ class _SelectGEclassState extends State<SelectGEclass> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('창의'),IconButton(onPressed:(){
+                    Text('CREATIVITY',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold)),IconButton(onPressed:(){
                       showDialog(
                         context: context,
                         builder: (BuildContext context) => AlertDialog(
@@ -114,7 +114,7 @@ class _SelectGEclassState extends State<SelectGEclass> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('융합'),IconButton(onPressed:(){
+                    Text('FUSHION',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold)),IconButton(onPressed:(){
                       showDialog(
                         context: context,
                         builder: (BuildContext context) => AlertDialog(
@@ -150,7 +150,7 @@ class _SelectGEclassState extends State<SelectGEclass> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('신뢰'),IconButton(onPressed:(){
+                    Text('TRUST',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold)),IconButton(onPressed:(){
                       showDialog(
                         context: context,
                         builder: (BuildContext context) => AlertDialog(
@@ -186,7 +186,7 @@ class _SelectGEclassState extends State<SelectGEclass> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('소통'),IconButton(onPressed:(){
+                    Text('COMMUNICATION',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold)),IconButton(onPressed:(){
                       showDialog(
                         context: context,
                         builder: (BuildContext context) => AlertDialog(
@@ -224,15 +224,13 @@ class _SelectGEclassState extends State<SelectGEclass> {
           ),Expanded(
             child: Container(
                 child: ListView.builder(
-                  itemCount: classes.length,
+                  itemCount: subjects.specializedElective.length,
                   itemBuilder: (context,index){
                     return CheckboxListTile(
-                        title: Text(classes[index],style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold)),
-                        value: checkedClasses[index],
+                        title: Text('${subjects.specializedElective[index]['name']}',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),
+                        value: subjects.specializedElective[index]['isSatisfied'],
                         onChanged: (value){
-                          setState(() {
-                            checkedClasses[index]=value!;
-                          });
+                          subjects.updateSubject('specializedElective', index, 'isSatisfied');
                         }
                     );
                   },

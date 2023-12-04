@@ -37,7 +37,7 @@ class ClassSelection extends StatelessWidget {
                         shape: ContinuousRectangleBorder(
                           borderRadius:
                             BorderRadius.circular(16.0),
-                          side: BorderSide(width: 1.0),
+                            side: BorderSide(width: 1.0,color: AppColor.background)
 
                         ),
                         elevation: 40.0,
@@ -51,9 +51,9 @@ class ClassSelection extends StatelessWidget {
                               child: Container(
                                 height: 90,
                                 alignment: Alignment.center,
-                                color: Color(0xFFB0B2D9),
+                                color: AppColor.background,
                                 child: Text(
-                                  "전공",style: TextStyle(fontSize: 30),
+                                  "MAJOR",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,color: AppColor.main),
                                 ),
                               ),
                             ),
@@ -65,8 +65,8 @@ class ClassSelection extends StatelessWidget {
                               height: 90,
                               alignment: Alignment.center,
                               child: FloatingActionButton(
-                                backgroundColor: Color(0xFFB0B2D9),
-                                  child: Icon(Icons.add,size: 50,),
+                                backgroundColor: AppColor.background,
+                                  child: Icon(Icons.add,size: 50,color: AppColor.main,),
                                   onPressed:(){
                                     Navigator.push(context, MaterialPageRoute(builder:
                                         (context)=> MajorClass()
@@ -90,7 +90,7 @@ class ClassSelection extends StatelessWidget {
                           shape: ContinuousRectangleBorder(
                             borderRadius:
                             BorderRadius.circular(16.0),
-                            side: BorderSide(width: 1.0),
+                              side: BorderSide(width: 1.0,color: AppColor.background)
 
                           ),
                           elevation: 40.0,
@@ -104,9 +104,9 @@ class ClassSelection extends StatelessWidget {
                                 child: Container(
                                   height: 90,
                                   alignment: Alignment.center,
-                                  color: Color(0xFFB0B2D9),
+                                  color: AppColor.background,
                                   child: Text(
-                                    "BSM",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),
+                                    "BSM",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,color: AppColor.main),
                                   ),
                                 ),
                               ),
@@ -118,8 +118,8 @@ class ClassSelection extends StatelessWidget {
                                 height: 90,
                                 alignment: Alignment.center,
                                 child: FloatingActionButton(
-                                    backgroundColor: Color(0xFFB0B2D9),
-                                    child: Icon(Icons.add,size: 50,),
+                                    backgroundColor: AppColor.background,
+                                    child: Icon(Icons.add,size: 50,color: AppColor.main,),
                                     onPressed:(){
                                       Navigator.push(context, MaterialPageRoute(builder:
                                           (context)=> BSMclassSelection()
@@ -142,7 +142,7 @@ class ClassSelection extends StatelessWidget {
                           shape: ContinuousRectangleBorder(
                             borderRadius:
                             BorderRadius.circular(16.0),
-                            side: BorderSide(width: 1.0),
+                              side: BorderSide(width: 1.0,color: AppColor.background)
 
                           ),
                           elevation: 40.0,
@@ -156,9 +156,9 @@ class ClassSelection extends StatelessWidget {
                                 child: Container(
                                   height: 90,
                                   alignment: Alignment.center,
-                                  color: Color(0xFFB0B2D9),
+                                  color: AppColor.background,
                                   child: Text(
-                                    "교양",style: TextStyle(fontSize: 30),
+                                    "GE",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,color: AppColor.main),
                                   ),
                                 ),
                               ),
@@ -170,8 +170,8 @@ class ClassSelection extends StatelessWidget {
                                 height: 90,
                                 alignment: Alignment.center,
                                 child: FloatingActionButton(
-                                    backgroundColor: Color(0xFFB0B2D9),
-                                    child: Icon(Icons.add,size: 50,),
+                                    backgroundColor: AppColor.background,
+                                    child: Icon(Icons.add,size: 50,color: AppColor.main,),
                                     onPressed:(){
                                       Navigator.push(context, MaterialPageRoute(builder:
                                           (context)=> SelectGEclass()
@@ -194,7 +194,7 @@ class ClassSelection extends StatelessWidget {
                           shape: ContinuousRectangleBorder(
                             borderRadius:
                             BorderRadius.circular(16.0),
-                            side: BorderSide(width: 1.0),
+                            side: BorderSide(width: 1.0,color: AppColor.background),
 
                           ),
                           elevation: 40.0,
@@ -203,14 +203,14 @@ class ClassSelection extends StatelessWidget {
                               ClipRRect(
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(5),
-                                    topRight: Radius.circular(5)
+                                    topRight: Radius.circular(5),
                                 ),
                                 child: Container(
                                   height: 90,
                                   alignment: Alignment.center,
-                                  color: Color(0xFFB0B2D9),
+                                  color: AppColor.background,
                                   child: Text(
-                                    "ETC",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),
+                                    "ETC",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,color: AppColor.main),
                                   ),
                                 ),
                               ),
@@ -222,8 +222,8 @@ class ClassSelection extends StatelessWidget {
                                 height: 90,
                                 alignment: Alignment.center,
                                 child: FloatingActionButton(
-                                    backgroundColor: Color(0xFFB0B2D9),
-                                    child: Icon(Icons.add,size: 50,),
+                                    backgroundColor: AppColor.background,
+                                    child: Icon(Icons.add,size: 50,color: AppColor.main,),
                                     onPressed:(){
                                       Navigator.push(context, MaterialPageRoute(builder:
                                           (context)=> GraduateEtc()
