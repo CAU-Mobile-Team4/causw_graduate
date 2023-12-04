@@ -4,6 +4,8 @@ import 'package:causw_graduate/AppColor.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../startPage.dart';
+
 class BSMclassSelection extends StatefulWidget {
   const BSMclassSelection({super.key});
 
@@ -43,7 +45,13 @@ class _BSMclassSelectionState extends State<BSMclassSelection> {
                 }
             );
           },
-        )
+        ),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const StartPage()));
+      },backgroundColor: Theme.of(context).primaryColor.withOpacity(0.2),child:Icon(Icons.home_filled,)),
     );
   }
 }

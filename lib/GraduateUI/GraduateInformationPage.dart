@@ -1,4 +1,5 @@
 import 'package:causw_graduate/AppColor.dart';
+import 'package:causw_graduate/startPage.dart';
 import 'package:flutter/material.dart';
 
 class GraduateInformation extends StatelessWidget {
@@ -32,7 +33,13 @@ class GraduateInformation extends StatelessWidget {
     "호날두, 나의 슬픔."
     "호날두, 나의 고통."
     "호날두, 나의 안식."
-    "호날두, 나.",style: TextStyle(fontSize: 15),)
+    "호날두, 나.",style: TextStyle(fontSize: 15),),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const StartPage()));
+      },child:Icon(Icons.home_filled,)),
     );
   }
 }

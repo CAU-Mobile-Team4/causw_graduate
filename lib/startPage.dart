@@ -10,7 +10,7 @@ class StartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.background,
+      backgroundColor: AppColor.background.withOpacity(0.95),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Center(

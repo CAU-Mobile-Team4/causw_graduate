@@ -1,6 +1,7 @@
 import 'package:causw_graduate/GraduateProvider/UserData/Detail/StudentInfo.dart';
 import 'package:causw_graduate/GraduateUI/GraduateQualification.dart';
 import 'package:causw_graduate/AppColor.dart';
+import 'package:causw_graduate/startPage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -99,6 +100,12 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const StartPage()));
+      },child:Icon(Icons.home_filled,)),
     );
   }
 }

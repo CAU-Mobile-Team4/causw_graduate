@@ -6,6 +6,8 @@ import 'package:causw_graduate/GraduateUI/MajorClassSelection.dart';
 import 'package:causw_graduate/AppColor.dart';
 import 'package:flutter/material.dart';
 
+import '../startPage.dart';
+
 class ClassSelection extends StatelessWidget {
 
   @override
@@ -242,7 +244,13 @@ class ClassSelection extends StatelessWidget {
             ),
           ),
         ),
-      )
+      ),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const StartPage()));
+      },child:Icon(Icons.home_filled,)),
     );
   }
 }

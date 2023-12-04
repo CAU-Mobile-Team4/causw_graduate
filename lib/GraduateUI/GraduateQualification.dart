@@ -7,6 +7,7 @@ import 'package:causw_graduate/GraduateUI/InformationEntryPage.dart';
 
 
 import 'package:causw_graduate/AppColor.dart';
+import 'package:causw_graduate/startPage.dart';
 
 
 import 'package:flutter/material.dart';
@@ -234,8 +235,8 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                     ),
                   ],
                   border: const Border(
-                      top: BorderSide(color: Colors.black, width: 1),
-                      bottom: BorderSide(color: Colors.black, width: 1))),
+                      top: BorderSide(color: Colors.grey, width: 1),
+                      bottom: BorderSide(color: Colors.grey, width: 1))),
               height: 100,
               child: Row(
                 children: [
@@ -311,8 +312,8 @@ class _GraduateQualificationState extends State<GraduateQualification> {
               decoration: BoxDecoration(
                 color: AppColor.background,
                 border: const Border(
-                    top: BorderSide(color: Colors.black, width: 1),
-                    bottom: BorderSide(color: Colors.black, width: 1)),
+                    top: BorderSide(color: Colors.grey, width: 1),
+                    bottom: BorderSide(color: Colors.grey, width: 1)),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.5),
@@ -362,6 +363,12 @@ class _GraduateQualificationState extends State<GraduateQualification> {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const StartPage()));
+      },child:Icon(Icons.home_filled,)),
     );
   }
 }
