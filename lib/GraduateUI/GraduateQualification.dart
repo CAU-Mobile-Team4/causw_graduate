@@ -203,15 +203,6 @@ class _GraduateQualificationState extends State<GraduateQualification> {
           },
           tooltip: "강의 추가",
         ),
-        IconButton(
-          icon: Icon(Icons.question_mark,color: AppColor.purple,),
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder:
-                (context)=> GraduateInformation()
-            )
-            );
-            },
-            ),
           IconButton(
               icon: const Icon(
                 Icons.question_mark,
