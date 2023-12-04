@@ -34,8 +34,8 @@ class Subjects extends UserDataDetail {
         _specializedElective[index][key] = !_specializedElective[index][key];
       }
     } else if(subjectType == 'coreElective') {
-      if(value == null) {
-        _coreElective[index][key] = !_coreElective[index][key];
+      if(value != null) {
+        _coreElective[value][index][key] = !_coreElective[value][index][key];
       }
     }
     notifyListeners();
