@@ -24,9 +24,9 @@ class StartPage extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               const Text(
-                'App Name we make',
+                'Gradle',
                 style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 50,
                     fontWeight: FontWeight.bold,
                     color: AppColor.main),
               ),

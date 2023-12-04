@@ -1,6 +1,8 @@
+import 'package:causw_graduate/GraduateProvider/UserData/Detail/AdditionalCondition.dart';
 import 'package:causw_graduate/GraduateUI/ClassSelectionPage.dart';
 import 'package:causw_graduate/AppColor.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../startPage.dart';
 
@@ -12,10 +14,9 @@ class GraduateEtc extends StatefulWidget {
 }
 
 class _GraduateEtcState extends State<GraduateEtc> {
-  final _majorList=[1,2,3,4];
-  var _major=1;
   @override
   Widget build(BuildContext context) {
+    final additional = Provider.of<AdditionalCondition>(context);
     return Scaffold(
         backgroundColor: AppColor.background,
         appBar: AppBar(title: Text('ETC',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),
@@ -31,49 +32,89 @@ class _GraduateEtcState extends State<GraduateEtc> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          /*Row(
-            children: [Text('인턴'),
-              Checkbox(value: value, onChanged: (value){
-                setState(() {
+          CheckboxListTile(
+              title: Text('Undergraduate Research Assignment',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
+              value: additional.internship['undergraduateResearchAssistant'],
+              onChanged: (value){
+                additional.updateInternship('undergraduateResearchAssistant');
+              }
+          )
+          ,
+          CheckboxListTile(
+              title: Text('Start Up',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
+              value: additional.internship['startUp'],
+              onChanged: (value){
+                additional.updateInternship('startUp');
+              }
+          )
+          ,
 
-                });
-              }),
-            ],
+          CheckboxListTile(
+              title: Text('Industrial Internship',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
+              value: additional.internship['industrialInternship'],
+              onChanged: (value){
+                additional.updateInternship('industrialInternship');
+              }
+          )
+          ,
+          CheckboxListTile(
+              title: Text('Field Training',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
+              value: additional.internship['fieldTraining'],
+              onChanged: (value){
+                additional.updateInternship('fieldTraining');
+              }
+          )
+          ,
+
+          CheckboxListTile(
+              title: Text('Hanja Class',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
+              value: additional.hanja['class'],
+              onChanged: (value){
+                additional.updateHanja('class');
+              }
+          )
+          ,
+          CheckboxListTile(
+              title: Text('Hanja Test',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
+              value: additional.hanja['test'],
+              onChanged: (value){
+                additional.updateHanja('test');
+              }
+          )
+          ,
+          CheckboxListTile(
+            title: Text('Topcit',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
+              value: additional.thesis['topcit'],
+              onChanged: (value){
+                additional.updateThesis('topcit');
+              }
+          )
+          ,CheckboxListTile(
+            title: Text('Thesis',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main)),
+            value: additional.thesis['standard'],
+            onChanged: (value){
+              additional.updateThesis('standard');
+            }
           ),
           Row(
-            children: [Text('Topcit 270이상', style: TextStyle(fontWeight: FontWeight.bold,color: AppColor.text),),
-              Checkbox(value: value, onChanged: (value){
-                setState(() {
-
-                });
-              }),
-            ],
-          ),*/
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Flexible(
-                  flex: 4,
-                  child: Center(
-                      child: const Text("상담 횟수",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),)
-                  )
+              Center(
+                  child: const Text("Counseling",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),)
               ),
-              Flexible(
-                flex: 3,
-                child: Center(
-                  child: DropdownButton(
-                    value: _major,
-                    items: _majorList
-                        .map(
-                            (_major)=>DropdownMenuItem(
-                            value: _major,
-                            child: Text('$_major',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),))).toList(),
-                    onChanged: (value){
-                      setState(() {
-                        _major=value!;
-                      });
-                    },
-                  ),
+              Center(
+                child: DropdownButton(
+                  value: additional.counseling['advisorCount'],
+                  items: (additional.counseling['advisorList'] as List)
+                      .map(
+                          (advisorCount)=>DropdownMenuItem(
+                          value: advisorCount,
+                          child: Text('$advisorCount',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.text),))).toList(),
+                  onChanged: (value){
+                    setState(() {
+                      additional.counseling['advisorCount']=value!;
+                    });
+                  },
                 ),
               ),
             ],
