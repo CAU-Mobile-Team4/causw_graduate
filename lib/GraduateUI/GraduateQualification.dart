@@ -242,6 +242,7 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                   Flexible(
                       flex: 1,
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
                               width: 150,
@@ -256,8 +257,9 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                               alignment: Alignment.center,
                               width: 150,
                               height: 20,
-                              child: Text("${graduateAnalysis.requiredCondition[0].satisfied}/${graduateAnalysis.requiredCondition[0].require}",
-                                  style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)))
+                              child: graduateAnalysis.requiredCondition[0].satisfied < 140 ? Text("${graduateAnalysis.requiredCondition[0].satisfied}/${graduateAnalysis.requiredCondition[0].require}",
+                                style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),) :  Text('Satisfied',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.orange)),
+                          ),
                         ],
                       )),
                   Flexible(
