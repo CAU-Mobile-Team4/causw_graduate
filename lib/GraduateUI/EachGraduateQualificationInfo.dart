@@ -15,7 +15,7 @@ class EachGraduateQualificationInfo extends StatelessWidget {
           centerTitle: true,
         leading: IconButton(
             onPressed: (){
-              Navigator.pop(context, MaterialPageRoute(builder:
+              Navigator.push(context, MaterialPageRoute(builder:
                   (context)=> GraduateQualification()
               )
               );

@@ -71,6 +71,7 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
                   flex: 3,
                   child: Center(
                     child: DropdownButton(
+                      dropdownColor: Colors.white,
                       value: studentInfo.majorStatus,
                       items: studentInfo.majorStatusList
                           .map(

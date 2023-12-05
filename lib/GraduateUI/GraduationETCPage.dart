@@ -14,6 +14,8 @@ class GraduateEtc extends StatefulWidget {
 }
 
 class _GraduateEtcState extends State<GraduateEtc> {
+  TextEditingController _creditController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final additional = Provider.of<AdditionalCondition>(context);
@@ -23,103 +25,118 @@ class _GraduateEtcState extends State<GraduateEtc> {
     ),
           centerTitle: true,
           leading: IconButton(onPressed: (){
-            Navigator.pop(context, MaterialPageRoute(builder:
+            Navigator.push(context, MaterialPageRoute(builder:
                 (context)=> ClassSelection()
             )
             );
-          }, icon: Icon(Icons.arrow_back,color: AppColor.purple,)),
+          }, icon: Icon(Icons.arrow_back,color: AppColor.main,)),
     backgroundColor: AppColor.background,),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CheckboxListTile(
-              title: Text('Undergraduate Research Assignment',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
-              value: additional.internship['undergraduateResearchAssistant'],
-              onChanged: (value){
-                additional.updateInternship('undergraduateResearchAssistant');
-              }
-          )
-          ,
-          CheckboxListTile(
-              title: Text('Start Up',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
-              value: additional.internship['startUp'],
-              onChanged: (value){
-                additional.updateInternship('startUp');
-              }
-          )
-          ,
-
-          CheckboxListTile(
-              title: Text('Industrial Internship',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
-              value: additional.internship['industrialInternship'],
-              onChanged: (value){
-                additional.updateInternship('industrialInternship');
-              }
-          )
-          ,
-          CheckboxListTile(
-              title: Text('Field Training',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
-              value: additional.internship['fieldTraining'],
-              onChanged: (value){
-                additional.updateInternship('fieldTraining');
-              }
-          )
-          ,
-
-          CheckboxListTile(
-              title: Text('Hanja Class',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
-              value: additional.hanja['class'],
-              onChanged: (value){
-                additional.updateHanja('class');
-              }
-          )
-          ,
-          CheckboxListTile(
-              title: Text('Hanja Test',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
-              value: additional.hanja['test'],
-              onChanged: (value){
-                additional.updateHanja('test');
-              }
-          )
-          ,
-          CheckboxListTile(
-            title: Text('Topcit',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
-              value: additional.thesis['topcit'],
-              onChanged: (value){
-                additional.updateThesis('topcit');
-              }
-          )
-          ,CheckboxListTile(
-            title: Text('Thesis',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main)),
-            value: additional.thesis['standard'],
-            onChanged: (value){
-              additional.updateThesis('standard');
-            }
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Center(
-                  child: const Text("Counseling",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),)
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [Padding(
+            padding: EdgeInsets.fromLTRB(20.0,0.0,20.0,10.0),
+            child: TextField(
+              controller: _creditController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                labelText: 'Your other GE class total credit'
               ),
-              Center(
-                child: DropdownButton(
-                  value: additional.counseling['advisorCount'],
-                  items: (additional.counseling['advisorList'] as List)
-                      .map(
-                          (advisorCount)=>DropdownMenuItem(
-                          value: advisorCount,
-                          child: Text('$advisorCount',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.text),))).toList(),
-                  onChanged: (value){
-                    setState(() {
-                      additional.counseling['advisorCount']=value!;
-                    });
-                  },
+              onSubmitted: (String value) {
+                // 입력된 숫자를 가져와서 변수에 저장
+               additional.additionalCredit['normalElective'] = int.tryParse(value) ?? 0;
+                 },
+            ),
+          ),
+            CheckboxListTile(
+                title: Text('Undergraduate Research Assignment',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
+                value: additional.internship['undergraduateResearchAssistant'],
+                onChanged: (value){
+                  additional.updateInternship('undergraduateResearchAssistant');
+                }
+            )
+            ,
+            CheckboxListTile(
+                title: Text('Start Up',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
+                value: additional.internship['startUp'],
+                onChanged: (value){
+                  additional.updateInternship('startUp');
+                }
+            )
+            ,
+
+            CheckboxListTile(
+                title: Text('Industrial Internship',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
+                value: additional.internship['industrialInternship'],
+                onChanged: (value){
+                  additional.updateInternship('industrialInternship');
+                }
+            )
+            ,
+            CheckboxListTile(
+                title: Text('Field Training',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
+                value: additional.internship['fieldTraining'],
+                onChanged: (value){
+                  additional.updateInternship('fieldTraining');
+                }
+            )
+            ,
+
+            CheckboxListTile(
+                title: Text('Hanja Class',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
+                value: additional.hanja['class'],
+                onChanged: (value){
+                  additional.updateHanja('class');
+                }
+            )
+            ,
+            CheckboxListTile(
+                title: Text('Hanja Test',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
+                value: additional.hanja['test'],
+                onChanged: (value){
+                  additional.updateHanja('test');
+                }
+            )
+            ,
+            CheckboxListTile(
+              title: Text('Topcit',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
+                value: additional.thesis['topcit'],
+                onChanged: (value){
+                  additional.updateThesis('topcit');
+                }
+            )
+            ,CheckboxListTile(
+              title: Text('Thesis',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main)),
+              value: additional.thesis['standard'],
+              onChanged: (value){
+                additional.updateThesis('standard');
+              }
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Center(
+                    child: const Text("Counseling",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),)
                 ),
-              ),
-            ],
-          ),
-        ]
+                Center(
+                  child: DropdownButton(
+                    value: additional.counseling['advisorCount'],
+                    items: (additional.counseling['advisorList'] as List)
+                        .map(
+                            (advisorCount)=>DropdownMenuItem(
+                            value: advisorCount,
+                            child: Text('$advisorCount',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),))).toList(),
+                    onChanged: (value){
+                      setState(() {
+                        additional.counseling['advisorCount']=value!;
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ]
+        ),
       ),
       floatingActionButton: FloatingActionButton(onPressed: () {
         Navigator.push(

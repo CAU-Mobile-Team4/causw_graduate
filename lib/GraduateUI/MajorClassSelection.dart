@@ -27,11 +27,11 @@ class _MajorClassState extends State<MajorClass> {
         appBar: AppBar(title: Text('MAJOR CLASS',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),
         ),
           leading: IconButton(onPressed: (){
-            Navigator.pop(context, MaterialPageRoute(builder:
+            Navigator.push(context, MaterialPageRoute(builder:
                 (context)=> ClassSelection()
             )
             );
-          }, icon: Icon(Icons.arrow_back,color: AppColor.purple,)),
+          }, icon: Icon(Icons.arrow_back,color: AppColor.main,)),
           centerTitle: true,
           automaticallyImplyLeading: false,
           backgroundColor: AppColor.background,
@@ -56,14 +56,14 @@ class _MajorClassState extends State<MajorClass> {
         ),Expanded(
           child: Container(
               child: ListView.builder(
-                itemCount: classes.length,
+                itemCount: subjects.basicMajor.length,
                 itemBuilder: (context,index){
               return CheckboxListTile(
-                  title: Text(classes[index],style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold)),
-                  value: checkedClasses[index],
+                  title: Text('${subjects.basicMajor[index]['name']}',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold)),
+                  value: subjects.basicMajor[index]['isSatisfied'],
                   onChanged: (value){
                     setState(() {
-                      checkedClasses[index]=value!;
+                      subjects.updateSubject('basicMajor', index, 'isSatisfied');
                     });
                   }
               );

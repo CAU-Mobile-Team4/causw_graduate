@@ -24,11 +24,11 @@ class _SelectGEclassState extends State<SelectGEclass> {
           appBar: AppBar(title: Text('GE CLASS',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),
           ),
             leading: IconButton(onPressed: (){
-              Navigator.pop(context, MaterialPageRoute(builder:
+              Navigator.push(context, MaterialPageRoute(builder:
                   (context)=> ClassSelection()
               )
               );
-            }, icon: Icon(Icons.arrow_back,color: AppColor.purple,)),
+            }, icon: Icon(Icons.arrow_back,color: AppColor.main,)),
             centerTitle: true,
             automaticallyImplyLeading: false,
 

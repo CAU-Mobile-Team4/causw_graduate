@@ -26,11 +26,11 @@ class _BSMclassSelectionState extends State<BSMclassSelection> {
         ),
           centerTitle: true,
           leading: IconButton(onPressed: (){
-            Navigator.pop(context, MaterialPageRoute(builder:
+            Navigator.push(context, MaterialPageRoute(builder:
                 (context)=> ClassSelection()
             )
             );
-          }, icon: Icon(Icons.arrow_back,color: AppColor.purple,)),
+          }, icon: Icon(Icons.arrow_back,color: AppColor.main,)),
           backgroundColor: AppColor.background,
           automaticallyImplyLeading: false,
          ),

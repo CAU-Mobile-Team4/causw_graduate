@@ -1,4 +1,7 @@
+
+
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/DetailCondition.dart';
+
 import 'package:causw_graduate/GraduateProvider/Requirement/GraduateAnalysis.dart';
 import 'package:causw_graduate/GraduateUI/ClassSelectionPage.dart';
 import 'package:causw_graduate/GraduateUI/EachGraduateQualificationInfo.dart';
@@ -24,11 +27,12 @@ class HalfCircularGraph extends StatefulWidget {
 class _HalfCircularGraphState extends State<HalfCircularGraph> {
   @override
   Widget build(BuildContext context) {
+    final graduateAnalysis2 = Provider.of<GraduateAnalysis>(context);
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
       height: MediaQuery.of(context).size.width * 0.8,
       child: CustomPaint(
-        painter: CircularGraphPainter(radius: 30),
+        painter: CircularGraphPainter(graduateAnalysis: graduateAnalysis2, radius: 30),
       ),
     );
   }
@@ -36,8 +40,8 @@ class _HalfCircularGraphState extends State<HalfCircularGraph> {
 
 class CircularGraphPainter extends CustomPainter {
   final double radius; // 반지름을 전달받는 생성자 추가
-
-  CircularGraphPainter({this.radius = 10.0});
+  final graduateAnalysis;
+  CircularGraphPainter({required this.graduateAnalysis, this.radius = 10.0});
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint()
@@ -60,7 +64,7 @@ class CircularGraphPainter extends CustomPainter {
     canvas.drawArc(
       Rect.fromCircle(center: center, radius: radius),
       -pi, // 시작 각도
-      pi/2, // 그릴 각도 (반원이므로 pi)
+      pi*((graduateAnalysis.requiredCondition[0].satisfied)/(graduateAnalysis.requiredCondition[0].require)), // 그릴 각도 (반원이므로 pi)
       false,
       paint,
     );
@@ -94,13 +98,10 @@ class GraduateQualification extends StatefulWidget {
 }
 
 class _GraduateQualificationState extends State<GraduateQualification> {
-  final classes = List.generate(40, (i) => "Class ${i + 1}").toList();
-  final List<bool> checkedClasses = List.generate(40, (index) => false);
 
   @override
   Widget build(BuildContext context) {
     final graduateAnalysis = Provider.of<GraduateAnalysis>(context);
-
     Widget _buildTextBasedOnType(DetailCondition condition) {
       switch (condition.type) {
         case 2:
@@ -115,7 +116,7 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                     Navigator.push(context, MaterialPageRoute(builder:
                     (context)=> EachGraduateQualificationInfo(guideline: condition.guideLine,)
                     ));
-                  }, icon: Icon(Icons.question_mark)),
+                  }, icon: Icon(Icons.question_mark,color: AppColor.main,)),
                   Text('${condition.satisfied}/${condition.require}'),
                 ],
               )
@@ -134,7 +135,7 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                     (context)=> EachGraduateQualificationInfo(guideline: condition.guideLine)
                     ));
                   },
-                      icon: Icon(Icons.question_mark)),
+                      icon: Icon(Icons.question_mark,color: AppColor.main)),
                   Text('${condition.satisfied}/${condition.require}'),
                 ],
               )
@@ -152,7 +153,7 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                     Navigator.push(context, MaterialPageRoute(builder:
                     (context)=> EachGraduateQualificationInfo(guideline: condition.guideLine)
                     ));
-                  }, icon: Icon(Icons.question_mark)),
+                  }, icon: Icon(Icons.question_mark,color: AppColor.main)),
                   Text('${condition.satisfied}/${condition.require}'),
                 ],
               )
@@ -161,22 +162,6 @@ class _GraduateQualificationState extends State<GraduateQualification> {
       }
     }
 
-    List<String> selectedClasses = [];
-    for (int i = 0; i < classes.length; i++) {
-      if (checkedClasses[i]) {
-        selectedClasses.add(classes[i]);
-      }
-    }
-
-    List<String> selectedClasses2 = [];
-    for (int i = 0; i < classes.length; i++) {
-      if (!checkedClasses[i]) {
-        selectedClasses2.add(classes[i]);
-      }
-    }
-
-    int checkedCount = checkedClasses.where((element) => element).length;
-    int unCheckedCount = checkedClasses.where((element) => !element).length;
 
     return Scaffold(
       backgroundColor: AppColor.background,
@@ -188,14 +173,14 @@ class _GraduateQualificationState extends State<GraduateQualification> {
         backgroundColor: AppColor.background,
         leading: IconButton(
             onPressed: (){
-              Navigator.pop(context, MaterialPageRoute(builder:
+              Navigator.push(context, MaterialPageRoute(builder:
               (context)=> InformationEntryPage()
           )
           );
-        }, icon: Icon(Icons.arrow_back,color: AppColor.purple,)),
+        }, icon: Icon(Icons.arrow_back,color: AppColor.main,)),
       actions: <Widget>[
         IconButton(
-          icon: Icon(Icons.add,color: AppColor.purple,),
+          icon: Icon(Icons.add,color: AppColor.main,),
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder:
                 (context)=> ClassSelection()
@@ -207,7 +192,7 @@ class _GraduateQualificationState extends State<GraduateQualification> {
           IconButton(
               icon: const Icon(
                 Icons.question_mark,
-                color: AppColor.purple,
+                color: AppColor.main,
               ),
               onPressed: () {
                 Navigator.push(
@@ -229,9 +214,9 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: const Offset(0, 3), // changes position of shadow
+                      spreadRadius: 1,
+                      blurRadius: 20,
+                      offset: const Offset(0, 10), // changes position of shadow
                     ),
                   ],
                   border: const Border(
@@ -247,8 +232,8 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                             height: 50,
                             alignment: Alignment.center,
                             child: const Text(
-                              "학점 그래프",
-                              style: TextStyle(fontSize: 15),
+                              "Credit Graph",
+                              style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),
                             )), //학점 그래프와 학점은 그냥 출력만 해둔거 나중에 데이터 들어오면 기능 구현될거
                         Container(
                             decoration: const BoxDecoration(),
@@ -264,15 +249,15 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                               decoration: const BoxDecoration(),
                               alignment: Alignment.center,
                               child: const Text(
-                                "학점",
-                                style: TextStyle(fontSize: 20),
+                                "CREDIT",
+                                style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
                               )),
                           Container(
                               alignment: Alignment.center,
                               width: 150,
                               height: 20,
-                              child: const Text("70/140",
-                                  style: TextStyle(fontSize: 20)))
+                              child: Text("${graduateAnalysis.requiredCondition[0].satisfied}/${graduateAnalysis.requiredCondition[0].require}",
+                                  style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)))
                         ],
                       )),
                   Flexible(
@@ -284,14 +269,14 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                               height: 70,
                               decoration: const BoxDecoration(),
                               alignment: Alignment.center,
-                              child: const Text("해결 졸업요건",
-                                  style: TextStyle(fontSize: 20))),
+                              child: const Text("RESOLVED",
+                                  style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold))),
                           Container(
                               alignment: Alignment.center,
                               width: 150,
                               height: 20,
-                              child: Text("$checkedCount/40",
-                                  style: const TextStyle(fontSize: 20)))
+                              child: Text("${graduateAnalysis.satisfiedConditionCount}/${graduateAnalysis.requiredConditionCount+graduateAnalysis.satisfiedConditionCount}",
+                                  style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold)))
                         ],
                       )),
                 ],
@@ -317,9 +302,9 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: const Offset(0, 3), // changes position of shadow
+                    spreadRadius: 1,
+                    blurRadius: 20,
+                    offset: const Offset(0, 10), // changes position of shadow
                   ),
                 ],
               ),
@@ -335,8 +320,8 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                         height: 60,
                         decoration: const BoxDecoration(),
                         alignment: Alignment.center,
-                        child: const Text("미해결 졸업요건",
-                            style: TextStyle(fontSize: 20))),
+                        child: const Text("UNRESOLVED",
+                            style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold))),
                   ),
                   Flexible(
                     flex: 1,
@@ -344,8 +329,8 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                         alignment: Alignment.center,
                         width: 150,
                         height: 60,
-                        child: Text("$unCheckedCount 개",
-                            style: const TextStyle(fontSize: 20))),
+                        child: Text("${graduateAnalysis.requiredConditionCount}/${graduateAnalysis.requiredConditionCount+graduateAnalysis.satisfiedConditionCount}",
+                            style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold))),
                   )
                 ],
               )),
@@ -364,10 +349,9 @@ class _GraduateQualificationState extends State<GraduateQualification> {
         ],
       ),
       floatingActionButton: FloatingActionButton(onPressed: () {
-        Navigator.push(
+        Navigator.popUntil(
             context,
-            MaterialPageRoute(
-                builder: (context) => const StartPage()));
+            (route) => route.isFirst);
       },child:Icon(Icons.home_filled,)),
     );
   }

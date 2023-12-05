@@ -5,24 +5,30 @@ import 'package:causw_graduate/GraduateUI/GraduationETCPage.dart';
 import 'package:causw_graduate/GraduateUI/MajorClassSelection.dart';
 import 'package:causw_graduate/AppColor.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../GraduateProvider/Requirement/GraduateAnalysis.dart';
 import '../startPage.dart';
 
 class ClassSelection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final graduateAnalysis = Provider.of<GraduateAnalysis>(context);
     return Scaffold(
       backgroundColor: AppColor.background,
       appBar:
       AppBar(title: Text("SELECT CLASS",style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),backgroundColor: AppColor.background,
 
         leading: IconButton(onPressed: (){
-          Navigator.pop(context, MaterialPageRoute(builder:
-              (context)=> GraduateQualification()
+          Navigator.push(context, MaterialPageRoute(builder:
+              (context) {
+                graduateAnalysis.update();
+                return GraduateQualification();
+              },
           )
           );
-        }, icon: Icon(Icons.arrow_back,color: AppColor.purple,)),
+        }, icon: Icon(Icons.arrow_back,color: AppColor.main,)),
         centerTitle: true,
       ),
       body: Center(
