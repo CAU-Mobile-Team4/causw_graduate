@@ -23,12 +23,33 @@ class StartPage extends StatelessWidget {
                 height: 300,
               ),
               const SizedBox(height: 30),
-              const Text(
-                'Gradle',
-                style: TextStyle(
-                    fontSize: 50,
-                    fontWeight: FontWeight.bold,
-                    color: AppColor.main),
+              Stack(
+                children: [
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Gradle',
+                        style: TextStyle(
+                            fontSize: 50,
+                            fontWeight: FontWeight.bold,
+                            color: AppColor.main),
+                      ),
+                    ],
+                  ),
+                  Positioned(
+                      top: 10,
+                      right: 100,
+                      child: Container(
+                        width: 25,
+                        height: 25,
+                        decoration: BoxDecoration(
+                          border: Border.all(width: 3, color: Colors.red),
+                          shape: BoxShape.rectangle,
+                          color: Colors.transparent,
+                        ),
+                      ))
+                ],
               ),
               const SizedBox(height: 30),
               GestureDetector(
