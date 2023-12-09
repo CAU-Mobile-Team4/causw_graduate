@@ -106,7 +106,7 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
             context,
             MaterialPageRoute(
                 builder: (context) => const StartPage()));
-      },child:Icon(Icons.home_filled,)),
+      },backgroundColor: Theme.of(context).primaryColor.withOpacity(0.2),child:Icon(Icons.home_filled,)),
     );
   }
 }
