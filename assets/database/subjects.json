@@ -25,19 +25,19 @@
     {"name": "기초전공 나중에", "credits": 3, "isSatisfied": false, "english": "korean"}
   ],
   "bsm": [
-    {"name": "일반물리(1)", "credits": 3, "isSatisfied": false, "english": false},
-    {"name": "일반물리실험(1)", "credits": 1, "isSatisfied": false, "english": false},
-    {"name": "미적분학", "credits": 3, "isSatisfied": false, "english": false},
-    {"name": "선형대수학", "credits": 3, "isSatisfied": false, "english": false},
-    {"name": "이산수학", "credits": 3, "isSatisfied": false, "english": false},
-    {"name": "확률과통계", "credits": 3, "isSatisfied": false, "english": false},
-    {"name": "수치해석", "credits": 3, "isSatisfied": false, "english": false}
+    {"name": "일반물리(1)", "credits": 3, "isSatisfied": false, "english": "korean"},
+    {"name": "일반물리실험(1)", "credits": 1, "isSatisfied": false, "english": "korean"},
+    {"name": "미적분학", "credits": 3, "isSatisfied": false, "english": "korean"},
+    {"name": "선형대수학", "credits": 3, "isSatisfied": false, "english": "korean"},
+    {"name": "이산수학", "credits": 3, "isSatisfied": false, "english": "korean"},
+    {"name": "확률과통계", "credits": 3, "isSatisfied": false, "english": "korean"},
+    {"name": "수치해석", "credits": 3, "isSatisfied": false, "english": "korean"}
   ],
   "specializedElective": [
-    {"name": "글쓰기", "credits": 2, "isSatisfied": false, "english": false},
-    {"name": "AI시대문제해결을 위한 디자인사고", "credits": 2, "isSatisfied": false, "english": false},
-    {"name": "앙트레프레너십 시대의 회계", "credits": 2, "isSatisfied": false, "english": false},
-    {"name": "한국사", "credits": 2, "isSatisfied": false, "english": false}
+    {"name": "글쓰기", "credits": 2, "isSatisfied": false},
+    {"name": "AI시대문제해결을 위한 디자인사고", "credits": 2, "isSatisfied": false},
+    {"name": "앙트레프레너십 시대의 회계", "credits": 2, "isSatisfied": false},
+    {"name": "한국사", "credits": 2, "isSatisfied": false}
   ],
   "coreElective": {
     "challenge": [

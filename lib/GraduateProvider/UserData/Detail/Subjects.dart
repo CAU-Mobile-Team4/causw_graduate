@@ -34,6 +34,8 @@ class Subjects extends UserDataDetail {
     } else if(subjectType == 'bsm') {
       if(value == null) {
         _bsm[index][key] = !_bsm[index][key];
+      } else {
+        _bsm[index][key] = value;
       }
     } else if(subjectType == 'specializedElective') {
       if(value == null) {
