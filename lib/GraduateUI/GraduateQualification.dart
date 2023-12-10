@@ -5,7 +5,6 @@ import 'package:causw_graduate/GraduateProvider/Requirement/Detail/DetailConditi
 import 'package:causw_graduate/GraduateProvider/Requirement/GraduateAnalysis.dart';
 import 'package:causw_graduate/GraduateUI/ClassSelectionPage.dart';
 import 'package:causw_graduate/GraduateUI/EachGraduateQualificationInfo.dart';
-import 'package:causw_graduate/GraduateUI/GraduateInformationPage.dart';
 import 'package:causw_graduate/GraduateUI/InformationEntryPage.dart';
 
 
@@ -189,18 +188,6 @@ class _GraduateQualificationState extends State<GraduateQualification> {
           },
           tooltip: "강의 추가",
         ),
-          IconButton(
-              icon: const Icon(
-                Icons.question_mark,
-                color: AppColor.main,
-              ),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const GraduateInformation()));
-              },
-              tooltip: "졸업 요건"),
         ],
       ),
       body: Column(

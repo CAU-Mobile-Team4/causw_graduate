@@ -15,6 +15,7 @@ class GraduateEtc extends StatefulWidget {
 
 class _GraduateEtcState extends State<GraduateEtc> {
   TextEditingController _creditController = TextEditingController();
+  TextEditingController _averageCreditController= TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,7 @@ class _GraduateEtcState extends State<GraduateEtc> {
               controller: _creditController,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
-                labelText: 'Your other GE class total credit'
+                labelText: '수강한 일반교양의 총 학점을 입력해주세요'
               ),
               onSubmitted: (String value) {
                 // 입력된 숫자를 가져와서 변수에 저장
@@ -48,6 +49,20 @@ class _GraduateEtcState extends State<GraduateEtc> {
                  },
             ),
           ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(20.0,0.0,20.0,10.0),
+              child: TextField(
+                controller: _averageCreditController,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                    labelText: '당신의 평균 학점을 입력해주세요'
+                ),
+                onSubmitted: (String value) {
+                  // 입력된 숫자를 가져와서 변수에 저장
+                  additional.grade['score'] = double.tryParse(value) ?? 0;
+                },
+              ),
+            ),
             CheckboxListTile(
                 title: Text('학부연구생',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
                 value: additional.internship['undergraduateResearchAssistant'],
@@ -112,6 +127,31 @@ class _GraduateEtcState extends State<GraduateEtc> {
                 additional.updateThesis('standard');
               }
             ),
+            CheckboxListTile(
+                title: Text('ACT수강',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
+                value: additional.act['isSatisfied'],
+                onChanged: (value){
+                  additional.updateAct('isSatisfied');
+                }
+            )
+            ,
+            CheckboxListTile(
+                title: Text('오픈소스 개발자 커뮤니티에 1건이상 개방',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
+                value: additional.openSource['isSatisfied'],
+                onChanged: (value){
+                  additional.updateOpenSource('isSatisfied');
+                }
+            )
+            ,
+            CheckboxListTile(
+                title: Text('토익 750이상 or 토익 스피킹 5급이상',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
+                value: additional.english['test'],
+                onChanged: (value){
+                  additional.updateEnglish('test');
+                }
+            )
+            ,
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
