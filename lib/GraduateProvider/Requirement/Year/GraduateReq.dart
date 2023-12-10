@@ -15,6 +15,7 @@ abstract class GraduateReq {
   late DetailCondition hanja;
   late DetailCondition codingBootCamp;
   late DetailCondition coreElective;
+  late DetailCondition act;
   late DetailCondition openSource;
   late DetailCondition english;
 
@@ -35,6 +36,7 @@ abstract class GraduateReq {
     condition.add(hanja);
     condition.add(codingBootCamp);
     condition.add(coreElective);
+    condition.add(act);
     condition.add(openSource);
     condition.add(english);
   }

@@ -22,6 +22,9 @@
     "startUp": false,
     "undergraduateResearchAssistant": false
   },
+  "act": {
+    "isSatisfied": false
+  },
   "openSource": {
     "isSatisfied": false
   },

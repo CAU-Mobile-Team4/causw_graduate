@@ -1,3 +1,4 @@
+import 'package:causw_graduate/GraduateProvider/Requirement/Detail/Act/Year19Act.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/BSMCredit/Year19BSMCredit.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/Capstone/Year19Capstone.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/CodingBootCamp/Year19CodingBootCamp.dart';
@@ -32,6 +33,7 @@ class Year19GraduateReq extends GraduateReq {
     hanja = Year19Hanja();
     codingBootCamp = Year19CodingBootCamp();
     coreElective = Year19CoreElective();
+    act = Year19Act();
     openSource = Year19OpenSource();
     english = Year19English();
     initializeList();
