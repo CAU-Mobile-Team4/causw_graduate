@@ -63,6 +63,7 @@
   },
   "option": {
     "english": ["korean", "english"],
+    "semester": [1, 2, 3, 4, 5, 6, 7, 8],
     "grade": ["A+", "A", "B+", "B", "C+", "C", "D+", "D", "F"]
   }
 }

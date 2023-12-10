@@ -7,6 +7,7 @@ import 'package:causw_graduate/GraduateProvider/Requirement/Detail/DesignCourseC
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/Hanja/Year19Hanja.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/Internship/Year19Internship.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/MajorCredit/Year19MajorCredit.dart';
+import 'package:causw_graduate/GraduateProvider/Requirement/Detail/OpenSource/Year19OpenSource.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/RequiredMajor/Year19RequiredMajorCredit.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/SpecializedElectiveCredit/Year19SpecializedElectiveCredit.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/Thesis/Year19Thesis.dart';
@@ -28,6 +29,7 @@ class Year19GraduateReq extends GraduateReq {
     hanja = Year19Hanja();
     codingBootCamp = Year19CodingBootCamp();
     coreElective = Year19CoreElective();
+    openSource = Year19OpenSource();
     initializeList();
   }
 }

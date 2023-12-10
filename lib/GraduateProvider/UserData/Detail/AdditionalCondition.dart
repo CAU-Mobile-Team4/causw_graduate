@@ -9,12 +9,14 @@ class AdditionalCondition extends UserDataDetail {
   late Map<String, dynamic> _thesis;
   late Map<String, dynamic> _hanja;
   late Map<String, dynamic> _internship;
+  late Map<String, dynamic> _openSource;
 
   Map<String, dynamic> get additionalCredit => _additionalCredit;
   Map<String, dynamic> get counseling => _counseling;
   Map<String, dynamic> get thesis => _thesis;
   Map<String, dynamic> get hanja => _hanja;
   Map<String, dynamic> get internship => _internship;
+  Map<String, dynamic> get openSource => _openSource;
 
   void updateAdditionalCredit(String key, int value) {
     _additionalCredit[key] = value;
@@ -43,6 +45,11 @@ class AdditionalCondition extends UserDataDetail {
     notifyListeners();
   }
 
+  void updateOpenSource(String key) {
+    _openSource[key] = !_openSource[key];
+    notifyListeners();
+  }
+
   @override
   Map<String, dynamic> toJson() {
     return {
@@ -50,7 +57,8 @@ class AdditionalCondition extends UserDataDetail {
       'counseling': _counseling,
       'thesis': _thesis,
       'hanja': _hanja,
-      'internship': _internship
+      'internship': _internship,
+      'openSource': _openSource
     };
   }
 
@@ -61,5 +69,6 @@ class AdditionalCondition extends UserDataDetail {
     _thesis = json['thesis'];
     _hanja = json['hanja'];
     _internship = json['internship'];
+    _openSource = json['openSource'];
   }
 }

@@ -21,5 +21,8 @@
     "fieldTraining": false,
     "startUp": false,
     "undergraduateResearchAssistant": false
+  },
+  "openSource": {
+    "isSatisfied": false
   }
 }
