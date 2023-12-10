@@ -24,5 +24,8 @@
   },
   "openSource": {
     "isSatisfied": false
+  },
+  "english": {
+    "test": false
   }
 }

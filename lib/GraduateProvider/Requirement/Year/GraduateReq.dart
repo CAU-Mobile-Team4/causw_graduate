@@ -15,6 +15,7 @@ abstract class GraduateReq {
   late DetailCondition codingBootCamp;
   late DetailCondition coreElective;
   late DetailCondition openSource;
+  late DetailCondition english;
 
   List<DetailCondition> condition = [];
 
@@ -33,5 +34,6 @@ abstract class GraduateReq {
     condition.add(codingBootCamp);
     condition.add(coreElective);
     condition.add(openSource);
+    condition.add(english);
   }
 }
