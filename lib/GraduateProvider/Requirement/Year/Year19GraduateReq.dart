@@ -8,6 +8,7 @@ import 'package:causw_graduate/GraduateProvider/Requirement/Detail/Internship/Ye
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/MajorCredit/Year19MajorCredit.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/RequiredMajor/Year19RequiredMajorCredit.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/SpecializedElectiveCredit/Year19SpecializedElectiveCredit.dart';
+import 'package:causw_graduate/GraduateProvider/Requirement/Detail/Thesis/Year19Thesis.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/TotalCredit/Year19TotalCredit.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Year/GraduateReq.dart';
 
@@ -22,6 +23,7 @@ class Year19GraduateReq extends GraduateReq {
     counseling = Year19Counseling();
     internship = Year19Internship();
     capstone = Year19Capstone();
+    thesis = Year19Thesis();
     hanja = Year19Hanja();
     codingBootCamp = Year19CodingBootCamp();
     initializeList();

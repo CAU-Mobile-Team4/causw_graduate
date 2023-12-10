@@ -10,6 +10,7 @@ abstract class GraduateReq {
   late DetailCondition counseling;
   late DetailCondition internship;
   late DetailCondition capstone;
+  late DetailCondition thesis;
   late DetailCondition hanja;
   late DetailCondition codingBootCamp;
 
@@ -25,6 +26,7 @@ abstract class GraduateReq {
     condition.add(counseling);
     condition.add(internship);
     condition.add(capstone);
+    condition.add(thesis);
     condition.add(hanja);
     condition.add(codingBootCamp);
   }
