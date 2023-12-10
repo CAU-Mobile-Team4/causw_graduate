@@ -40,25 +40,25 @@
     {"name": "한국사", "credits": 2, "isSatisfied": false, "english": false}
   ],
   "coreElective": {
-    "convergence": [
-      {"name": "convergence test1", "credits": 3, "isSatisfied": false},
-      {"name": "convergence test2", "credits": 3, "isSatisfied": false}
-    ],
-    "communication": [
-      {"name": "communication test1", "credits": 3, "isSatisfied": false},
-      {"name": "communication test2", "credits": 3, "isSatisfied": false}
+    "challenge": [
+      {"name": "challenge test1", "credits": 3, "isSatisfied": false},
+      {"name": "challenge test2", "credits": 3, "isSatisfied": false}
     ],
     "creativity": [
       {"name": "creativity test1", "credits": 3, "isSatisfied": false},
       {"name": "creativity test2", "credits": 3, "isSatisfied": false}
     ],
-    "challenge": [
-      {"name": "challenge test1", "credits": 3, "isSatisfied": false},
-      {"name": "challenge test2", "credits": 3, "isSatisfied": false}
+    "fusion": [
+      {"name": "fusion test1", "credits": 3, "isSatisfied": false},
+      {"name": "fusion test2", "credits": 3, "isSatisfied": false}
     ],
     "trust": [
       {"name": "trust test1", "credits": 3, "isSatisfied": false},
       {"name": "trust test2", "credits": 3, "isSatisfied": false}
+    ],
+    "communication": [
+      {"name": "communication test1", "credits": 3, "isSatisfied": false},
+      {"name": "communication test2", "credits": 3, "isSatisfied": false}
     ]
   }
 }

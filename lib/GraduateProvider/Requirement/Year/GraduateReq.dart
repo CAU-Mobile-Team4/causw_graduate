@@ -13,6 +13,7 @@ abstract class GraduateReq {
   late DetailCondition thesis;
   late DetailCondition hanja;
   late DetailCondition codingBootCamp;
+  late DetailCondition coreElective;
 
   List<DetailCondition> condition = [];
 
@@ -29,5 +30,6 @@ abstract class GraduateReq {
     condition.add(thesis);
     condition.add(hanja);
     condition.add(codingBootCamp);
+    condition.add(coreElective);
   }
 }
