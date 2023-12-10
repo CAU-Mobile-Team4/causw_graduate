@@ -41,24 +41,78 @@
   ],
   "coreElective": {
     "challenge": [
-      {"name": "challenge test1", "credits": 3, "isSatisfied": false},
-      {"name": "challenge test2", "credits": 3, "isSatisfied": false}
+      {"name": "21세기글로벌리즘과한국", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "4차산업혁명시대의기업경영", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "건강한삶", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "경제와사회", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "내몸의구조와기능", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "미래사회와소프트웨어", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "성의과학", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "소프트웨어코딩과적용", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "우주의이해", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "창업계획", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "트렌드를읽는데이터경영", "credits": 3, "isSatisfied": false, "isMach": true},
+      {"name": "환경과인간", "credits": 3, "isSatisfied": false, "isMach": false}
     ],
     "creativity": [
-      {"name": "creativity test1", "credits": 3, "isSatisfied": false},
-      {"name": "creativity test2", "credits": 3, "isSatisfied": false}
+      {"name": "다빈치스포츠", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "글로벌시대의다문화콘텐츠", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "다빈치명저읽기", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "다빈치예술여행", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "디지털시대의공감", "credits": 3, "isSatisfied": false, "isMach": true},
+      {"name": "문학과예술의사회사", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "문학의세계", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "문화콘텐츠입문", "credits": 2, "isSatisfied": false, "isMach": false},
+      {"name": "생물의기원과진화", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "세계문화지리아카데미", "credits": 2, "isSatisfied": false, "isMach": false},
+      {"name": "음악의세계와감상", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "현대미술비평", "credits": 3, "isSatisfied": false, "isMach": false}
     ],
     "fusion": [
-      {"name": "fusion test1", "credits": 3, "isSatisfied": false},
-      {"name": "fusion test2", "credits": 3, "isSatisfied": false}
+      {"name": "과학기술과현대사회", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "디지털게임과문화", "credits": 3, "isSatisfied": false, "isMach": true},
+      {"name": "미래사회와미디어", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "생활속의생명과학", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "수학의세계", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "시적인간의세계읽기", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "식물과문명", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "식품과건강", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "인간과미생물", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "통계와사회", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "연극과뮤지컬", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "의약의역사", "credits": 3, "isSatisfied": false, "isMach": false}
     ],
     "trust": [
-      {"name": "trust test1", "credits": 3, "isSatisfied": false},
-      {"name": "trust test2", "credits": 3, "isSatisfied": false}
+      {"name": "글로벌한자", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "동양철학의세계", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "발견,발명,그위대한상상", "credits": 3, "isSatisfied": false, "isMach": true},
+      {"name": "언어와의사소통", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "역사란무엇인가", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "인간행동과심리", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "철학의세계", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "프로젝트글쓰기", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "한국의전통문화유산", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "현대사회와법", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "현대사회와언어", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "현대사회의쟁점", "credits": 3, "isSatisfied": false, "isMach": false}
     ],
     "communication": [
-      {"name": "communication test1", "credits": 3, "isSatisfied": false},
-      {"name": "communication test2", "credits": 3, "isSatisfied": false}
+      {"name": "English for Professional Track(Arts,Sports)", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "English for Professional Track(Business, Economics)", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "English for Professional Track(Sciences, Engineering) ", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "English for Professional Track(Social, Humanities)", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "대학한문", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "중앙인과한국사회", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "공감프레젠테이션", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "독일어(초급)", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "디지털커뮤니케이션과콘텐츠", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "아카데믹한국어2", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "위험사회의웰빙사이언스", "credits": 3, "isSatisfied": false, "isMach": true},
+      {"name": "불어(초급)", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "중국어(초급)", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "일본어(초급)", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "러시아어(초급)", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "스페인어(초급)", "credits": 3, "isSatisfied": false, "isMach": false}
     ]
   },
   "option": {

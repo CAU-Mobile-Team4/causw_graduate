@@ -1,6 +1,6 @@
 {
-  "admissionYearList": [18, 19, 20],
-  "admissionYear": 18,
+  "admissionYearList": [18, 19],
+  "admissionYear": 19,
   "majorStatusList": ["주전공", "복수전공", "융합전공"],
   "majorStatus": "주전공"
 }
