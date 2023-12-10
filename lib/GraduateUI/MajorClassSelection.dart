@@ -102,17 +102,41 @@ class _MajorClassState extends State<MajorClass> {
             child: ListView.builder(
               itemCount: subjects.basicMajor.length,
               itemBuilder: (context, index) {
-                return CheckboxListTile(
-                    title: Text('${subjects.basicMajor[index]['name']}',
-                        style: TextStyle(
-                            color: AppColor.main, fontWeight: FontWeight.bold)),
-                    value: subjects.basicMajor[index]['isSatisfied'],
-                    onChanged: (value) {
-                      setState(() {
-                        subjects.updateSubject(
-                            'basicMajor', index, 'isSatisfied');
-                      });
-                    });
+                return ListTile(
+                  title: Text(
+                    '${subjects.basicMajor[index]['name']}',
+                    style: TextStyle(
+                        color: AppColor.main, fontWeight: FontWeight.bold),
+                  ),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      DropdownButton(
+                        value: subjects.basicMajor[index]['english'],
+                        items: (subjects.option['english'] as List)
+                            .map((e) => DropdownMenuItem(
+                                value: e,
+                                child: Text(
+                                  e,
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                )))
+                            .toList(),
+                        onChanged: (value) {
+                          subjects.updateSubject(
+                              'basicMajor', index, 'english', value as String?);
+                        },
+                      ),
+                      Checkbox(
+                          value: subjects.basicMajor[index]['isSatisfied'],
+                          onChanged: (value) {
+                            subjects.updateSubject(
+                                'basicMajor', index, 'isSatisfied');
+                          }),
+                    ],
+                  ),
+                );
               },
             ),
           )),

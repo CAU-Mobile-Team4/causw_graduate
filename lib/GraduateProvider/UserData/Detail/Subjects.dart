@@ -28,6 +28,8 @@ class Subjects extends UserDataDetail {
     } else if(subjectType == 'basicMajor') {
       if(value == null) {
         _basicMajor[index][key] = !_basicMajor[index][key];
+      } else {
+        _basicMajor[index][key] = value;
       }
     } else if(subjectType == 'bsm') {
       if(value == null) {

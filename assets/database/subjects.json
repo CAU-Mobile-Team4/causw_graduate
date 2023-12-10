@@ -22,7 +22,7 @@
     {"name": "코딩부트캠프", "credits": 3, "isSatisfied": false, "english": "korean", "isRequired": true, "isDesignCourse": false}
   ],
   "basicMajor": [
-    {"name": "기초전공 나중에", "credits": 3, "isSatisfied": false, "english": false}
+    {"name": "기초전공 나중에", "credits": 3, "isSatisfied": false, "english": "korean"}
   ],
   "bsm": [
     {"name": "일반물리(1)", "credits": 3, "isSatisfied": false, "english": false},
