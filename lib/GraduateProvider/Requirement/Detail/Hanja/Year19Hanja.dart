@@ -15,15 +15,18 @@ class Year19Hanja extends Hanja {
   late DetailCondition hanjaTest;
   late DetailCondition hanjaClass;
 
-  @override
-  void analysisUpdate() {
+  Year19Hanja() {
     hanjaTest = Year19HanjaTest();
     subCondition.add(hanjaTest);
     hanjaClass = Year19HanjaClass();
     subCondition.add(hanjaClass);
+  }
 
+  @override
+  void analysisUpdate() {
     int hanjaCount = 0;
     for(DetailCondition condition in subCondition) {
+      condition.analysisUpdate();
       if(condition.isSatisfied) {
         hanjaCount++;
       }

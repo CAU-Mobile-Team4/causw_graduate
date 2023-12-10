@@ -2,6 +2,7 @@ import 'package:causw_graduate/GraduateProvider/Requirement/Detail/DetailConditi
 
 abstract class GraduateReq {
   late DetailCondition totalCredit;
+  late DetailCondition minGrade;
   late DetailCondition majorCredit;
   late DetailCondition requiredMajor;
   late DetailCondition designCourseCredit;
@@ -10,13 +11,19 @@ abstract class GraduateReq {
   late DetailCondition counseling;
   late DetailCondition internship;
   late DetailCondition capstone;
+  late DetailCondition thesis;
   late DetailCondition hanja;
   late DetailCondition codingBootCamp;
+  late DetailCondition coreElective;
+  late DetailCondition act;
+  late DetailCondition openSource;
+  late DetailCondition english;
 
   List<DetailCondition> condition = [];
 
   void initializeList() {
     condition.add(totalCredit);
+    condition.add(minGrade);
     condition.add(majorCredit);
     condition.add(requiredMajor);
     condition.add(designCourseCredit);
@@ -25,7 +32,12 @@ abstract class GraduateReq {
     condition.add(counseling);
     condition.add(internship);
     condition.add(capstone);
+    condition.add(thesis);
     condition.add(hanja);
     condition.add(codingBootCamp);
+    condition.add(coreElective);
+    condition.add(act);
+    condition.add(openSource);
+    condition.add(english);
   }
 }

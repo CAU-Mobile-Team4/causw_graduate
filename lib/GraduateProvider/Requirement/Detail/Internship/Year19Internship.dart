@@ -19,8 +19,7 @@ class Year19Internship extends Internship {
   late DetailCondition startUp;
   late DetailCondition undergraduateResearchAssistant;
 
-  @override
-  void analysisUpdate() {
+  Year19Internship() {
     industrialInternship = Year19IndustrialInternship();
     subCondition.add(industrialInternship);
     fieldTraining = Year19FieldTraining();
@@ -29,9 +28,13 @@ class Year19Internship extends Internship {
     subCondition.add(startUp);
     undergraduateResearchAssistant = Year19UndergraduateResearchAssistant();
     subCondition.add(undergraduateResearchAssistant);
+  }
 
+  @override
+  void analysisUpdate() {
     int internshipCount = 0;
     for(DetailCondition condition in subCondition) {
+      condition.analysisUpdate();
       if(condition.isSatisfied) {
         internshipCount++;
       }

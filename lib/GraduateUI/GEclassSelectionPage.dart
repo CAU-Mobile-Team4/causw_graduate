@@ -121,7 +121,7 @@ class _SelectGEclassState extends State<SelectGEclass> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('FUSHION',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold)),IconButton(onPressed:(){
+                    Text('FUSION',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold)),IconButton(onPressed:(){
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
@@ -131,13 +131,13 @@ class _SelectGEclassState extends State<SelectGEclass> {
                           content: Container(
                             width: double.maxFinite,
                             child: ListView.builder(
-                              itemCount: (subjects.coreElective['convergence'] as List).length,
+                              itemCount: (subjects.coreElective['fusion'] as List).length,
                               itemBuilder: (context,index){
                                 return CheckboxListTile(
-                                    title: Text('${subjects.coreElective['convergence'][index]['name']}',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),
-                                    value: subjects.coreElective['convergence'][index]['isSatisfied'],
+                                    title: Text('${subjects.coreElective['fusion'][index]['name']}',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),
+                                    value: subjects.coreElective['fusion'][index]['isSatisfied'],
                                     onChanged: (value){
-                                      subjects.updateSubject('coreElective', index, 'isSatisfied', 'convergence');
+                                      subjects.updateSubject('coreElective', index, 'isSatisfied', 'fusion');
                                     }
                                 );
                               },

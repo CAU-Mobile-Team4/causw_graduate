@@ -21,5 +21,17 @@
     "fieldTraining": false,
     "startUp": false,
     "undergraduateResearchAssistant": false
+  },
+  "act": {
+    "isSatisfied": false
+  },
+  "openSource": {
+    "isSatisfied": false
+  },
+  "english": {
+    "test": false
+  },
+  "grade": {
+    "score": 0.0
   }
 }

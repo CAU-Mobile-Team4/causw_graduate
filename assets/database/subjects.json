@@ -1,25 +1,25 @@
 {
   "major": [
-    {"name": "창의적설계", "credits": 3, "isSatisfied": false, "english": false, "isRequired": false, "isDesignCourse": true},
-    {"name": "논리회로", "credits": 3, "isSatisfied": false, "english": false, "isRequired": false, "isDesignCourse": true},
-    {"name": "프로그래밍", "credits": 3, "isSatisfied": false, "english": false, "isRequired": false, "isDesignCourse": true},
-    {"name": "소프트웨어프로젝트", "credits": 3, "isSatisfied": false, "english": false, "isRequired": false, "isDesignCourse": true},
-    {"name": "객체지향프로그래밍", "credits": 3, "isSatisfied": false, "english": false, "isRequired": false, "isDesignCourse": true},
-    {"name": "프로그래밍언어론", "credits": 3, "isSatisfied": false, "english": false, "isRequired": true, "isDesignCourse": true},
-    {"name": "데이터베이스설계", "credits": 3, "isSatisfied": false, "english": false, "isRequired": false, "isDesignCourse": true},
-    {"name": "소프트웨어공학", "credits": 3, "isSatisfied": false, "english": false, "isRequired": true, "isDesignCourse": true},
-    {"name": "캡스톤디자인(1)", "credits": 3, "isSatisfied": false, "english": false, "isRequired": false, "isDesignCourse": true},
-    {"name": "인공지능", "credits": 3, "isSatisfied": false, "english": false, "isRequired": false, "isDesignCourse": true},
-    {"name": "고급 IoT 프로젝트", "credits": 3, "isSatisfied": false, "english": false, "isRequired": false, "isDesignCourse": true},
-    {"name": "캡스톤디자인(2)", "credits": 3, "isSatisfied": false, "english": false, "isRequired": false, "isDesignCourse": true},
-    {"name": "데이터베이스시스템", "credits": 3, "isSatisfied": false, "english": false, "isRequired": false, "isDesignCourse": true},
-    {"name": "네트워크응용설계", "credits": 3, "isSatisfied": false, "english": false, "isRequired": false, "isDesignCourse": true},
-    {"name": "내장형시스템설계", "credits": 3, "isSatisfied": false, "english": false, "isRequired": false, "isDesignCourse": true},
-    {"name": "자료구조", "credits": 3, "isSatisfied": false, "english": false, "isRequired": true, "isDesignCourse": false},
-    {"name": "컴퓨터구조", "credits": 3, "isSatisfied": false, "english": false, "isRequired": true, "isDesignCourse": false},
-    {"name": "운영체제", "credits": 3, "isSatisfied": false, "english": false, "isRequired": true, "isDesignCourse": false},
-    {"name": "알고리즘", "credits": 3, "isSatisfied": false, "english": false, "isRequired": true, "isDesignCourse": false},
-    {"name": "코딩부트캠프", "credits": 3, "isSatisfied": false, "english": false, "isRequired": true, "isDesignCourse": false}
+    {"name": "창의적설계", "credits": 3, "isSatisfied": false, "english": "korean", "isRequired": false, "isDesignCourse": true},
+    {"name": "논리회로", "credits": 3, "isSatisfied": false, "english": "korean", "isRequired": false, "isDesignCourse": true},
+    {"name": "프로그래밍", "credits": 3, "isSatisfied": false, "english": "korean", "isRequired": false, "isDesignCourse": true},
+    {"name": "소프트웨어프로젝트", "credits": 3, "isSatisfied": false, "english": "korean", "isRequired": false, "isDesignCourse": true},
+    {"name": "객체지향프로그래밍", "credits": 3, "isSatisfied": false, "english": "korean", "isRequired": false, "isDesignCourse": true},
+    {"name": "프로그래밍언어론", "credits": 3, "isSatisfied": false, "english": "korean", "isRequired": true, "isDesignCourse": true},
+    {"name": "데이터베이스설계", "credits": 3, "isSatisfied": false, "english": "korean", "isRequired": false, "isDesignCourse": true},
+    {"name": "소프트웨어공학", "credits": 3, "isSatisfied": false, "english": "korean", "isRequired": true, "isDesignCourse": true},
+    {"name": "캡스톤디자인(1)", "credits": 3, "isSatisfied": false, "english": "korean", "isRequired": false, "isDesignCourse": true},
+    {"name": "인공지능", "credits": 3, "isSatisfied": false, "english": "korean", "isRequired": false, "isDesignCourse": true},
+    {"name": "고급 IoT 프로젝트", "credits": 3, "isSatisfied": false, "english": "korean", "isRequired": false, "isDesignCourse": true},
+    {"name": "캡스톤디자인(2)", "credits": 3, "isSatisfied": false, "english": "korean", "isRequired": false, "isDesignCourse": true},
+    {"name": "데이터베이스시스템", "credits": 3, "isSatisfied": false, "english": "korean", "isRequired": false, "isDesignCourse": true},
+    {"name": "네트워크응용설계", "credits": 3, "isSatisfied": false, "english": "korean", "isRequired": false, "isDesignCourse": true},
+    {"name": "내장형시스템설계", "credits": 3, "isSatisfied": false, "english": "korean", "isRequired": false, "isDesignCourse": true},
+    {"name": "자료구조", "credits": 3, "isSatisfied": false, "english": "korean", "isRequired": true, "isDesignCourse": false},
+    {"name": "컴퓨터구조", "credits": 3, "isSatisfied": false, "english": "korean", "isRequired": true, "isDesignCourse": false},
+    {"name": "운영체제", "credits": 3, "isSatisfied": false, "english": "korean", "isRequired": true, "isDesignCourse": false},
+    {"name": "알고리즘", "credits": 3, "isSatisfied": false, "english": "korean", "isRequired": true, "isDesignCourse": false},
+    {"name": "코딩부트캠프", "credits": 3, "isSatisfied": false, "english": "korean", "isRequired": true, "isDesignCourse": false}
   ],
   "basicMajor": [
     {"name": "기초전공 나중에", "credits": 3, "isSatisfied": false, "english": false}
@@ -40,25 +40,30 @@
     {"name": "한국사", "credits": 2, "isSatisfied": false, "english": false}
   ],
   "coreElective": {
-    "convergence": [
-      {"name": "convergence test1", "credits": 3, "isSatisfied": false},
-      {"name": "convergence test2", "credits": 3, "isSatisfied": false}
-    ],
-    "communication": [
-      {"name": "communication test1", "credits": 3, "isSatisfied": false},
-      {"name": "communication test2", "credits": 3, "isSatisfied": false}
+    "challenge": [
+      {"name": "challenge test1", "credits": 3, "isSatisfied": false},
+      {"name": "challenge test2", "credits": 3, "isSatisfied": false}
     ],
     "creativity": [
       {"name": "creativity test1", "credits": 3, "isSatisfied": false},
       {"name": "creativity test2", "credits": 3, "isSatisfied": false}
     ],
-    "challenge": [
-      {"name": "challenge test1", "credits": 3, "isSatisfied": false},
-      {"name": "challenge test2", "credits": 3, "isSatisfied": false}
+    "fusion": [
+      {"name": "fusion test1", "credits": 3, "isSatisfied": false},
+      {"name": "fusion test2", "credits": 3, "isSatisfied": false}
     ],
     "trust": [
       {"name": "trust test1", "credits": 3, "isSatisfied": false},
       {"name": "trust test2", "credits": 3, "isSatisfied": false}
+    ],
+    "communication": [
+      {"name": "communication test1", "credits": 3, "isSatisfied": false},
+      {"name": "communication test2", "credits": 3, "isSatisfied": false}
     ]
+  },
+  "option": {
+    "english": ["korean", "english"],
+    "semester": [1, 2, 3, 4, 5, 6, 7, 8],
+    "grade": ["A+", "A", "B+", "B", "C+", "C", "D+", "D", "F"]
   }
 }
