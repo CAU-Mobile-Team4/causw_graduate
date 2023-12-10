@@ -4,10 +4,6 @@ class NotApplicateCondition extends DetailCondition {
   @override
   final int type = 0;
   @override
-  final int groupId = 0;
-  @override
-  final int conditionGroupId = 0;
-  @override
   final String conditionName = '미적용';
   @override
   final String guideLine = '';
