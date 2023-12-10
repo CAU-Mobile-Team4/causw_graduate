@@ -49,7 +49,7 @@ class _GraduateEtcState extends State<GraduateEtc> {
             ),
           ),
             CheckboxListTile(
-                title: Text('Undergraduate Research Assignment',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
+                title: Text('학부연구생',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
                 value: additional.internship['undergraduateResearchAssistant'],
                 onChanged: (value){
                   additional.updateInternship('undergraduateResearchAssistant');
@@ -57,7 +57,7 @@ class _GraduateEtcState extends State<GraduateEtc> {
             )
             ,
             CheckboxListTile(
-                title: Text('Start Up',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
+                title: Text('창업',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
                 value: additional.internship['startUp'],
                 onChanged: (value){
                   additional.updateInternship('startUp');
@@ -66,7 +66,7 @@ class _GraduateEtcState extends State<GraduateEtc> {
             ,
 
             CheckboxListTile(
-                title: Text('Industrial Internship',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
+                title: Text('학기인턴',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
                 value: additional.internship['industrialInternship'],
                 onChanged: (value){
                   additional.updateInternship('industrialInternship');
@@ -74,7 +74,7 @@ class _GraduateEtcState extends State<GraduateEtc> {
             )
             ,
             CheckboxListTile(
-                title: Text('Field Training',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
+                title: Text('현장실습',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
                 value: additional.internship['fieldTraining'],
                 onChanged: (value){
                   additional.updateInternship('fieldTraining');
@@ -83,7 +83,7 @@ class _GraduateEtcState extends State<GraduateEtc> {
             ,
 
             CheckboxListTile(
-                title: Text('Hanja Class',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
+                title: Text('한자 강의 1회이상 수강',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
                 value: additional.hanja['class'],
                 onChanged: (value){
                   additional.updateHanja('class');
@@ -91,7 +91,7 @@ class _GraduateEtcState extends State<GraduateEtc> {
             )
             ,
             CheckboxListTile(
-                title: Text('Hanja Test',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
+                title: Text('한자 4급',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),),
                 value: additional.hanja['test'],
                 onChanged: (value){
                   additional.updateHanja('test');
@@ -106,7 +106,7 @@ class _GraduateEtcState extends State<GraduateEtc> {
                 }
             )
             ,CheckboxListTile(
-              title: Text('Thesis',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main)),
+              title: Text('논문',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main)),
               value: additional.thesis['standard'],
               onChanged: (value){
                 additional.updateThesis('standard');
@@ -116,7 +116,7 @@ class _GraduateEtcState extends State<GraduateEtc> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Center(
-                    child: const Text("Counseling",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),)
+                    child: const Text("    상담",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: AppColor.main),)
                 ),
                 Center(
                   child: DropdownButton(
