@@ -2,6 +2,7 @@ import 'package:causw_graduate/GraduateProvider/Requirement/Detail/DetailConditi
 
 abstract class GraduateReq {
   late DetailCondition totalCredit;
+  late DetailCondition minGrade;
   late DetailCondition majorCredit;
   late DetailCondition requiredMajor;
   late DetailCondition designCourseCredit;
@@ -21,6 +22,7 @@ abstract class GraduateReq {
 
   void initializeList() {
     condition.add(totalCredit);
+    condition.add(minGrade);
     condition.add(majorCredit);
     condition.add(requiredMajor);
     condition.add(designCourseCredit);

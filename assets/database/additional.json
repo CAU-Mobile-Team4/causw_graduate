@@ -27,5 +27,8 @@
   },
   "english": {
     "test": false
+  },
+  "grade": {
+    "score": 0.0
   }
 }
