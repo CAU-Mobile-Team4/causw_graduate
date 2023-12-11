@@ -66,12 +66,9 @@ class _SelectGEclassState extends State<SelectGEclass> {
                           ),
                         ),
                         actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: const Text('OK'),
-                          ),
+                          ElevatedButton(onPressed: (){
+                            Navigator.of(context).pop();
+                          }, child: Text("확인"))
                         ],
                       );
                       },
@@ -105,12 +102,9 @@ class _SelectGEclassState extends State<SelectGEclass> {
                             ),
                           ),
                           actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: const Text('OK'),
-                            ),
+                            ElevatedButton(onPressed: (){
+                              Navigator.of(context).pop();
+                            }, child: Text("확인"))
                           ],
                         );
                         },
@@ -144,12 +138,9 @@ class _SelectGEclassState extends State<SelectGEclass> {
                             ),
                           ),
                           actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: const Text('OK'),
-                            ),
+                            ElevatedButton(onPressed: (){
+                              Navigator.of(context).pop();
+                            }, child: Text("확인"))
                           ],
                         );
                         },
@@ -183,12 +174,9 @@ class _SelectGEclassState extends State<SelectGEclass> {
                             ),
                           ),
                           actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: const Text('OK'),
-                            ),
+                            ElevatedButton(onPressed: (){
+                              Navigator.of(context).pop();
+                            }, child: Text("확인"))
                           ],
                         );
                         },
@@ -222,12 +210,9 @@ class _SelectGEclassState extends State<SelectGEclass> {
                             ),
                           ),
                           actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: const Text('OK'),
-                            ),
+                            ElevatedButton(onPressed: (){
+                              Navigator.of(context).pop();
+                            }, child: Text("확인"))
                           ],
                         );
                         },

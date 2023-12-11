@@ -121,12 +121,9 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                               child: Text('${condition.guideLine}')
                           ),
                           actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: const Text('확인'),
-                            ),
+                            ElevatedButton(onPressed: (){
+                              Navigator.of(context).pop();
+                            }, child: Text("확인"))
                           ],
                         );
                       },
@@ -156,12 +153,9 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                               child: Text('${condition.guideLine}')
                           ),
                           actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: const Text('확인'),
-                            ),
+                            ElevatedButton(onPressed: (){
+                              Navigator.of(context).pop();
+                            }, child: Text("확인"))
                           ],
                         );
                       },
@@ -192,12 +186,9 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                             child: Text('${condition.guideLine}')
                           ),
                           actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: const Text('확인'),
-                            ),
+                            ElevatedButton(onPressed: (){
+                              Navigator.of(context).pop();
+                            }, child: Text("확인"))
                           ],
                         );
                       },
