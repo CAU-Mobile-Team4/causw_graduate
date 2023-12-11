@@ -20,6 +20,21 @@ class Year19EnglishClass extends EnglishClass {
         count++;
       }
     }
+    for(Map<String, dynamic> subject in userData.subjects.designMajor) {
+      if(subject['isSatisfied'] == true && subject['english'] == 'english') {
+        count++;
+      }
+    }
+    for(Map<String, dynamic> subject in userData.subjects.nonSWStudentMajor) {
+      if(subject['isSatisfied'] == true && subject['english'] == 'english') {
+        count++;
+      }
+    }
+    for(Map<String, dynamic> subject in userData.subjects.bsm) {
+      if(subject['isSatisfied'] == true && subject['english'] == 'english') {
+        count++;
+      }
+    }
 
     satisfied = count;
     if (satisfied >= require) {

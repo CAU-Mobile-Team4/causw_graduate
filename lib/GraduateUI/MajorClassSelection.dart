@@ -22,7 +22,7 @@ class _MajorClassState extends State<MajorClass> {
     final subjects = Provider.of<Subjects>(context);
 
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         backgroundColor: AppColor.background,
         appBar: AppBar(
@@ -49,7 +49,16 @@ class _MajorClassState extends State<MajorClass> {
                 "전공",
                 style: TextStyle(color: AppColor.main),
               )),
-              Tab(child: Text("전공 기초", style: TextStyle(color: AppColor.main)))
+              Tab(
+                  child: Text(
+                    "설계전공",
+                    style: TextStyle(color: AppColor.main),
+                  )),
+              Tab(
+                  child: Text(
+                    "비전공자용 전공",
+                    style: TextStyle(color: AppColor.main),
+                  )),
             ],
           ),
         ),
@@ -100,22 +109,89 @@ class _MajorClassState extends State<MajorClass> {
           Expanded(
               child: Container(
             child: ListView.builder(
-              itemCount: subjects.basicMajor.length,
+              itemCount: subjects.designMajor.length,
               itemBuilder: (context, index) {
-                return CheckboxListTile(
-                    title: Text('${subjects.basicMajor[index]['name']}',
-                        style: TextStyle(
-                            color: AppColor.main, fontWeight: FontWeight.bold)),
-                    value: subjects.basicMajor[index]['isSatisfied'],
-                    onChanged: (value) {
-                      setState(() {
-                        subjects.updateSubject(
-                            'basicMajor', index, 'isSatisfied');
-                      });
-                    });
+                return ListTile(
+                  title: Text(
+                    '${subjects.designMajor[index]['name']}',
+                    style: TextStyle(
+                        color: AppColor.main, fontWeight: FontWeight.bold),
+                  ),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      DropdownButton(
+                        value: subjects.designMajor[index]['english'],
+                        items: (subjects.option['english'] as List)
+                            .map((e) => DropdownMenuItem(
+                                value: e,
+                                child: Text(
+                                  e,
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                )))
+                            .toList(),
+                        onChanged: (value) {
+                          subjects.updateSubject(
+                              'designMajor', index, 'english', value as String?);
+                        },
+                      ),
+                      Checkbox(
+                          value: subjects.designMajor[index]['isSatisfied'],
+                          onChanged: (value) {
+                            subjects.updateSubject(
+                                'designMajor', index, 'isSatisfied');
+                          }),
+                    ],
+                  ),
+                );
               },
             ),
           )),
+          Expanded(
+              child: Container(
+                child: ListView.builder(
+                  itemCount: subjects.nonSWStudentMajor.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(
+                        '${subjects.nonSWStudentMajor[index]['name']}',
+                        style: TextStyle(
+                            color: AppColor.main, fontWeight: FontWeight.bold),
+                      ),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          DropdownButton(
+                            value: subjects.nonSWStudentMajor[index]['english'],
+                            items: (subjects.option['english'] as List)
+                                .map((e) => DropdownMenuItem(
+                                value: e,
+                                child: Text(
+                                  e,
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                )))
+                                .toList(),
+                            onChanged: (value) {
+                              subjects.updateSubject(
+                                  'nonSWStudentMajor', index, 'english', value as String?);
+                            },
+                          ),
+                          Checkbox(
+                              value: subjects.nonSWStudentMajor[index]['isSatisfied'],
+                              onChanged: (value) {
+                                subjects.updateSubject(
+                                    'nonSWStudentMajor', index, 'isSatisfied');
+                              }),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              )),
         ]),
         floatingActionButton: FloatingActionButton(
             onPressed: () {

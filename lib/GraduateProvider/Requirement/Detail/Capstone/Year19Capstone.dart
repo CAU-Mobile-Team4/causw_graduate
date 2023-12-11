@@ -15,7 +15,7 @@ class Year19Capstone extends Capstone {
     UserData userData = UserData();
 
     int count = 0;
-    for(Map<String, dynamic> subject in userData.subjects.major) {
+    for(Map<String, dynamic> subject in userData.subjects.designMajor) {
       if((subject['name'] == '캡스톤디자인(1)' || subject['name'] == '캡스톤디자인(2)') && subject['isSatisfied'] == true) {
         count++;
       }

@@ -5,14 +5,16 @@ class Subjects extends UserDataDetail {
   final String key = 'subjects';
 
   late List<Map<String, dynamic>> _major;
-  late List<Map<String, dynamic>> _basicMajor;
+  late List<Map<String, dynamic>> _designMajor;
+  late List<Map<String, dynamic>> _nonSWStudentMajor;
   late List<Map<String, dynamic>> _bsm;
   late List<Map<String, dynamic>> _specializedElective;
   late Map<String, dynamic> _coreElective;
   late Map<String, dynamic> _option;
 
   List<Map<String, dynamic>> get major => _major;
-  List<Map<String, dynamic>> get basicMajor => _basicMajor;
+  List<Map<String, dynamic>> get designMajor => _designMajor;
+  List<Map<String, dynamic>> get nonSWStudentMajor => _nonSWStudentMajor;
   List<Map<String, dynamic>> get bsm => _bsm;
   List<Map<String, dynamic>> get specializedElective => _specializedElective;
   Map<String, dynamic> get coreElective => _coreElective;
@@ -25,13 +27,23 @@ class Subjects extends UserDataDetail {
       } else {
         _major[index][key] = value;
       }
-    } else if(subjectType == 'basicMajor') {
+    } else if(subjectType == 'designMajor') {
       if(value == null) {
-        _basicMajor[index][key] = !_basicMajor[index][key];
+        _designMajor[index][key] = !_designMajor[index][key];
+      } else {
+        _designMajor[index][key] = value;
+      }
+    } else if(subjectType == 'nonSWStudentMajor') {
+      if(value == null) {
+        _nonSWStudentMajor[index][key] = !_nonSWStudentMajor[index][key];
+      } else {
+        _nonSWStudentMajor[index][key] = value;
       }
     } else if(subjectType == 'bsm') {
       if(value == null) {
         _bsm[index][key] = !_bsm[index][key];
+      } else {
+        _bsm[index][key] = value;
       }
     } else if(subjectType == 'specializedElective') {
       if(value == null) {
@@ -49,7 +61,8 @@ class Subjects extends UserDataDetail {
   Map<String, dynamic> toJson() {
     return {
       'major': _major,
-      'basicMajor': _basicMajor,
+      'designMajor': _designMajor,
+      'nonSWStudentMajor': _nonSWStudentMajor,
       'bsm': _bsm,
       'specializedElective': _specializedElective,
       'coreElective': _coreElective,
@@ -60,7 +73,8 @@ class Subjects extends UserDataDetail {
   @override
   void fromJson(Map<String, dynamic> json) {
     _major = (json['major'] as List).cast<Map<String, dynamic>>();
-    _basicMajor = (json['basicMajor'] as List).cast<Map<String, dynamic>>();
+    _designMajor = (json['designMajor'] as List).cast<Map<String, dynamic>>();
+    _nonSWStudentMajor = (json['nonSWStudentMajor'] as List).cast<Map<String, dynamic>>();
     _bsm = (json['bsm'] as List).cast<Map<String, dynamic>>();
     _specializedElective = (json['specializedElective'] as List).cast<Map<String, dynamic>>();
     _coreElective = json['coreElective'];

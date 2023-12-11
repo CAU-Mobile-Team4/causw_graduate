@@ -20,6 +20,11 @@ class Year19MajorCredit extends MajorCredit {
         totalCredit += subject['credits'] as int;
       }
     }
+    for(Map<String, dynamic> subject in userData.subjects.designMajor) {
+      if(subject['isSatisfied'] == true) {
+        totalCredit += subject['credits'] as int;
+      }
+    }
 
     satisfied = totalCredit;
     if (satisfied >= require) {
