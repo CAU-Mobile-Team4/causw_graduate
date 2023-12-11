@@ -19,8 +19,8 @@ import 'package:causw_graduate/GraduateProvider/Requirement/Detail/Thesis/Year19
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/TotalCredit/Year19TotalCredit.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Year/GraduateReq.dart';
 
-class Year19GraduateReq extends GraduateReq {
-  Year19GraduateReq() {
+class Year20GraduateReq extends GraduateReq {
+  Year20GraduateReq() {
     totalCredit = Year19TotalCredit();
     minGrade = Year19MinGrade();
     majorCredit = Year19MajorCredit();

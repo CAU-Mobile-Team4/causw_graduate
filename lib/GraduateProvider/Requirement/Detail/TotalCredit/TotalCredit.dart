@@ -6,5 +6,5 @@ abstract class TotalCredit extends DetailCondition {
   @override
   final String conditionName = '총 학점';
   @override
-  final String guideLine = '테스트 가이드라인';
+  final String guideLine = '';
 }

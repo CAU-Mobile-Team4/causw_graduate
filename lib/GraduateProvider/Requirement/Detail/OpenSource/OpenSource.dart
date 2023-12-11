@@ -6,5 +6,5 @@ abstract class OpenSource extends DetailCondition {
   @override
   final String conditionName = '오픈소스개발자 커뮤니티에 1건 이상 개방';
   @override
-  final String guideLine = '테스트 가이드라인';
+  final String guideLine = '';
 }

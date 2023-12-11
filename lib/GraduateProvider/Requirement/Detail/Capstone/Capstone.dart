@@ -6,5 +6,5 @@ abstract class Capstone extends DetailCondition {
   @override
   final String conditionName = '캡스톤 2회';
   @override
-  final String guideLine = '테스트 가이드라인';
+  final String guideLine = '산업체인턴쉽을 했을 경우 1회 대체';
 }

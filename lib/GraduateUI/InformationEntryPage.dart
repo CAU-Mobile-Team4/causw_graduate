@@ -1,3 +1,4 @@
+import 'package:causw_graduate/GraduateProvider/Requirement/GraduateAnalysis.dart';
 import 'package:causw_graduate/GraduateProvider/UserData/Detail/StudentInfo.dart';
 import 'package:causw_graduate/GraduateUI/GraduateQualification.dart';
 import 'package:causw_graduate/AppColor.dart';
@@ -16,6 +17,7 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
 
   Widget build(BuildContext context) {
     final studentInfo = Provider.of<StudentInfo>(context);
+    final graduateAnalysis = Provider.of<GraduateAnalysis>(context);
 
     return Scaffold(
       backgroundColor: AppColor.background,
@@ -94,7 +96,10 @@ class _InformationEntryPageState extends State<InformationEntryPage> {
                 child: Text('ENTER',style: TextStyle(fontSize: 25,color: AppColor.background,fontWeight: FontWeight.bold),),
                 onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder:
-                      (context)=> GraduateQualification()
+                      (context) {
+                        graduateAnalysis.update();
+                        return GraduateQualification();
+                      }
                   )
                   );
                 }),

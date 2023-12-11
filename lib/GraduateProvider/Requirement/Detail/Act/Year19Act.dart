@@ -14,10 +14,11 @@ class Year19Act extends Act {
   void analysisUpdate() {
     UserData userData = UserData();
 
-    if(userData.additionalCondition.act['isSatisfied'] == true) {
-      satisfied = 1;
-    } else {
-      satisfied = 0;
+    satisfied = 0;
+    for(Map<String, dynamic> subject in userData.subjects.generalElective) {
+      if(subject['name'] == 'ACT' && subject['isSatisfied'] == true) {
+        satisfied = 1;
+      }
     }
 
     if (satisfied >= require) {

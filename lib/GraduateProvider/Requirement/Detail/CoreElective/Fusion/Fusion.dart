@@ -6,5 +6,5 @@ abstract class Fusion extends DetailCondition {
   @override
   final String conditionName = '핵심-융합 교양 1회';
   @override
-  final String guideLine = '테스트 가이드라인';
+  final String guideLine = '';
 }

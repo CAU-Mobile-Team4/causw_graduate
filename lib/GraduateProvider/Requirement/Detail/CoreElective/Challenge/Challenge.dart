@@ -6,5 +6,5 @@ abstract class Challenge extends DetailCondition {
   @override
   final String conditionName = '핵심-도전 교양 1회';
   @override
-  final String guideLine = '테스트 가이드라인';
+  final String guideLine = '';
 }

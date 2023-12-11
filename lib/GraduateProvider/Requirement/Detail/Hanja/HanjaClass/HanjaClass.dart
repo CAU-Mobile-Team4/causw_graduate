@@ -6,5 +6,5 @@ abstract class HanjaClass extends DetailCondition {
   @override
   final String conditionName = '한자 수업 1회';
   @override
-  final String guideLine = '테스트 가이드라인';
+  final String guideLine = '한자 관련 강의 1과목 이수로 대체';
 }

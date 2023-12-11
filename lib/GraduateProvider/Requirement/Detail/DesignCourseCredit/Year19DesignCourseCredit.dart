@@ -16,12 +16,12 @@ class Year19DesignCourseCredit extends DesignCourseCredit {
 
     bool isCreativityDesignSatisfied = false;
     int totalCredit = 0;
-    for(Map<String, dynamic> subject in userData.subjects.major) {
-      if(subject['isSatisfied'] == true && subject['isDesignCourse'] == true) {
+    for(Map<String, dynamic> subject in userData.subjects.designMajor) {
+      if(subject['isSatisfied'] == true) {
         if(subject['name'] == '창의적 설계') {
           isCreativityDesignSatisfied = true;
         }
-        totalCredit += subject['credits'] as int;
+        totalCredit += subject['designCredit'] as int;
       }
     }
 

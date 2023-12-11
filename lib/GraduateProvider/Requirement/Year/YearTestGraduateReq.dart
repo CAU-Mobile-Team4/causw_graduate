@@ -12,6 +12,7 @@ import 'package:causw_graduate/GraduateProvider/Requirement/Detail/Internship/Ye
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/Mach/Year19Mach.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/MajorCredit/Year19MajorCredit.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/MinGrade/Year19MinGrade.dart';
+import 'package:causw_graduate/GraduateProvider/Requirement/Detail/NotApplicateCondition.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/OpenSource/Year19OpenSource.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/RequiredMajor/Year19RequiredMajorCredit.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/SpecializedElectiveCredit/Year19SpecializedElectiveCredit.dart';
@@ -19,27 +20,27 @@ import 'package:causw_graduate/GraduateProvider/Requirement/Detail/Thesis/Year19
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/TotalCredit/Year19TotalCredit.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Year/GraduateReq.dart';
 
-class Year19GraduateReq extends GraduateReq {
-  Year19GraduateReq() {
+class YearTestGraduateReq extends GraduateReq {
+  YearTestGraduateReq() {
     totalCredit = Year19TotalCredit();
-    minGrade = Year19MinGrade();
-    majorCredit = Year19MajorCredit();
-    requiredMajor = Year19RequiredMajorCredit();
-    designCourseCredit = Year19DesignCourseCredit();
-    bsmCredit = Year19BSMCredit();
-    specializedElectiveCredit = Year19SpecializedElectiveCredit();
-    counseling = Year19Counseling();
-    internship = Year19Internship();
-    capstone = Year19Capstone();
-    thesis = Year19Thesis();
-    hanja = Year19Hanja();
-    codingBootCamp = Year19CodingBootCamp();
-    coreElective = Year19CoreElective();
-    mach = Year19Mach();
-    act = Year19Act();
-    openSource = Year19OpenSource();
-    english = Year19English();
-    englishClass = Year19EnglishClass();
+    minGrade = NotApplicateCondition();
+    majorCredit = NotApplicateCondition();
+    requiredMajor = NotApplicateCondition();
+    designCourseCredit = NotApplicateCondition();
+    bsmCredit = NotApplicateCondition();
+    specializedElectiveCredit = NotApplicateCondition();
+    counseling = NotApplicateCondition();
+    internship = NotApplicateCondition();
+    capstone = NotApplicateCondition();
+    thesis = NotApplicateCondition();
+    hanja = NotApplicateCondition();
+    codingBootCamp = NotApplicateCondition();
+    coreElective = NotApplicateCondition();
+    mach = NotApplicateCondition();
+    act = NotApplicateCondition();
+    openSource = NotApplicateCondition();
+    english = NotApplicateCondition();
+    englishClass = NotApplicateCondition();
     initializeList();
   }
 }

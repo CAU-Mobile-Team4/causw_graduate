@@ -6,5 +6,5 @@ abstract class MajorCredit extends DetailCondition {
   @override
   final String conditionName = '공학주제 학점';
   @override
-  final String guideLine = '테스트 가이드라인';
+  final String guideLine = '전공과 bsm을 제외한 기초전공\n수강신청할때 공학주제라고 붙었는지 확인\n타학과 과목 주의';
 }
