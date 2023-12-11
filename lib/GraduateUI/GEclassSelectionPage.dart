@@ -42,7 +42,7 @@ class _SelectGEclassState extends State<SelectGEclass> {
               children: [Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('CHALLENGE',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: AppColor.main),),IconButton(onPressed:(){
+                  Text('   핵심-도전',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: AppColor.main),),IconButton(onPressed:(){
                     showDialog(
 
                       context: context,
@@ -83,7 +83,7 @@ class _SelectGEclassState extends State<SelectGEclass> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('CREATIVITY',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: AppColor.main)),IconButton(onPressed:(){
+                    Text('   핵심-창조',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: AppColor.main)),IconButton(onPressed:(){
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
@@ -122,7 +122,7 @@ class _SelectGEclassState extends State<SelectGEclass> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('FUSION',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: AppColor.main)),IconButton(onPressed:(){
+                    Text('   핵심-융합',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: AppColor.main)),IconButton(onPressed:(){
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
@@ -161,7 +161,7 @@ class _SelectGEclassState extends State<SelectGEclass> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('TRUST',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: AppColor.main)),IconButton(onPressed:(){
+                    Text('   핵심-신뢰',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: AppColor.main)),IconButton(onPressed:(){
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
@@ -200,7 +200,7 @@ class _SelectGEclassState extends State<SelectGEclass> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('COMMUNICATION',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: AppColor.main)),IconButton(onPressed:(){
+                    Text('   핵심-소통',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: AppColor.main)),IconButton(onPressed:(){
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
