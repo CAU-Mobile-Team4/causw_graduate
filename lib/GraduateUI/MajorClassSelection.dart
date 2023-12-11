@@ -22,7 +22,7 @@ class _MajorClassState extends State<MajorClass> {
     final subjects = Provider.of<Subjects>(context);
 
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         backgroundColor: AppColor.background,
         appBar: AppBar(
@@ -56,7 +56,7 @@ class _MajorClassState extends State<MajorClass> {
                   )),
               Tab(
                   child: Text(
-                    "비전공자 전용 전공",
+                    "비전공자용 전공",
                     style: TextStyle(color: AppColor.main),
                   )),
             ],
