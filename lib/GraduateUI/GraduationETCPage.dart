@@ -31,6 +31,17 @@ class _GraduateEtcState extends State<GraduateEtc> {
             )
             );
           }, icon: Icon(Icons.arrow_back,color: AppColor.main,)),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.home_filled,color: AppColor.main,),
+              onPressed: () {
+                Navigator.popUntil(
+                    context,
+                        (route) => route.isFirst);
+              },
+              tooltip: "홈",
+            ),
+          ],
     backgroundColor: AppColor.background,),
       body: SingleChildScrollView(
         child: Column(
@@ -178,12 +189,6 @@ class _GraduateEtcState extends State<GraduateEtc> {
           ]
         ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => const StartPage()));
-      },backgroundColor: Theme.of(context).primaryColor.withOpacity(0.2),child:Icon(Icons.home_filled,)),
     );
   }
 }

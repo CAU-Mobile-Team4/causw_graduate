@@ -238,6 +238,15 @@ class _GraduateQualificationState extends State<GraduateQualification> {
           },
           tooltip: "강의 추가",
         ),
+        IconButton(
+          icon: Icon(Icons.home_filled,color: AppColor.main,),
+          onPressed: () {
+            Navigator.popUntil(
+                context,
+                    (route) => route.isFirst);
+          },
+          tooltip: "홈",
+        ),
         ],
       ),
       body: Column(
@@ -333,6 +342,7 @@ class _GraduateQualificationState extends State<GraduateQualification> {
             ),
           ),
           Container(
+
               decoration: BoxDecoration(
                 color: AppColor.background,
                 border: const Border(
@@ -348,8 +358,9 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                 ],
               ),
               alignment: Alignment.center,
-              height: 100,
+              height: 80,
               child: Row(
+
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Flexible(
@@ -387,11 +398,6 @@ class _GraduateQualificationState extends State<GraduateQualification> {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        Navigator.popUntil(
-            context,
-            (route) => route.isFirst);
-      },backgroundColor: Theme.of(context).primaryColor.withOpacity(0.2),child:Icon(Icons.home_filled,)),
     );
   }
 }

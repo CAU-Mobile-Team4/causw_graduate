@@ -29,6 +29,18 @@ class ClassSelection extends StatelessWidget {
           )
           );
         }, icon: Icon(Icons.arrow_back,color: AppColor.main,)),
+        actions: <Widget>[
+
+          IconButton(
+            icon: Icon(Icons.home_filled,color: AppColor.main,),
+            onPressed: () {
+              Navigator.popUntil(
+                  context,
+                      (route) => route.isFirst);
+            },
+            tooltip: "홈",
+          ),
+        ],
         centerTitle: true,
       ),
       body: Center(
@@ -40,7 +52,7 @@ class ClassSelection extends StatelessWidget {
                 Center(
                   child: Stack(
                     children: [SizedBox(
-                      height: 200,width: 400,
+                      height: 200,width: 320,
                       child: Card(
                         shape: ContinuousRectangleBorder(
                           borderRadius:
@@ -57,7 +69,7 @@ class ClassSelection extends StatelessWidget {
                                 topRight: Radius.circular(5)
                               ),
                               child: Container(
-                                height: 90,
+                                height: 60,
                                 alignment: Alignment.center,
                                 color: AppColor.background,
                                 child: Text(
@@ -71,7 +83,7 @@ class ClassSelection extends StatelessWidget {
                             ),
                             Container(
                               height: 90,
-                              alignment: Alignment.center,
+                              alignment: Alignment.bottomCenter,
                               child: FloatingActionButton(
                                 backgroundColor: AppColor.background,
                                   child: Icon(Icons.add,size: 50,color: AppColor.main,),
@@ -90,10 +102,11 @@ class ClassSelection extends StatelessWidget {
                   ]
                   ),
                 ),
+                SizedBox(height: 15,),
                 Center(
                   child: Stack(
                       children: [SizedBox(
-                        height: 200,width: 400,
+                        height: 200,width: 320,
                         child: Card(
                           shape: ContinuousRectangleBorder(
                             borderRadius:
@@ -110,7 +123,7 @@ class ClassSelection extends StatelessWidget {
                                     topRight: Radius.circular(5)
                                 ),
                                 child: Container(
-                                  height: 90,
+                                  height: 60,
                                   alignment: Alignment.center,
                                   color: AppColor.background,
                                   child: Text(
@@ -124,7 +137,7 @@ class ClassSelection extends StatelessWidget {
                               ),
                               Container(
                                 height: 90,
-                                alignment: Alignment.center,
+                                alignment: Alignment.bottomCenter,
                                 child: FloatingActionButton(
                                     backgroundColor: AppColor.background,
                                     child: Icon(Icons.add,size: 50,color: AppColor.main,),
@@ -142,10 +155,11 @@ class ClassSelection extends StatelessWidget {
                       ]
                   ),
                 ),
+                SizedBox(height: 15,),
                 Center(
                   child: Stack(
                       children: [SizedBox(
-                        height: 200,width: 400,
+                        height: 200,width: 320,
                         child: Card(
                           shape: ContinuousRectangleBorder(
                             borderRadius:
@@ -162,7 +176,7 @@ class ClassSelection extends StatelessWidget {
                                     topRight: Radius.circular(5)
                                 ),
                                 child: Container(
-                                  height: 90,
+                                  height: 60,
                                   alignment: Alignment.center,
                                   color: AppColor.background,
                                   child: Text(
@@ -176,7 +190,7 @@ class ClassSelection extends StatelessWidget {
                               ),
                               Container(
                                 height: 90,
-                                alignment: Alignment.center,
+                                alignment: Alignment.bottomCenter,
                                 child: FloatingActionButton(
                                     backgroundColor: AppColor.background,
                                     child: Icon(Icons.add,size: 50,color: AppColor.main,),
@@ -194,10 +208,11 @@ class ClassSelection extends StatelessWidget {
                       ]
                   ),
                 ),
+                SizedBox(height: 15,),
                 Center(
                   child: Stack(
                       children: [SizedBox(
-                        height: 200,width: 400,
+                        height: 200,width: 320,
                         child: Card(
                           shape: ContinuousRectangleBorder(
                             borderRadius:
@@ -214,7 +229,7 @@ class ClassSelection extends StatelessWidget {
                                     topRight: Radius.circular(5),
                                 ),
                                 child: Container(
-                                  height: 90,
+                                  height: 60,
                                   alignment: Alignment.center,
                                   color: AppColor.background,
                                   child: Text(
@@ -228,7 +243,7 @@ class ClassSelection extends StatelessWidget {
                               ),
                               Container(
                                 height: 90,
-                                alignment: Alignment.center,
+                                alignment: Alignment.bottomCenter,
                                 child: FloatingActionButton(
                                     backgroundColor: AppColor.background,
                                     child: Icon(Icons.add,size: 50,color: AppColor.main,),
@@ -251,12 +266,7 @@ class ClassSelection extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => const StartPage()));
-      },backgroundColor: Theme.of(context).primaryColor.withOpacity(0.2),child:Icon(Icons.home_filled,)),
+
     );
   }
 }
