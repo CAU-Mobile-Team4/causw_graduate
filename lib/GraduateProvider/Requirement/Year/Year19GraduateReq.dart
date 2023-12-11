@@ -20,6 +20,9 @@ import 'package:causw_graduate/GraduateProvider/Requirement/Detail/TotalCredit/Y
 import 'package:causw_graduate/GraduateProvider/Requirement/Year/GraduateReq.dart';
 
 class Year19GraduateReq extends GraduateReq {
+  @override
+  String studentInfo = '19학번 주전공';
+
   Year19GraduateReq() {
     totalCredit = Year19TotalCredit();
     minGrade = Year19MinGrade();

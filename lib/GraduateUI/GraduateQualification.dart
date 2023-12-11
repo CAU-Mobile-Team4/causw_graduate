@@ -62,7 +62,7 @@ class CircularGraphPainter extends CustomPainter {
     canvas.drawArc(
       Rect.fromCircle(center: center, radius: radius),
       -pi, // 시작 각도
-      pi*((graduateAnalysis.requiredCondition[0].satisfied)/(graduateAnalysis.requiredCondition[0].require)), // 그릴 각도 (반원이므로 pi)
+      pi*((graduateAnalysis.satisfiedCredit)/(graduateAnalysis.requiredCredit)), // 그릴 각도 (반원이므로 pi)
       false,
       paint,
     );
@@ -215,7 +215,7 @@ class _GraduateQualificationState extends State<GraduateQualification> {
     return Scaffold(
       backgroundColor: AppColor.background,
       appBar: AppBar(
-        title: const Text('QUALIFICATION',
+        title: Text(graduateAnalysis.studentInfo,
             style:
                 TextStyle(color: AppColor.main, fontWeight: FontWeight.bold)),
         centerTitle: true,
@@ -294,8 +294,8 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                               alignment: Alignment.center,
                               width: 150,
                               height: 20,
-                              child: graduateAnalysis.requiredCondition[0].satisfied < 140 ? Text("${graduateAnalysis.requiredCondition[0].satisfied}/${graduateAnalysis.requiredCondition[0].require}",
-                                style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),) :  Text('Satisfied',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.orange)),
+                              child: Text("${graduateAnalysis.satisfiedCredit}/${graduateAnalysis.requiredCredit}",
+                                style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold))
                           ),
                         ],
                       )),
