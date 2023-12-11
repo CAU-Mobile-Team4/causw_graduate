@@ -1,6 +1,7 @@
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/DetailCondition.dart';
 
 abstract class GraduateReq {
+  abstract String studentInfo;
   late DetailCondition totalCredit;
   late DetailCondition minGrade;
   late DetailCondition majorCredit;

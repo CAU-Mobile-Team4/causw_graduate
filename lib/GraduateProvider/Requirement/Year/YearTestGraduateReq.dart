@@ -21,6 +21,9 @@ import 'package:causw_graduate/GraduateProvider/Requirement/Detail/TotalCredit/Y
 import 'package:causw_graduate/GraduateProvider/Requirement/Year/GraduateReq.dart';
 
 class YearTestGraduateReq extends GraduateReq {
+  @override
+  String studentInfo = '테스트';
+
   YearTestGraduateReq() {
     totalCredit = Year19TotalCredit();
     minGrade = NotApplicateCondition();

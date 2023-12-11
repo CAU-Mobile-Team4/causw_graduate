@@ -15,8 +15,18 @@ class GraduateAnalysis with ChangeNotifier {
   int _satisfiedConditionCount = 0;
   int _requiredConditionCount = 0;
 
+  int _satisfiedCredit = 0;
+  int _requiredCredit = 1;
+
+  String _studentInfo = '';
+
   int get satisfiedConditionCount => _satisfiedConditionCount;
   int get requiredConditionCount => _requiredConditionCount;
+
+  int get satisfiedCredit => _satisfiedCredit;
+  int get requiredCredit => _requiredCredit;
+
+  String get studentInfo => _studentInfo;
 
   List<DetailCondition> get satisfiedCondition => _satisfiedCondition;
   List<DetailCondition> get requiredCondition => _requiredCondition;
@@ -47,9 +57,19 @@ class GraduateAnalysis with ChangeNotifier {
       graduateReq = YearTestGraduateReq();
     }
 
+    _studentInfo = graduateReq.studentInfo;
+
     for(DetailCondition condition in graduateReq.condition) {
       condition.analysisUpdate();
       if(condition.type == 1) {
+        if(condition.conditionName == '총 학점') {
+          if(condition.satisfied < condition.require) {
+            _satisfiedCredit = condition.satisfied;
+          } else {
+            _satisfiedCredit = condition.require;
+          }
+          _requiredCredit = condition.require;
+        }
         if(condition.isSatisfied) {
           _satisfiedCondition.add(condition);
           _satisfiedConditionCount++;
