@@ -20,6 +20,11 @@ class Year19RequiredMajorCredit extends RequiredMajorCredit {
         requiredMajorCount++;
       }
     }
+    for(Map<String, dynamic> subject in userData.subjects.designMajor) {
+      if(subject['isSatisfied'] == true && subject['isRequired'] == true) {
+        requiredMajorCount++;
+      }
+    }
 
     satisfied = requiredMajorCount;
     if (satisfied >= require) {

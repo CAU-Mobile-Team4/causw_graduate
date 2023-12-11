@@ -20,7 +20,12 @@ class Year19EnglishClass extends EnglishClass {
         count++;
       }
     }
-    for(Map<String, dynamic> subject in userData.subjects.basicMajor) {
+    for(Map<String, dynamic> subject in userData.subjects.designMajor) {
+      if(subject['isSatisfied'] == true && subject['english'] == 'english') {
+        count++;
+      }
+    }
+    for(Map<String, dynamic> subject in userData.subjects.nonSWStudentMajor) {
       if(subject['isSatisfied'] == true && subject['english'] == 'english') {
         count++;
       }
