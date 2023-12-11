@@ -135,7 +135,7 @@
     "communication": [
       {"name": "English for Professional Track(Arts,Sports)", "credits": 3, "isSatisfied": false, "isMach": false},
       {"name": "English for Professional Track(Business, Economics)", "credits": 3, "isSatisfied": false, "isMach": false},
-      {"name": "English for Professional Track(Sciences, Engineering) ", "credits": 3, "isSatisfied": false, "isMach": false},
+      {"name": "English for Professional Track(Sciences, Engineering)", "credits": 3, "isSatisfied": false, "isMach": false},
       {"name": "English for Professional Track(Social, Humanities)", "credits": 3, "isSatisfied": false, "isMach": false},
       {"name": "대학한문", "credits": 3, "isSatisfied": false, "isMach": false},
       {"name": "중앙인과한국사회", "credits": 3, "isSatisfied": false, "isMach": false},

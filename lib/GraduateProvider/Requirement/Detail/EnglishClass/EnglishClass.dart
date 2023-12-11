@@ -2,9 +2,9 @@ import 'package:causw_graduate/GraduateProvider/Requirement/Detail/DetailConditi
 
 abstract class EnglishClass extends DetailCondition {
   @override
-  final int type = 3;
+  final int type = 1;
   @override
-  final String conditionName = '전공 영어 강좌 3개 이상';
+  final String conditionName = '영어 교양 또는 전공 영어강좌 2과목';
   @override
   final String guideLine = '테스트 가이드라인';
 }

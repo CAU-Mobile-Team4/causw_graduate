@@ -19,6 +19,7 @@ abstract class GraduateReq {
   late DetailCondition act;
   late DetailCondition openSource;
   late DetailCondition english;
+  late DetailCondition englishClass;
 
   List<DetailCondition> condition = [];
 
@@ -41,5 +42,6 @@ abstract class GraduateReq {
     condition.add(act);
     condition.add(openSource);
     condition.add(english);
+    condition.add(englishClass);
   }
 }

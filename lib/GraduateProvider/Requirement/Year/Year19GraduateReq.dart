@@ -6,6 +6,7 @@ import 'package:causw_graduate/GraduateProvider/Requirement/Detail/CoreElective/
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/Counseling/Year19Counseling.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/DesignCourseCredit/Year19DesignCourseCredit.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/English/Year19English.dart';
+import 'package:causw_graduate/GraduateProvider/Requirement/Detail/EnglishClass/Year19EnglishClass.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/Hanja/Year19Hanja.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/Internship/Year19Internship.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/Mach/Year19Mach.dart';
@@ -38,6 +39,7 @@ class Year19GraduateReq extends GraduateReq {
     act = Year19Act();
     openSource = Year19OpenSource();
     english = Year19English();
+    englishClass = Year19EnglishClass();
     initializeList();
   }
 }

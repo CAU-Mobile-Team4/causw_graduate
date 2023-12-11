@@ -1,6 +1,6 @@
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/DetailCondition.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/English/English.dart';
-import 'package:causw_graduate/GraduateProvider/Requirement/Detail/English/EnglishClass/Year19EnglishClass.dart';
+import 'package:causw_graduate/GraduateProvider/Requirement/Detail/English/EnglishMajorClass/Year19EnglishMajorClass.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/English/EnglishTest/Year19EnglishTest.dart';
 
 class Year19English extends English {
@@ -13,13 +13,13 @@ class Year19English extends English {
   bool isSatisfied = false;
 
   late DetailCondition englishTest;
-  late DetailCondition englishClass;
+  late DetailCondition englishMajorClass;
 
   Year19English() {
     englishTest = Year19EnglishTest();
     subCondition.add(englishTest);
-    englishClass = Year19EnglishClass();
-    subCondition.add(englishClass);
+    englishMajorClass = Year19EnglishMajorClass();
+    subCondition.add(englishMajorClass);
   }
 
   @override
