@@ -6,5 +6,5 @@ abstract class StartUp extends DetailCondition {
   @override
   final String conditionName = '창업 활동';
   @override
-  final String guideLine = '테스트 가이드라인';
+  final String guideLine = '';
 }

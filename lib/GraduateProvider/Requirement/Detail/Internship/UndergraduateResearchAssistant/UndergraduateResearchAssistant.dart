@@ -6,5 +6,5 @@ abstract class UndergraduateResearchAssistant extends DetailCondition {
   @override
   final String conditionName = '학부 연구생';
   @override
-  final String guideLine = '테스트 가이드라인';
+  final String guideLine = '';
 }
