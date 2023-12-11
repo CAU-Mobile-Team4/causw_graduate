@@ -1,6 +1,8 @@
 import 'package:causw_graduate/GraduateProvider/Requirement/Detail/DetailCondition.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Year/GraduateReq.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Year/Year19GraduateReq.dart';
+import 'package:causw_graduate/GraduateProvider/Requirement/Year/Year20GraduateReq.dart';
+import 'package:causw_graduate/GraduateProvider/Requirement/Year/YearTestGraduateReq.dart';
 import 'package:causw_graduate/GraduateProvider/UserData/UserData.dart';
 import 'package:flutter/material.dart';
 
@@ -32,18 +34,18 @@ class GraduateAnalysis with ChangeNotifier {
     _requiredCondition.clear();
     _requiredConditionCount = 0;
 
-    if (userData.studentInfo.majorStatus == '주전공') {
-      if (userData.studentInfo.admissionYear == 19) {
+    graduateReq = YearTestGraduateReq();
+    if(userData.studentInfo.majorStatus == '주전공') {
+      if(userData.studentInfo.admissionYear == 19) {
         graduateReq = Year19GraduateReq();
+      } else if(userData.studentInfo.admissionYear == 20) {
+        graduateReq = Year20GraduateReq();
       }
     } else if (userData.studentInfo.majorStatus == '부전공') {
-
+      graduateReq = YearTestGraduateReq();
     } else if (userData.studentInfo.majorStatus == '복수전공') {
-
-    } else {
-
+      graduateReq = YearTestGraduateReq();
     }
-    graduateReq = Year19GraduateReq();
 
     for(DetailCondition condition in graduateReq.condition) {
       condition.analysisUpdate();
