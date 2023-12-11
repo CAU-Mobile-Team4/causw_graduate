@@ -1,3 +1,4 @@
+import 'package:causw_graduate/GraduateProvider/UserData/UserData.dart';
 import 'package:causw_graduate/GraduateUI/BSMclassSelection.dart';
 import 'package:causw_graduate/GraduateUI/GEclassSelectionPage.dart';
 import 'package:causw_graduate/GraduateUI/GraduateQualification.dart';
@@ -24,6 +25,7 @@ class ClassSelection extends StatelessWidget {
           Navigator.push(context, MaterialPageRoute(builder:
               (context) {
                 graduateAnalysis.update();
+                UserData().saveDataAll();
                 return GraduateQualification();
               },
           )
@@ -34,6 +36,7 @@ class ClassSelection extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.home_filled,color: AppColor.main,),
             onPressed: () {
+              UserData().saveDataAll();
               Navigator.popUntil(
                   context,
                       (route) => route.isFirst);

@@ -1,4 +1,5 @@
 import 'package:causw_graduate/GraduateProvider/UserData/Detail/AdditionalCondition.dart';
+import 'package:causw_graduate/GraduateProvider/UserData/UserData.dart';
 import 'package:causw_graduate/GraduateUI/ClassSelectionPage.dart';
 import 'package:causw_graduate/AppColor.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,7 @@ class _GraduateEtcState extends State<GraduateEtc> {
             IconButton(
               icon: Icon(Icons.home_filled,color: AppColor.main,),
               onPressed: () {
+                UserData().saveDataAll();
                 Navigator.popUntil(
                     context,
                         (route) => route.isFirst);
