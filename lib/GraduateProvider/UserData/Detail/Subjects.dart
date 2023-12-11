@@ -10,6 +10,7 @@ class Subjects extends UserDataDetail {
   late List<Map<String, dynamic>> _bsm;
   late List<Map<String, dynamic>> _specializedElective;
   late Map<String, dynamic> _coreElective;
+  late List<Map<String, dynamic>> _generalElective;
   late Map<String, dynamic> _option;
 
   List<Map<String, dynamic>> get major => _major;
@@ -18,6 +19,7 @@ class Subjects extends UserDataDetail {
   List<Map<String, dynamic>> get bsm => _bsm;
   List<Map<String, dynamic>> get specializedElective => _specializedElective;
   Map<String, dynamic> get coreElective => _coreElective;
+  List<Map<String, dynamic>> get generalElective => _generalElective;
   Map<String, dynamic> get option => _option;
 
   void updateSubject(String subjectType, int index, String key, [String? value]) {
@@ -53,6 +55,10 @@ class Subjects extends UserDataDetail {
       if(value != null) {
         _coreElective[value][index][key] = !_coreElective[value][index][key];
       }
+    } else if(subjectType == 'generalElective') {
+      if(value == null) {
+        _generalElective[index][key] = !_generalElective[index][key];
+      }
     }
     notifyListeners();
   }
@@ -66,6 +72,7 @@ class Subjects extends UserDataDetail {
       'bsm': _bsm,
       'specializedElective': _specializedElective,
       'coreElective': _coreElective,
+      'generalElective': _generalElective,
       'option': _option
     };
   }
@@ -78,6 +85,7 @@ class Subjects extends UserDataDetail {
     _bsm = (json['bsm'] as List).cast<Map<String, dynamic>>();
     _specializedElective = (json['specializedElective'] as List).cast<Map<String, dynamic>>();
     _coreElective = json['coreElective'];
+    _generalElective = (json['generalElective'] as List).cast<Map<String, dynamic>>();
     _option = json['option'];
   }
 }
