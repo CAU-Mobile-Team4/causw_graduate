@@ -6,5 +6,5 @@ abstract class DefaultThesis extends DetailCondition {
   @override
   final String conditionName = '졸업 논문 제출';
   @override
-  final String guideLine = '테스트 가이드라인';
+  final String guideLine = '지도교수 포함 전임교원 2인 심사 통과\n대부분 topcit으로 대체';
 }

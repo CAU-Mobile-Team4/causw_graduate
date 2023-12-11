@@ -6,5 +6,5 @@ abstract class Thesis extends DetailCondition {
   @override
   final String conditionName = '졸업논문';
   @override
-  final String guideLine = '테스트 가이드라인';
+  final String guideLine = '';
 }

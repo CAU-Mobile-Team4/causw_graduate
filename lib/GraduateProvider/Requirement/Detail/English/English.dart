@@ -6,5 +6,5 @@ abstract class English extends DetailCondition {
   @override
   final String conditionName = '영어';
   @override
-  final String guideLine = '테스트 가이드라인';
+  final String guideLine = '';
 }
