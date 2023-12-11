@@ -1,0 +1,37 @@
+{
+  "additionalCredit": {
+    "normalElective": 0
+  },
+  "counseling": {
+    "advisorList": [0, 1, 2, 3, 4],
+    "advisorCount": 0,
+    "otherList": [0, 1, 2],
+    "otherCount": 0
+  },
+  "thesis": {
+    "standard": false,
+    "topcit": false
+  },
+  "hanja": {
+    "test": false,
+    "class": false
+  },
+  "internship": {
+    "industrialInternship": false,
+    "fieldTraining": false,
+    "startUp": false,
+    "undergraduateResearchAssistant": false
+  },
+  "act": {
+    "isSatisfied": false
+  },
+  "openSource": {
+    "isSatisfied": false
+  },
+  "english": {
+    "test": false
+  },
+  "grade": {
+    "score": 0.0
+  }
+}
