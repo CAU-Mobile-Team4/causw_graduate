@@ -76,7 +76,8 @@ class _SelectGEclassState extends State<SelectGEclass> {
         ),
         body: TabBarView(
           children: [
-            Expanded(
+            SizedBox(
+              width: double.maxFinite,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -108,7 +109,7 @@ class _SelectGEclassState extends State<SelectGEclass> {
                                         fontWeight: FontWeight.bold,
                                         color: AppColor.main),
                                   ),
-                                  content: Container(
+                                  content: SizedBox(
                                     width: double.maxFinite,
                                     child: ListView.builder(
                                       itemCount:
@@ -174,7 +175,7 @@ class _SelectGEclassState extends State<SelectGEclass> {
                                         fontWeight: FontWeight.bold,
                                         color: AppColor.main),
                                   ),
-                                  content: Container(
+                                  content: SizedBox(
                                     width: double.maxFinite,
                                     child: ListView.builder(
                                       itemCount:
@@ -240,7 +241,7 @@ class _SelectGEclassState extends State<SelectGEclass> {
                                         fontWeight: FontWeight.bold,
                                         color: AppColor.main),
                                   ),
-                                  content: Container(
+                                  content: SizedBox(
                                     width: double.maxFinite,
                                     child: ListView.builder(
                                       itemCount: (subjects
@@ -305,7 +306,7 @@ class _SelectGEclassState extends State<SelectGEclass> {
                                         fontWeight: FontWeight.bold,
                                         color: AppColor.main),
                                   ),
-                                  content: Container(
+                                  content: SizedBox(
                                     width: double.maxFinite,
                                     child: ListView.builder(
                                       itemCount: (subjects.coreElective['trust']
@@ -416,43 +417,37 @@ class _SelectGEclassState extends State<SelectGEclass> {
                 ],
               ),
             ),
-            Expanded(
-              child: Container(
-                  child: ListView.builder(
-                itemCount: subjects.specializedElective.length,
-                itemBuilder: (context, index) {
-                  return CheckboxListTile(
-                      title: Text(
-                        '${subjects.specializedElective[index]['name']}',
-                        style: TextStyle(
-                            color: AppColor.main, fontWeight: FontWeight.bold),
-                      ),
-                      value: subjects.specializedElective[index]['isSatisfied'],
-                      onChanged: (value) {
-                        subjects.updateSubject(
-                            'specializedElective', index, 'isSatisfied');
-                      });
-                },
-              )),
+            ListView.builder(
+              itemCount: subjects.specializedElective.length,
+              itemBuilder: (context, index) {
+            return CheckboxListTile(
+                title: Text(
+                  '${subjects.specializedElective[index]['name']}',
+                  style: TextStyle(
+                      color: AppColor.main, fontWeight: FontWeight.bold),
+                ),
+                value: subjects.specializedElective[index]['isSatisfied'],
+                onChanged: (value) {
+                  subjects.updateSubject(
+                      'specializedElective', index, 'isSatisfied');
+                });
+              },
             ),
-            Expanded(
-              child: Container(
-                  child: ListView.builder(
-                itemCount: subjects.generalElective.length,
-                itemBuilder: (context, index) {
-                  return CheckboxListTile(
-                      title: Text(
-                        '${subjects.generalElective[index]['name']}',
-                        style: TextStyle(
-                            color: AppColor.main, fontWeight: FontWeight.bold),
-                      ),
-                      value: subjects.generalElective[index]['isSatisfied'],
-                      onChanged: (value) {
-                        subjects.updateSubject(
-                            'generalElective', index, 'isSatisfied');
-                      });
-                },
-              )),
+            ListView.builder(
+              itemCount: subjects.generalElective.length,
+              itemBuilder: (context, index) {
+            return CheckboxListTile(
+                title: Text(
+                  '${subjects.generalElective[index]['name']}',
+                  style: TextStyle(
+                      color: AppColor.main, fontWeight: FontWeight.bold),
+                ),
+                value: subjects.generalElective[index]['isSatisfied'],
+                onChanged: (value) {
+                  subjects.updateSubject(
+                      'generalElective', index, 'isSatisfied');
+                });
+              },
             )
           ],
         ),
