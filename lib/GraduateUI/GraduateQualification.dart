@@ -4,7 +4,6 @@ import 'package:causw_graduate/GraduateProvider/Requirement/Detail/DetailConditi
 
 import 'package:causw_graduate/GraduateProvider/Requirement/GraduateAnalysis.dart';
 import 'package:causw_graduate/GraduateUI/ClassSelectionPage.dart';
-import 'package:causw_graduate/GraduateUI/EachGraduateQualificationInfo.dart';
 import 'package:causw_graduate/GraduateUI/InformationEntryPage.dart';
 
 
@@ -112,9 +111,26 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder:
-                    (context)=> EachGraduateQualificationInfo(guideline: condition.guideLine,)
-                    ));
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('${condition.conditionName}',style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold,color: AppColor.main),),
+                          content: SizedBox(
+                              width: double.maxFinite,
+                              child: Text('${condition.guideLine}')
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text('확인'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
                   }, icon: Icon(Icons.question_mark,color: AppColor.main,)),
                   Text('${condition.satisfied}/${condition.require}'),
                 ],
@@ -130,9 +146,26 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder:
-                    (context)=> EachGraduateQualificationInfo(guideline: condition.guideLine)
-                    ));
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('${condition.conditionName}',style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold,color: AppColor.main),),
+                          content: SizedBox(
+                              width: double.maxFinite,
+                              child: Text('${condition.guideLine}')
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text('확인'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
                   },
                       icon: Icon(Icons.question_mark,color: AppColor.main)),
                   Text('${condition.satisfied}/${condition.require}'),
@@ -149,9 +182,26 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   IconButton(onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder:
-                    (context)=> EachGraduateQualificationInfo(guideline: condition.guideLine)
-                    ));
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('${condition.conditionName}',style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold,color: AppColor.main),),
+                          content: SizedBox(
+                            width: double.maxFinite,
+                            child: Text('${condition.guideLine}')
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text('확인'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
                   }, icon: Icon(Icons.question_mark,color: AppColor.main)),
                   Text('${condition.satisfied}/${condition.require}'),
                 ],

@@ -42,21 +42,21 @@ class _SelectGEclassState extends State<SelectGEclass> {
               children: [Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('CHALLENGE',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),IconButton(onPressed:(){
+                  Text('CHALLENGE',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: AppColor.main),),IconButton(onPressed:(){
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
                         final subjects = Provider.of<Subjects>(context);
 
                         return AlertDialog(
-                        title: Text('핵심-도전',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                        title: Text('핵심-도전',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: AppColor.main),),
                         content: Container(
                           width: double.maxFinite,
                           child: ListView.builder(
                             itemCount: (subjects.coreElective['challenge'] as List).length,
                             itemBuilder: (context,index){
                               return CheckboxListTile(
-                                  title: Text('${subjects.coreElective['challenge'][index]['name']}',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),
+                                  title: Text('${subjects.coreElective['challenge'][index]['name']}',style: TextStyle(fontWeight: FontWeight.bold),),
                                   value: subjects.coreElective['challenge'][index]['isSatisfied'],
                                   onChanged: (value){
                                     subjects.updateSubject('coreElective', index, 'isSatisfied', 'challenge');
@@ -82,20 +82,20 @@ class _SelectGEclassState extends State<SelectGEclass> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('CREATIVITY',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold)),IconButton(onPressed:(){
+                    Text('CREATIVITY',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: AppColor.main)),IconButton(onPressed:(){
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
                           final subjects = Provider.of<Subjects>(context);
                           return AlertDialog(
-                          title: Text('핵심-창의',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                          title: Text('핵심-창의',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: AppColor.main),),
                           content: Container(
                             width: double.maxFinite,
                             child: ListView.builder(
                               itemCount: (subjects.coreElective['creativity'] as List).length,
                               itemBuilder: (context,index){
                                 return CheckboxListTile(
-                                    title: Text('${subjects.coreElective['creativity'][index]['name']}',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),
+                                    title: Text('${subjects.coreElective['creativity'][index]['name']}',style: TextStyle(fontWeight: FontWeight.bold),),
                                     value: subjects.coreElective['creativity'][index]['isSatisfied'],
                                     onChanged: (value){
                                       subjects.updateSubject('coreElective', index, 'isSatisfied', 'creativity');
@@ -121,20 +121,20 @@ class _SelectGEclassState extends State<SelectGEclass> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('FUSION',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold)),IconButton(onPressed:(){
+                    Text('FUSION',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: AppColor.main)),IconButton(onPressed:(){
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
                           final subjects = Provider.of<Subjects>(context);
                           return AlertDialog(
-                          title: Text('핵심-융합',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                          title: Text('핵심-융합',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: AppColor.main),),
                           content: Container(
                             width: double.maxFinite,
                             child: ListView.builder(
                               itemCount: (subjects.coreElective['fusion'] as List).length,
                               itemBuilder: (context,index){
                                 return CheckboxListTile(
-                                    title: Text('${subjects.coreElective['fusion'][index]['name']}',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),
+                                    title: Text('${subjects.coreElective['fusion'][index]['name']}',style: TextStyle(fontWeight: FontWeight.bold),),
                                     value: subjects.coreElective['fusion'][index]['isSatisfied'],
                                     onChanged: (value){
                                       subjects.updateSubject('coreElective', index, 'isSatisfied', 'fusion');
@@ -160,20 +160,20 @@ class _SelectGEclassState extends State<SelectGEclass> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('TRUST',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold)),IconButton(onPressed:(){
+                    Text('TRUST',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: AppColor.main)),IconButton(onPressed:(){
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
                           final subjects = Provider.of<Subjects>(context);
                           return AlertDialog(
-                          title: Text('핵심-신뢰',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                          title: Text('핵심-신뢰',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: AppColor.main),),
                           content: Container(
                             width: double.maxFinite,
                             child: ListView.builder(
                               itemCount: (subjects.coreElective['trust'] as List).length,
                               itemBuilder: (context,index){
                                 return CheckboxListTile(
-                                    title: Text('${subjects.coreElective['trust'][index]['name']}',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),
+                                    title: Text('${subjects.coreElective['trust'][index]['name']}',style: TextStyle(fontWeight: FontWeight.bold),),
                                     value: subjects.coreElective['trust'][index]['isSatisfied'],
                                     onChanged: (value){
                                       subjects.updateSubject('coreElective', index, 'isSatisfied', 'trust');
@@ -199,20 +199,20 @@ class _SelectGEclassState extends State<SelectGEclass> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('COMMUNICATION',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold)),IconButton(onPressed:(){
+                    Text('COMMUNICATION',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: AppColor.main)),IconButton(onPressed:(){
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
                           final subjects = Provider.of<Subjects>(context);
                           return AlertDialog(
-                          title: Text('핵심-소통',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                          title: Text('핵심-소통',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: AppColor.main),),
                           content: SizedBox(
                             width: double.maxFinite,
                             child: ListView.builder(
                               itemCount: (subjects.coreElective['communication'] as List).length,
                               itemBuilder: (context,index){
                                 return CheckboxListTile(
-                                    title: Text('${subjects.coreElective['communication'][index]['name']}',style: TextStyle(color: AppColor.main,fontWeight: FontWeight.bold),),
+                                    title: Text('${subjects.coreElective['communication'][index]['name']}',style: TextStyle(fontWeight: FontWeight.bold),),
                                     value: subjects.coreElective['communication'][index]['isSatisfied'],
                                     onChanged: (value){
                                       subjects.updateSubject('coreElective', index, 'isSatisfied', 'communication');
@@ -232,7 +232,7 @@ class _SelectGEclassState extends State<SelectGEclass> {
                         );
                         },
                       );
-                    }, icon: Icon(Icons.arrow_forward_ios_rounded))
+                    }, icon: Icon(Icons.arrow_forward_ios_rounded,))
                   ],
                 ),
               ],
