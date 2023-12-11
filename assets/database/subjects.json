@@ -64,10 +64,16 @@
     {"name": "이산수학", "credits": 3, "isSatisfied": false, "english": "korean"}
   ],
   "specializedElective": [
-    {"name": "글쓰기", "credits": 2, "isSatisfied": false},
-    {"name": "AI시대문제해결을 위한 디자인사고", "credits": 2, "isSatisfied": false},
-    {"name": "앙트레프레너십 시대의 회계", "credits": 2, "isSatisfied": false},
-    {"name": "한국사", "credits": 2, "isSatisfied": false}
+    {"name": "글쓰기", "credits": 2, "isSatisfied": false, "isMach": false},
+    {"name": "AI시대문제해결을위한디자인사고", "credits": 2, "isSatisfied": false, "isMach": true},
+    {"name": "앙트레프레너십 시대의 회계", "credits": 2, "isSatisfied": false, "isMach": false},
+    {"name": "한국사", "credits": 2, "isSatisfied": false, "isMach": false}
+  ],
+  "generalElective": [
+    {"name": "CAU세미나", "credits": 1, "isSatisfied": false},
+    {"name": "COMMUNICATION IN ENGLISH", "credits": 2, "isSatisfied": false},
+    {"name": "창의와소통", "credits": 2, "isSatisfied": false},
+    {"name": "ACT", "credits": 2, "isSatisfied": false}
   ],
   "coreElective": {
     "challenge": [

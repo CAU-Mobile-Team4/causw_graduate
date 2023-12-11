@@ -15,6 +15,11 @@ class Year19Mach extends Mach {
     UserData userData = UserData();
 
     int count = 0;
+    for(Map<String, dynamic> subject in userData.subjects.specializedElective) {
+      if(subject['isSatisfied'] == true && subject['isMach'] == true) {
+        count++;
+      }
+    }
     userData.subjects.coreElective.forEach((key, value) {
       for(Map<String, dynamic> subject in value) {
         if(subject['isSatisfied'] == true && subject['isMach'] == true) {
