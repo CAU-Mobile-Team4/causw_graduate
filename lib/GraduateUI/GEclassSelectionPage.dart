@@ -44,11 +44,15 @@ class _SelectGEclassState extends State<SelectGEclass> {
                 children: [
                   Text('CHALLENGE',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: AppColor.main),),IconButton(onPressed:(){
                     showDialog(
+
                       context: context,
                       builder: (BuildContext context) {
                         final subjects = Provider.of<Subjects>(context);
 
                         return AlertDialog(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
                         title: Text('핵심-도전',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: AppColor.main),),
                         content: Container(
                           width: double.maxFinite,
@@ -85,6 +89,9 @@ class _SelectGEclassState extends State<SelectGEclass> {
                         builder: (BuildContext context) {
                           final subjects = Provider.of<Subjects>(context);
                           return AlertDialog(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
                           title: Text('핵심-창의',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: AppColor.main),),
                           content: Container(
                             width: double.maxFinite,
@@ -121,6 +128,9 @@ class _SelectGEclassState extends State<SelectGEclass> {
                         builder: (BuildContext context) {
                           final subjects = Provider.of<Subjects>(context);
                           return AlertDialog(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
                           title: Text('핵심-융합',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: AppColor.main),),
                           content: Container(
                             width: double.maxFinite,
@@ -157,6 +167,9 @@ class _SelectGEclassState extends State<SelectGEclass> {
                         builder: (BuildContext context) {
                           final subjects = Provider.of<Subjects>(context);
                           return AlertDialog(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
                           title: Text('핵심-신뢰',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: AppColor.main),),
                           content: Container(
                             width: double.maxFinite,
@@ -193,6 +206,9 @@ class _SelectGEclassState extends State<SelectGEclass> {
                         builder: (BuildContext context) {
                           final subjects = Provider.of<Subjects>(context);
                           return AlertDialog(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
                           title: Text('핵심-소통',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: AppColor.main),),
                           content: SizedBox(
                             width: double.maxFinite,

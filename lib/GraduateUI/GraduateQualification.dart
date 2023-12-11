@@ -115,6 +115,9 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
                           title: Text('${condition.conditionName}',style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold,color: AppColor.main),),
                           content: SizedBox(
                               width: double.maxFinite,
@@ -147,6 +150,9 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
                           title: Text('${condition.conditionName}',style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold,color: AppColor.main),),
                           content: SizedBox(
                               width: double.maxFinite,
@@ -180,6 +186,9 @@ class _GraduateQualificationState extends State<GraduateQualification> {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
                           title: Text('${condition.conditionName}',style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold,color: AppColor.main),),
                           content: SizedBox(
                             width: double.maxFinite,
