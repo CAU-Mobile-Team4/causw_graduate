@@ -180,7 +180,7 @@ class ClassSelection extends StatelessWidget {
                                   alignment: Alignment.center,
                                   color: AppColor.background,
                                   child: Text(
-                                    "GE",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,color: AppColor.main),
+                                    "LIBERAL ARTS",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,color: AppColor.main),
                                   ),
                                 ),
                               ),

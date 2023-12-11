@@ -2,6 +2,7 @@ import 'package:causw_graduate/GraduateProvider/Requirement/Detail/DetailConditi
 import 'package:causw_graduate/GraduateProvider/Requirement/Year/GraduateReq.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Year/Year19GraduateReq.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Year/Year20GraduateReq.dart';
+import 'package:causw_graduate/GraduateProvider/Requirement/Year/Year24GraduateReq.dart';
 import 'package:causw_graduate/GraduateProvider/Requirement/Year/YearTestGraduateReq.dart';
 import 'package:causw_graduate/GraduateProvider/UserData/UserData.dart';
 import 'package:flutter/material.dart';
@@ -50,6 +51,8 @@ class GraduateAnalysis with ChangeNotifier {
         graduateReq = Year19GraduateReq();
       } else if(userData.studentInfo.admissionYear == 20) {
         graduateReq = Year20GraduateReq();
+      } else if(userData.studentInfo.admissionYear == 24) {
+        graduateReq = Year24GraduateReq();
       }
     } else if (userData.studentInfo.majorStatus == '부전공') {
       graduateReq = YearTestGraduateReq();
